@@ -4,10 +4,10 @@ import ReactECharts from 'echarts-for-react';
 import * as echarts from 'echarts';
 import { Globe, Map as MapIcon, Info } from 'lucide-react';
 
-// GeoJSON 数据 URL
+// GeoJSON 数据 URL - 使用本地静态资源避免跨域问题
 const GEOJSON_URLS = {
-  china: 'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json',
-  jiangsu: 'https://geo.datav.aliyun.com/areas_v3/bound/320000_full.json',
+  china: '/china.json',
+  jiangsu: '/jiangsu.json',
 };
 
 // 城市坐标 - 只包含有迁徙数据的来源地和南京
@@ -104,7 +104,7 @@ export default function MacroMigrationMap() {
         
         setLoading(false);
       } catch (error) {
-        // Error handled by UI state
+        console.error('本地 GeoJSON 加载失败:', error);
         setLoading(false);
       }
     };

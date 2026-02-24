@@ -4,8 +4,8 @@
  */
 
 export const GEOJSON_URLS = {
-  china: 'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json',
-  jiangsu: 'https://geo.datav.aliyun.com/areas_v3/bound/320000_full.json',
+  china: '/china.json',
+  jiangsu: '/jiangsu.json',
 };
 
 export const CITY_COORDS = {
