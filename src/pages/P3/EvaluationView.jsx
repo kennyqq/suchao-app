@@ -243,7 +243,16 @@ export default function EvaluationView() {
         </div>
 
         {/* ========== 右侧：分层体验与智能体贡献 ========== */}
-        <div className="absolute right-6 top-6 bottom-6 w-80 flex flex-col gap-4">
+        <div 
+          className="absolute right-6 top-6 bottom-6 w-80 flex flex-col gap-6 pb-32 overflow-y-auto scrollbar-hide"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {/* 隐藏滚动条样式 */}
+          <style>{`
+            .scrollbar-hide::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
           
           {/* 面板标题 */}
           <div className="flex items-center gap-2 px-1 flex-shrink-0">
@@ -255,8 +264,8 @@ export default function EvaluationView() {
           </div>
 
           {/* 模块1: VIP vs 普通用户对比 */}
-          <CyberBorder delay={0.1} className="flex-1 min-h-0">
-            <div className="glass-panel rounded-lg p-3 h-full flex flex-col">
+          <CyberBorder delay={0.1} className="flex-shrink-0">
+            <div className="glass-panel rounded-lg p-3 flex flex-col">
               <div className="flex items-center gap-2 mb-2 flex-shrink-0">
                 <div className="w-5 h-5 rounded bg-yellow-500/20 flex items-center justify-center">
                   <BarChart3 className="w-3 h-3 text-yellow-400" />
@@ -267,7 +276,7 @@ export default function EvaluationView() {
               
               <div className="text-white/40 text-[9px] mb-2 flex-shrink-0">实测数据对比</div>
               
-              <div className="flex-1 min-h-0 overflow-hidden">
+              <div className="h-[200px] flex-shrink-0">
                 <VIPComparisonChart />
               </div>
             </div>
@@ -276,7 +285,7 @@ export default function EvaluationView() {
           {/* 模块2: 智能体贡献 */}
           <CyberBorder delay={0.2} className="flex-shrink-0">
             <div className="glass-panel rounded-lg p-3">
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-2 flex-shrink-0">
                 <div className="w-5 h-5 rounded bg-purple-500/20 flex items-center justify-center">
                   <Target className="w-3 h-3 text-purple-400" />
                 </div>
@@ -291,7 +300,7 @@ export default function EvaluationView() {
           {/* 模块3: 持续优化建议 */}
           <CyberBorder delay={0.3} className="flex-shrink-0">
             <div className="glass-panel rounded-lg p-3">
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-2 flex-shrink-0">
                 <div className="w-5 h-5 rounded bg-orange-500/20 flex items-center justify-center">
                   <Zap className="w-3 h-3 text-orange-400" />
                 </div>
