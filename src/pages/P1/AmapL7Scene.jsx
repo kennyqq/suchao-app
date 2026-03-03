@@ -296,7 +296,11 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
             const handleClick = (e) => {
               if (!e.feature || !e.lngLat || isDestroyedRef.current) return;
               if (popupRef.current) popupRef.current.remove();
-              const popup = new Popup({ offsets: [0, -20], closeButton: false })
+              const popup = new Popup({ 
+                offsets: [0, -20], 
+                closeButton: false,
+                className: 'custom-popup-dark'
+              })
                 .setLnglat(e.lngLat)
                 .setHTML(generatePopupHtml(e.feature));
               scene.addPopup(popup);
@@ -438,6 +442,17 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
 
   return (
     <div className="relative w-full h-full overflow-hidden bg-[#0B1A2A]">
+      {/* 覆盖 Popup 默认白色背景 */}
+      <style>{`
+        .custom-popup-dark .l7-popup-content {
+          background: transparent !important;
+          padding: 0 !important;
+          box-shadow: none !important;
+        }
+        .custom-popup-dark .l7-popup-tip {
+          border-top-color: rgba(11, 26, 42, 0.95) !important;
+        }
+      `}</style>
       <div ref={mapContainerRef} className="absolute inset-0 w-full h-full" />
       
       {loading && (
@@ -469,7 +484,7 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
             <div className="text-white/40 text-xs">人</div>
           </div>
           
-          <div className="absolute bottom-4 left-4 bg-cyber-panel/90 rounded-xl p-4 border border-cyan-400/30 z-10">
+          <div className="absolute bottom-24 left-4 bg-cyber-panel/90 rounded-xl p-4 border border-cyan-400/30 z-10">
             <div className="text-cyan-400 text-sm font-bold mb-3">图例</div>
             <div className="space-y-2 text-xs">
               <div className="flex items-center gap-2">
