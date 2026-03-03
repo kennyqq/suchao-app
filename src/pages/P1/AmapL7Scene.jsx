@@ -73,11 +73,8 @@ const BASE_STATIONS = [
 ];
 
 // ========== Base64 图标 ==========
-// 青色菱形基站图标
 const STATION_ICON = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgMEw0MCAyMEwyMCA0MEwwIDIwTDIwIDBaIiBmaWxsPSIjMDBERkZGIi8+PHBhdGggZD0iTTIwIDVMMzUgMjBMMjAgMzVMNSAyMEwyMCA1WiIgZmlsbD0iIzAwRkZGRiIvPjwvc3ZnPg==';
-// 橙色方形应急车图标
 const VEHICLE_ICON = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB4PSI1IiB5PSI4IiB3aWR0aD0iMzAiIGhlaWdodD0iMjQiIHJ4PSI0IiBmaWxsPSIjRkZBNTAwIi8+PHJlY3QgeD0iMTAiIHk9IjEyIiB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIHJ4PSIyIiBmaWxsPSIjRkZDQzAwIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSIzMiIgcj0iNCIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjI4IiBjeT0iMzIiIHI9IjQiIGZpbGw9IiNmZmYiLz48L3N2Zz4=';
-// 金色奥体中心图标
 const CENTER_ICON = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyNCIgY3k9IjI0IiByPSIyMCIgZmlsbD0iI0ZGRDcwMCIvPjxjaXJjbGUgY3g9IjI0IiBjeT0iMjQiIHI9IjE0IiBmaWxsPSIjRkZBMzAwIi8+PC9zdmc+';
 
 // ========== 全局安全配置 ==========
@@ -164,6 +161,15 @@ function generatePopupHtml(data) {
   `;
 }
 
+// ========== 脏数据过滤 ==========
+function sanitizeData(data) {
+  return data.map(d => ({
+    ...d,
+    lng: Number(d.lng),
+    lat: Number(d.lat),
+  })).filter(d => !isNaN(d.lng) && !isNaN(d.lat));
+}
+
 export default function AmapL7Scene({ currentTime = '20:00' }) {
   const mapContainerRef = useRef(null);
   const sceneRef = useRef(null);
@@ -175,6 +181,9 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
   const [totalFlow, setTotalFlow] = useState(0);
 
   useEffect(() => {
+    // 1. 设置挂载标志位，防止 React 18 严格模式下重复初始化
+    let isMounted = true;
+
     if (sceneRef.current || !mapContainerRef.current) return;
 
     const scene = new Scene({
@@ -193,6 +202,9 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
     sceneRef.current = scene;
 
     scene.on('loaded', async () => {
+      // 致命拦截：如果组件已经卸载，立刻终止执行！
+      if (!isMounted) return;
+
       try {
         // 1. 加载自定义图标
         await Promise.all([
@@ -201,10 +213,15 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           scene.addImage('center', CENTER_ICON),
         ]);
 
+        // 2. 脏数据拦截：强制转换为 Number，丢弃无效坐标
+        const safeHubs = sanitizeData(TRANSPORT_HUBS);
+        const safeVehicles = sanitizeData(EMERGENCY_VEHICLES);
+        const safeStations = sanitizeData(BASE_STATIONS);
+
         const flowLines = generateFlowLines(currentTime);
         setTotalFlow(flowLines.reduce((sum, line) => sum + line.flow, 0));
 
-        // 2. 人流虚线图层
+        // 3. 人流虚线图层
         const flowLayer = new LineLayer({ zIndex: 2 })
           .source({
             type: 'FeatureCollection',
@@ -220,7 +237,7 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           .style({ opacity: 0.4, lineType: 'dash', dashArray: [4, 4] });
         scene.addLayer(flowLayer);
 
-        // 3. 流动粒子
+        // 4. 流动粒子
         const particleData = [];
         flowLines.forEach(line => {
           for (let i = 0; i < 2; i++) {
@@ -234,7 +251,7 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           .animate({ enable: true, speed: 2, rings: 0 });
         scene.addLayer(particleLayer);
 
-        // 4. 枢纽点（地铁站+第二现场）
+        // 5. 枢纽点（地铁站+第二现场）
         const hubData = flowLines.map(line => ({
           ...line,
           size: Math.min(18, Math.max(8, line.flow / 600)),
@@ -277,7 +294,7 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           .style({ textAnchor: 'center', textOffset: [0, -25], stroke: '#000', strokeWidth: 2 });
         scene.addLayer(hubLabelLayer);
 
-        // 5. 奥体中心
+        // 6. 奥体中心
         const centerBreathingLayer = new PointLayer({ zIndex: 12 })
           .source([OLYMPIC_CENTER], { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('circle').size(50).color('#FFD700')
@@ -296,16 +313,16 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           .style({ textAnchor: 'center', textOffset: [0, -40], stroke: '#000', strokeWidth: 3, fontWeight: 'bold' });
         scene.addLayer(centerLabelLayer);
 
-        // 6. 应急通信车
+        // 7. 应急通信车 - 使用脏数据过滤后的 safeVehicles
         const vehicleBreathingLayer = new PointLayer({ zIndex: 7 })
-          .source(EMERGENCY_VEHICLES, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+          .source(safeVehicles, { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('circle').size(35).color('#ff9900')
           .animate({ enable: true, speed: 0.03, rings: 3 })
           .style({ opacity: 0.4 });
         scene.addLayer(vehicleBreathingLayer);
 
         const vehicleLayer = new PointLayer({ zIndex: 8, pickBuffer: 4 })
-          .source(EMERGENCY_VEHICLES, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+          .source(safeVehicles, { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('vehicle').size(22);
         scene.addLayer(vehicleLayer);
 
@@ -322,9 +339,9 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
         vehicleLayer.on('mouseenter', () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = 'pointer'; });
         vehicleLayer.on('mouseleave', () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = ''; });
 
-        // 7. 基站
+        // 8. 基站 - 使用脏数据过滤后的 safeStations
         const stationBreathingLayer = new PointLayer({ zIndex: 5 })
-          .source(BASE_STATIONS, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+          .source(safeStations, { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('circle').size(30)
           .color('status', s => s === 'warning' ? '#ffaa00' : '#00ddff')
           .animate({ enable: true, speed: 0.03, rings: 3 })
@@ -332,7 +349,7 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
         scene.addLayer(stationBreathingLayer);
 
         const stationLayer = new PointLayer({ zIndex: 6, pickBuffer: 4 })
-          .source(BASE_STATIONS, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+          .source(safeStations, { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('station').size(16);
         scene.addLayer(stationLayer);
 
@@ -349,31 +366,39 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
         stationLayer.on('mouseenter', () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = 'pointer'; });
         stationLayer.on('mouseleave', () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = ''; });
 
-        setLoading(false);
-        setSceneLoaded(true);
+        if (isMounted) {
+          setLoading(false);
+          setSceneLoaded(true);
+        }
       } catch (err) {
         console.error('[AmapL7Scene] 初始化错误:', err);
-        setError(err.message);
-        setLoading(false);
+        if (isMounted) {
+          setError(err.message);
+          setLoading(false);
+        }
       }
     });
 
     scene.on('error', (err) => {
       console.error('[AmapL7Scene] 场景错误:', err);
-      setError('地图渲染失败');
-      setLoading(false);
+      if (isMounted) {
+        setError('地图渲染失败');
+        setLoading(false);
+      }
     });
 
     return () => {
+      // 3. 安全卸载：更新标志位并销毁实例
+      isMounted = false;
       if (popupRef.current) popupRef.current.remove();
       if (sceneRef.current) {
         sceneRef.current.destroy();
         sceneRef.current = null;
       }
     };
-  }, []);
+  }, []); // <-- 空数组，只在挂载时执行一次
 
-  // 时间变化时更新
+  // 时间变化时更新 - 只做数据更新，不重新创建 Scene
   useEffect(() => {
     if (!sceneLoaded || !sceneRef.current) return;
     const flowLines = generateFlowLines(currentTime);
