@@ -1,104 +1,295 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
-import { Loader2, MapPin, X, Activity, Zap, Cpu, Users, Radio } from 'lucide-react';
-import { Scene, GaodeMap, PointLayer, HeatmapLayer, PolygonLayer } from '@antv/l7';
-import { fetchFlowData, fetchZoneData } from '../../api/dashboard.js';
+import { useEffect, useRef, useState } from 'react';
+import { Loader2, Train, Building2, Footprints, Radio, Zap, Cpu, Antenna, Settings } from 'lucide-react';
+import { Scene, GaodeMap, PointLayer, LineLayer, PolygonLayer } from '@antv/l7';
+import { fetchZoneData } from '../../api/dashboard.js';
 
 const AMAP_KEY = import.meta.env.VITE_AMAP_KEY || '';
 const AMAP_SECURITY_CODE = import.meta.env.VITE_AMAP_SECURITY_CODE || '';
 
-// ========== 调整后的摄像机视角 ==========
+// ========== 地图视角配置 ==========
 const CAMERA_CONFIG = {
-  center: [118.728, 32.005], // 同时包容奥体、华彩中心、地铁站
+  center: [118.728, 32.005],
   zoom: 14.5,
-  pitch: 45,
+  pitch: 50,
 };
 
-// 默认空 GeoJSON
 const EMPTY_GEOJSON = { type: 'FeatureCollection', features: [] };
 
-// ========== 苏超专属核心地标数据 ==========
-const CUSTOM_LANDMARKS = [
-  { name: '南京奥体中心', lng: 118.7265, lat: 32.0087, type: 'main' },
-  { name: '奥体东地铁站', lng: 118.7350, lat: 32.0050, type: 'metro' },
-  { name: '元通地铁站', lng: 118.7200, lat: 32.0150, type: 'metro' },
-  { name: '华彩中心(第二现场)', lng: 118.7400, lat: 32.0120, type: 'secondary' },
+// ========== 奥体中心坐标 ==========
+const OLYMPIC_CENTER = {
+  name: '南京奥体中心',
+  lng: 118.7265,
+  lat: 32.0087,
+  type: 'destination'
+};
+
+// ========== 简化的交通枢纽数据 ==========
+const TRANSPORT_HUBS = [
+  { id: 'metro_1', name: '奥体东地铁站', lng: 118.7350, lat: 32.0050, type: 'metro', flow: 8500 },
+  { id: 'metro_2', name: '元通地铁站', lng: 118.7200, lat: 32.0150, type: 'metro', flow: 6200 },
+  { id: 'metro_3', name: '奥体中心地铁站', lng: 118.7240, lat: 32.0100, type: 'metro', flow: 12000 },
+  { id: 'venue_1', name: '华彩中心(第二现场)', lng: 118.7400, lat: 32.0120, type: 'secondary', flow: 4500 },
 ];
 
-// ========== 修正后的应急通信车位置 (真实停车场坐标) ==========
+// ========== 应急通信车详细数据 ==========
 const EMERGENCY_VEHICLES = [
-  { id: 'EV-001', name: '应急通信车-东', lng: 118.7305, lat: 32.0080, status: 'active' },
-  { id: 'EV-002', name: '应急通信车-西', lng: 118.7215, lat: 32.0080, status: 'active' },
+  { 
+    id: 'EV-001', 
+    name: '应急通信车-东', 
+    lng: 118.7320, 
+    lat: 32.0095, 
+    status: 'active',
+    cellId: 'CELL-EV-001',
+    stationType: '应急通信车',
+    config: {
+      hasSmartBoard: true,
+      carrier: '4T4R',
+      has3CC: true,
+      bands: 'n78+n79',
+    },
+    users: 1256,
+    prb: 68,
+    coverage: '500m',
+    bandwidth: '100MHz',
+  },
+  { 
+    id: 'EV-002', 
+    name: '应急通信车-西', 
+    lng: 118.7210, 
+    lat: 32.0075, 
+    status: 'active',
+    cellId: 'CELL-EV-002',
+    stationType: '应急通信车',
+    config: {
+      hasSmartBoard: true,
+      carrier: '4T4R',
+      has3CC: true,
+      bands: 'n78+n79',
+    },
+    users: 987,
+    prb: 52,
+    coverage: '500m',
+    bandwidth: '100MHz',
+  },
 ];
 
-// ========== 精简为 8 个基站 (真实宏站间距) ==========
-function generateBaseStations() {
-  const stations = [
-    { id: 'BS-001', name: '奥体主站-北', lng: 118.7265, lat: 32.0130, bbuLoad: 65, aauStatus: 'normal', hasSmartBoard: true, users: 2847, prb: 72 },
-    { id: 'BS-002', name: '奥体主站-南', lng: 118.7265, lat: 32.0045, bbuLoad: 58, aauStatus: 'normal', hasSmartBoard: true, users: 2156, prb: 65 },
-    { id: 'BS-003', name: '奥体主站-东', lng: 118.7320, lat: 32.0087, bbuLoad: 71, aauStatus: 'warning', hasSmartBoard: false, users: 3124, prb: 78 },
-    { id: 'BS-004', name: '奥体主站-西', lng: 118.7210, lat: 32.0087, bbuLoad: 45, aauStatus: 'normal', hasSmartBoard: false, users: 1832, prb: 52 },
-    { id: 'BS-005', name: '华彩中心站', lng: 118.7400, lat: 32.0120, bbuLoad: 82, aauStatus: 'normal', hasSmartBoard: true, users: 4521, prb: 85 },
-    { id: 'BS-006', name: '元通枢纽站', lng: 118.7200, lat: 32.0150, bbuLoad: 55, aauStatus: 'normal', hasSmartBoard: false, users: 1987, prb: 58 },
-    { id: 'BS-007', name: '奥体东站', lng: 118.7350, lat: 32.0050, bbuLoad: 68, aauStatus: 'normal', hasSmartBoard: true, users: 2678, prb: 70 },
-    { id: 'BS-008', name: '滨江新城站', lng: 118.7150, lat: 32.0020, bbuLoad: 42, aauStatus: 'normal', hasSmartBoard: false, users: 1234, prb: 48 },
-  ];
-  return stations;
-}
+// ========== 基站详细数据 ==========
+const BASE_STATIONS = [
+  { 
+    id: 'BS-001', 
+    name: '奥体主站-北', 
+    lng: 118.7265, 
+    lat: 32.0130, 
+    cellId: 'CELL-001',
+    stationType: '宏站',
+    type: 'main', 
+    status: 'normal',
+    config: {
+      hasSmartBoard: true,
+      carrier: '64T64R',
+      has3CC: true,
+      bands: 'n28+n78+n79',
+    },
+    users: 2847, 
+    prb: 72,
+    bandwidth: '100+100+60MHz',
+  },
+  { 
+    id: 'BS-002', 
+    name: '奥体主站-南', 
+    lng: 118.7265, 
+    lat: 32.0045, 
+    cellId: 'CELL-002',
+    stationType: '宏站',
+    type: 'main', 
+    status: 'normal',
+    config: {
+      hasSmartBoard: true,
+      carrier: '64T64R',
+      has3CC: true,
+      bands: 'n28+n78+n79',
+    },
+    users: 2156, 
+    prb: 65,
+    bandwidth: '100+100+60MHz',
+  },
+  { 
+    id: 'BS-003', 
+    name: '奥体主站-东', 
+    lng: 118.7320, 
+    lat: 32.0087, 
+    cellId: 'CELL-003',
+    stationType: '宏站',
+    type: 'sub', 
+    status: 'warning',
+    config: {
+      hasSmartBoard: false,
+      carrier: '32T32R',
+      has3CC: false,
+      bands: 'n78',
+    },
+    users: 3124, 
+    prb: 88,
+    bandwidth: '100MHz',
+  },
+  { 
+    id: 'BS-004', 
+    name: '奥体主站-西', 
+    lng: 118.7210, 
+    lat: 32.0087, 
+    cellId: 'CELL-004',
+    stationType: '宏站',
+    type: 'sub', 
+    status: 'normal',
+    config: {
+      hasSmartBoard: false,
+      carrier: '32T32R',
+      has3CC: false,
+      bands: 'n78',
+    },
+    users: 1832, 
+    prb: 52,
+    bandwidth: '100MHz',
+  },
+  { 
+    id: 'BS-005', 
+    name: '华彩中心站', 
+    lng: 118.7400, 
+    lat: 32.0120, 
+    cellId: 'CELL-005',
+    stationType: '微站',
+    type: 'sub', 
+    status: 'normal',
+    config: {
+      hasSmartBoard: true,
+      carrier: '4T4R',
+      has3CC: true,
+      bands: 'n78+n79',
+    },
+    users: 4521, 
+    prb: 85,
+    bandwidth: '100+100MHz',
+  },
+  { 
+    id: 'BS-006', 
+    name: '元通枢纽站', 
+    lng: 118.7200, 
+    lat: 32.0150, 
+    cellId: 'CELL-006',
+    stationType: '微站',
+    type: 'sub', 
+    status: 'normal',
+    config: {
+      hasSmartBoard: false,
+      carrier: '4T4R',
+      has3CC: false,
+      bands: 'n78',
+    },
+    users: 1987, 
+    prb: 58,
+    bandwidth: '100MHz',
+  },
+  { 
+    id: 'BS-007', 
+    name: '奥体东站', 
+    lng: 118.7350, 
+    lat: 32.0050, 
+    cellId: 'CELL-007',
+    stationType: '微站',
+    type: 'sub', 
+    status: 'normal',
+    config: {
+      hasSmartBoard: true,
+      carrier: '4T4R',
+      has3CC: true,
+      bands: 'n78+n79',
+    },
+    users: 2678, 
+    prb: 70,
+    bandwidth: '100+100MHz',
+  },
+];
 
-// ========== 地面保障人员 ==========
-function generateGroundStaff() {
-  const staff = [];
-  const centerLng = 118.728;
-  const centerLat = 32.005;
-  
-  for (let i = 0; i < 16; i++) {
-    const lng = centerLng + (Math.random() - 0.5) * 0.012;
-    const lat = centerLat + (Math.random() - 0.5) * 0.012;
-    staff.push({
-      id: `STAFF-${i + 1}`,
-      lng,
-      lat,
-      role: i < 4 ? '工程师' : '巡检员',
-    });
-  }
-  return staff;
-}
-
-// ========== 生成热力图离散点数据 (3D 热力场) ==========
-function generateCrowdHeatData(currentTime) {
+// ========== 生成人流线路数据 ==========
+function generateFlowLines(currentTime) {
   const hour = parseInt(currentTime?.split(':')[0] || '20');
-  const isPeak = hour >= 19 && hour <= 21;
-  const baseMultiplier = isPeak ? 1.5 : 1;
   
-  // 在奥体中心及周边生成 400 个离散热力点
-  const points = [];
-  const hotspots = [
-    { lng: 118.7265, lat: 32.0087, intensity: 1.0 }, // 奥体中心
-    { lng: 118.7400, lat: 32.0120, intensity: 0.7 }, // 华彩中心
-    { lng: 118.7350, lat: 32.0050, intensity: 0.8 }, // 奥体东地铁站
-    { lng: 118.7200, lat: 32.0150, intensity: 0.6 }, // 元通地铁站
-  ];
+  const lines = [];
   
-  // 为每个热点生成密集点群
-  hotspots.forEach(hotspot => {
-    const pointCount = Math.floor(100 * hotspot.intensity);
-    for (let i = 0; i < pointCount; i++) {
-      const lng = hotspot.lng + (Math.random() - 0.5) * 0.008;
-      const lat = hotspot.lat + (Math.random() - 0.5) * 0.008;
-      const count = Math.floor((Math.random() * 80 + 20) * hotspot.intensity * baseMultiplier);
-      points.push({ lng, lat, count });
-    }
+  TRANSPORT_HUBS.forEach(hub => {
+    let flowMultiplier = 1;
+    if (hour >= 17 && hour <= 19) flowMultiplier = 1.5;
+    else if (hour >= 21 && hour <= 22) flowMultiplier = 1.8;
+    else if (hour >= 20 && hour < 21) flowMultiplier = 0.3;
+    
+    const flow = Math.floor(hub.flow * flowMultiplier * (0.9 + Math.random() * 0.2));
+    
+    const points = generateCurvePath(
+      [hub.lng, hub.lat],
+      [OLYMPIC_CENTER.lng, OLYMPIC_CENTER.lat]
+    );
+    
+    lines.push({
+      id: `flow_${hub.id}`,
+      from: hub.name,
+      to: OLYMPIC_CENTER.name,
+      flow,
+      type: hub.type,
+      coords: points,
+      weight: Math.min(5, Math.max(1.5, flow / 2500)),
+    });
   });
   
-  // 补充随机分布的背景人流点
-  for (let i = 0; i < 100; i++) {
-    const lng = 118.728 + (Math.random() - 0.5) * 0.02;
-    const lat = 32.005 + (Math.random() - 0.5) * 0.02;
-    const count = Math.floor(Math.random() * 40 * baseMultiplier);
-    points.push({ lng, lat, count });
+  return lines;
+}
+
+// ========== 生成曲线路径 ==========
+function generateCurvePath(from, to) {
+  const midLng = (from[0] + to[0]) / 2;
+  const midLat = (from[1] + to[1]) / 2;
+  
+  const dx = to[0] - from[0];
+  const dy = to[1] - from[1];
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  
+  const curveOffset = dist * 0.2;
+  const perpX = -dy / dist * curveOffset;
+  const perpY = dx / dist * curveOffset;
+  
+  const controlLng = midLng + perpX;
+  const controlLat = midLat + perpY;
+  
+  const points = [];
+  const segments = 40;
+  
+  for (let i = 0; i <= segments; i++) {
+    const t = i / segments;
+    const lng = (1 - t) * (1 - t) * from[0] + 2 * (1 - t) * t * controlLng + t * t * to[0];
+    const lat = (1 - t) * (1 - t) * from[1] + 2 * (1 - t) * t * controlLat + t * t * to[1];
+    points.push([lng, lat]);
   }
   
   return points;
+}
+
+// ========== 生成枢纽点数据 ==========
+function generateHubPoints(currentTime) {
+  const hour = parseInt(currentTime?.split(':')[0] || '20');
+  
+  return TRANSPORT_HUBS.map(hub => {
+    let flowMultiplier = 1;
+    if (hour >= 17 && hour <= 19) flowMultiplier = 1.5;
+    else if (hour >= 21 && hour <= 22) flowMultiplier = 1.8;
+    else if (hour >= 20 && hour < 21) flowMultiplier = 0.3;
+    
+    const flow = Math.floor(hub.flow * flowMultiplier);
+    
+    return {
+      ...hub,
+      currentFlow: flow,
+      size: Math.min(18, Math.max(8, flow / 600)),
+    };
+  });
 }
 
 // ========== 全局高德安全配置 ==========
@@ -106,193 +297,197 @@ if (typeof window !== 'undefined') {
   window._AMapSecurityConfig = { securityJsCode: AMAP_SECURITY_CODE };
 }
 
-// ========== 2D 高级详情面板组件 (DataV 风格) ==========
-function StationDetailPanel2D({ data, onClose }) {
+// ========== 详情面板组件 ==========
+function DetailPanel({ data, onClose }) {
   if (!data) return null;
   
-  // PRB 进度条颜色计算
-  const getPrbColor = (prb) => {
-    if (prb < 50) return 'bg-green-500';
-    if (prb < 80) return 'bg-yellow-500';
-    return 'bg-red-500';
-  };
+  const isStation = data.id?.startsWith('BS-');
+  const isVehicle = data.id?.startsWith('EV-');
+  const isHub = data.type === 'metro' || data.type === 'secondary';
   
   return (
     <div className="absolute right-6 top-1/2 -translate-y-1/2 z-[200] w-80">
-      <div className="glass-panel rounded-xl p-5 border border-cyan-400/40 backdrop-blur-md bg-[#0B1A2A]/85">
-        {/* 头部：基站名称 + 关闭按钮 */}
-        <div className="flex items-center justify-between mb-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/30 to-blue-600/30 flex items-center justify-center border border-cyan-400/30">
-              <Radio className="w-5 h-5 text-cyan-400" />
+      <div className="glass-panel rounded-xl p-4 border border-cyan-400/40 backdrop-blur-md bg-[#0B1A2A]/95">
+        {/* 标题 */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+              isStation ? 'bg-cyan-500/30' :
+              isVehicle ? 'bg-yellow-500/30' :
+              data.type === 'metro' ? 'bg-blue-500/30' :
+              'bg-orange-500/30'
+            }`}>
+              {isStation && <Antenna className="w-4 h-4 text-cyan-400" />}
+              {isVehicle && <Radio className="w-4 h-4 text-yellow-400" />}
+              {data.type === 'metro' && <Train className="w-4 h-4 text-blue-400" />}
+              {data.type === 'secondary' && <Building2 className="w-4 h-4 text-orange-400" />}
             </div>
             <div>
-              <h3 className="text-white font-bold text-base">{data.name}</h3>
-              <p className="text-cyan-400/70 text-xs font-mono">{data.id}</p>
+              <h3 className="text-white font-bold text-sm">{data.name}</h3>
+              <p className="text-white/50 text-xs">
+                {isStation ? '5G 基站' : isVehicle ? '应急通信车' : getTypeLabel(data.type)}
+              </p>
             </div>
           </div>
           <button 
             onClick={onClose}
-            className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+            className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70"
           >
-            <X className="w-4 h-4 text-white/70" />
+            ×
           </button>
         </div>
         
-        {/* 第一部分：基础状态 (Grid 布局) */}
-        <div className="mb-5">
-          <h4 className="text-cyan-400 text-xs font-bold mb-3 uppercase tracking-wider">基础状态</h4>
-          <div className="grid grid-cols-2 gap-3">
-            {/* 经纬度 */}
+        {/* 基站/应急车详情 */}
+        {(isStation || isVehicle) && (
+          <div className="space-y-3">
+            {/* 基本信息 */}
             <div className="bg-white/5 rounded-lg p-3">
-              <div className="text-white/40 text-[10px] mb-1">经纬度</div>
-              <div className="text-white font-mono text-xs">
-                {data.lng?.toFixed(4)}, {data.lat?.toFixed(4)}
+              <div className="text-cyan-400 text-xs font-medium mb-2">基本信息</div>
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                <div>
+                  <span className="text-white/40">小区号码</span>
+                  <div className="text-white font-mono">{data.cellId}</div>
+                </div>
+                <div>
+                  <span className="text-white/40">站型</span>
+                  <div className="text-white">{data.stationType}</div>
+                </div>
               </div>
             </div>
             
-            {/* 连接用户数 */}
+            {/* 硬件配置 */}
             <div className="bg-white/5 rounded-lg p-3">
-              <div className="text-white/40 text-[10px] mb-1">连接用户数</div>
-              <div className="text-cyan-400 font-bold text-lg">{data.users?.toLocaleString()}</div>
+              <div className="text-cyan-400 text-xs font-medium mb-2 flex items-center gap-1">
+                <Settings className="w-3 h-3" />
+                硬件配置
+              </div>
+              <div className="space-y-2 text-xs">
+                <div className="flex items-center justify-between">
+                  <span className="text-white/40">智能板</span>
+                  <span className={data.config.hasSmartBoard ? 'text-green-400' : 'text-white/40'}>
+                    {data.config.hasSmartBoard ? '✓ 已接入' : '✗ 未接入'}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-white/40">载波配置</span>
+                  <span className="text-white font-mono">{data.config.carrier}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-white/40">3CC 载波聚合</span>
+                  <span className={data.config.has3CC ? 'text-green-400' : 'text-white/40'}>
+                    {data.config.has3CC ? `✓ ${data.config.bands}` : '✗ 未开启'}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-white/40">频段</span>
+                  <span className="text-white/80 font-mono">{data.config.bands}</span>
+                </div>
+                {data.bandwidth && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/40">带宽</span>
+                    <span className="text-white/80 font-mono">{data.bandwidth}</span>
+                  </div>
+                )}
+              </div>
             </div>
             
-            {/* PRB 利用率 - 带进度条 */}
-            <div className="col-span-2 bg-white/5 rounded-lg p-3">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-white/40 text-[10px]">PRB 利用率</span>
-                <span className={`font-bold text-sm ${data.prb < 50 ? 'text-green-400' : data.prb < 80 ? 'text-yellow-400' : 'text-red-400'}`}>
-                  {data.prb}%
-                </span>
+            {/* 实时指标 */}
+            <div className="bg-white/5 rounded-lg p-3">
+              <div className="text-cyan-400 text-xs font-medium mb-2 flex items-center gap-1">
+                <Cpu className="w-3 h-3" />
+                实时指标
               </div>
-              <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                <div 
-                  className={`h-full rounded-full transition-all duration-500 ${getPrbColor(data.prb)}`}
-                  style={{ width: `${data.prb}%` }}
-                />
+              <div className="grid grid-cols-2 gap-3">
+                <div className="text-center p-2 bg-white/5 rounded">
+                  <div className="text-white/40 text-[10px] mb-1">连接用户</div>
+                  <div className="text-cyan-400 font-bold font-mono text-lg">{data.users?.toLocaleString()}</div>
+                </div>
+                <div className="text-center p-2 bg-white/5 rounded">
+                  <div className="text-white/40 text-[10px] mb-1">PRB 利用率</div>
+                  <div className={`font-bold font-mono text-lg ${data.prb > 80 ? 'text-red-400' : data.prb > 60 ? 'text-yellow-400' : 'text-green-400'}`}>
+                    {data.prb}%
+                  </div>
+                </div>
+              </div>
+              {/* PRB 进度条 */}
+              <div className="mt-2">
+                <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                  <div 
+                    className={`h-full rounded-full transition-all duration-500 ${
+                      data.prb > 80 ? 'bg-red-500' : data.prb > 60 ? 'bg-yellow-500' : 'bg-green-500'
+                    }`}
+                    style={{ width: `${data.prb}%` }}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        
-        {/* 第二部分：硬件配置 (列表布局) */}
-        <div className="mb-4">
-          <h4 className="text-cyan-400 text-xs font-bold mb-3 uppercase tracking-wider">硬件配置</h4>
-          
-          {/* 基站型号 */}
-          <div className="flex items-center justify-between py-2 border-b border-white/5">
-            <span className="text-white/60 text-xs">基站型号</span>
-            <span className="text-white font-mono text-xs">5G-A Macro 64T64R</span>
-          </div>
-          
-          {/* 载波配置 */}
-          <div className="flex items-center justify-between py-2 border-b border-white/5">
-            <span className="text-white/60 text-xs">载波配置</span>
-            <div className="flex items-center gap-1">
-              <span className="text-cyan-400 text-xs">3CC 载波聚合</span>
-              <span className="text-white/40 text-[10px]">(n28+n78+n79)</span>
-            </div>
-          </div>
-          
-          {/* 无线智能板状态 - 带图标 */}
-          <div className="flex items-center justify-between py-2">
-            <span className="text-white/60 text-xs">无线智能板</span>
-            <div className="flex items-center gap-2">
-              <img 
-                src="/icons/smart-board.svg" 
-                alt="smart-board" 
-                className={`w-5 h-5 ${data.hasSmartBoard ? 'opacity-100' : 'opacity-40 grayscale'}`}
-              />
-              <span className={`text-xs font-bold ${data.hasSmartBoard ? 'text-green-400' : 'text-white/40'}`}>
-                {data.hasSmartBoard ? '已激活' : '未配置'}
+            
+            {/* 状态 */}
+            <div className="flex items-center justify-between p-2 bg-white/5 rounded-lg">
+              <span className="text-white/60 text-xs">设备状态</span>
+              <span className={`text-xs px-2 py-0.5 rounded ${
+                data.status === 'normal' 
+                  ? 'bg-green-500/20 text-green-400' 
+                  : 'bg-yellow-500/20 text-yellow-400'
+              }`}>
+                {data.status === 'normal' ? '正常运行' : '负载预警'}
               </span>
             </div>
           </div>
-        </div>
+        )}
         
-        {/* 底部状态栏 */}
-        <div className="pt-3 border-t border-white/10 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className={`w-2 h-2 rounded-full ${data.aauStatus === 'normal' ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`} />
-            <span className={`text-xs ${data.aauStatus === 'normal' ? 'text-green-400' : 'text-red-400'}`}>
-              AAU {data.aauStatus === 'normal' ? '正常运行' : '告警'}
-            </span>
+        {/* 交通枢纽详情 */}
+        {isHub && (
+          <div className="space-y-3">
+            <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+              <span className="text-white/60 text-xs">实时人流</span>
+              <span className="text-cyan-400 font-bold font-mono text-lg">{data.currentFlow?.toLocaleString()} 人</span>
+            </div>
+            <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+              <span className="text-white/60 text-xs">流向</span>
+              <span className="text-white/80 text-sm">→ 南京奥体中心</span>
+            </div>
           </div>
-          <div className="flex items-center gap-1">
-            <Zap className="w-3 h-3 text-yellow-400" />
-            <span className="text-white/40 text-xs">BBU {data.bbuLoad}%</span>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
 }
 
-export default function AmapL7Scene({ onStationClick, currentTime = '20:00', onAlertsChange }) {
+function getTypeLabel(type) {
+  const labels = {
+    metro: '地铁站',
+    secondary: '第二现场',
+    destination: '目的地'
+  };
+  return labels[type] || type;
+}
+
+export default function AmapL7Scene({ onStationClick, currentTime = '20:00' }) {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
-  const isInitializingRef = useRef(false);
-  const isDestroyedRef = useRef(false);
-  
-  const layersRef = useRef({
-    heatmap: null,      // 3D 热力图层
-    zone: null,
-    station: null,      // 基站图层 (zIndex 最高)
-    landmark: null,
-    vehicle: null,
-    staff: null,
-    alert: null,        // 告警呼吸灯 (zIndex 最高)
-  });
+  const layersRef = useRef({});
   
   const [sceneLoaded, setSceneLoaded] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedStation, setSelectedStation] = useState(null);
-  
-  const [zoneData, setZoneData] = useState(null);
-  const [stationData] = useState(() => generateBaseStations());
-  const [staffData] = useState(() => generateGroundStaff());
-  const [crowdHeatData, setCrowdHeatData] = useState(() => generateCrowdHeatData('20:00'));
-
-  // 基于热力图数据生成告警
-  const updateAlerts = useCallback((heatPoints) => {
-    // 找出高密度区域 (count > 70) 作为告警点
-    const highDensityPoints = heatPoints
-      .filter(p => p.count > 70)
-      .slice(0, 4);
-    
-    const alerts = highDensityPoints.map((p, idx) => ({
-      id: `HEAT-ALERT-${idx}`,
-      level: p.count > 85 ? 'high' : 'medium',
-      title: `人流密集区域: ${p.count}人`,
-      time: '刚刚',
-      area: `奥体周边热力点-${idx + 1}`,
-    }));
-    
-    if (onAlertsChange) onAlertsChange(alerts);
-  }, [onAlertsChange]);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [flowData, setFlowData] = useState(() => generateFlowLines('20:00'));
+  const [hubData, setHubData] = useState(() => generateHubPoints('20:00'));
 
   useEffect(() => {
-    if (isInitializingRef.current || sceneRef.current) {
-      console.log('[AmapL7Scene] 拦截重复初始化');
-      return;
-    }
-    
-    isInitializingRef.current = true;
-    isDestroyedRef.current = false;
+    if (sceneRef.current) return;
     
     const container = containerRef.current;
     if (!container) {
       setError('地图容器未找到');
       setLoading(false);
-      isInitializingRef.current = false;
       return;
     }
 
     if (!AMAP_KEY) {
       setError('高德 Key 未配置');
       setLoading(false);
-      isInitializingRef.current = false;
       return;
     }
 
@@ -304,7 +499,7 @@ export default function AmapL7Scene({ onStationClick, currentTime = '20:00', onA
         scene = new Scene({
           id: container,
           map: new GaodeMap({
-            ...CAMERA_CONFIG, // 使用调整后的摄像机视角
+            ...CAMERA_CONFIG,
             viewMode: '3D',
             style: 'amap://styles/darkblue',
             token: AMAP_KEY,
@@ -316,19 +511,8 @@ export default function AmapL7Scene({ onStationClick, currentTime = '20:00', onA
         scene.setBgColor('#0B1A2A');
         sceneRef.current = scene;
 
-        // 【安全绑定】确保 scene 存在才绑定事件
-        if (!scene) {
-          console.error('[AmapL7Scene] Scene 创建失败');
-          setError('地图引擎初始化失败');
-          setLoading(false);
-          isInitializingRef.current = false;
-          return;
-        }
-
         scene.on('loaded', async () => {
-          // 【双重检查】确保组件仍挂载且未销毁
-          if (!isEffectActive || isDestroyedRef.current) {
-            console.log('[AmapL7Scene] 组件已卸载，放弃图层初始化');
+          if (!isEffectActive) {
             if (scene && !scene.destroyed) {
               try { scene.destroy(); } catch (e) {}
             }
@@ -336,66 +520,141 @@ export default function AmapL7Scene({ onStationClick, currentTime = '20:00', onA
           }
           
           try {
-            // 注册图标 (新增 sector-site)
-            await Promise.all([
-              scene.addImage('comm-vehicle', '/icons/comm-vehicle.svg'),
-              scene.addImage('smart-board', '/icons/smart-board.svg'),
-            ]).catch(() => console.warn('[AmapL7Scene] 部分图标加载失败'));
-
-            // 1. 2D 热力图层 (贴地模式，修复撕裂问题)
-            const heatmapLayer = new HeatmapLayer({ zIndex: 1 })
-              .source(crowdHeatData, {
-                parser: { type: 'json', x: 'lng', y: 'lat' },
-              })
-              .shape('heatmap') // 【关键】使用贴地 2D 热力图，避免 3D 撕裂
-              .size('count', [0, 1])
-              .style({
-                intensity: 2, // 稍微降低强度
-                radius: 30,   // 加大扩散半径，让热力融合更自然
-                opacity: 0.8,
-                rampColors: {
-                  colors: [
-                    'rgba(11, 26, 42, 0)', // 0% 透明
-                    '#0891b2',             // 20% 赛博青
-                    '#10b981',             // 40% 翠绿
-                    '#fbbf24',             // 70% 警告黄
-                    '#ef4444'              // 100% 拥塞红
-                  ],
-                  positions: [0, 0.2, 0.4, 0.7, 1.0]
-                }
-              });
-            scene.addLayer(heatmapLayer);
-            layersRef.current.heatmap = heatmapLayer;
-
-            // 2. 监控区域图层
-            const zoneLayer = new PolygonLayer({ zIndex: 2 })
-              .source(EMPTY_GEOJSON, { parser: { type: 'geojson' } })
-              .color('rgba(0, 240, 255, 0.2)')
-              .shape('extrude')
-              .size(30)
-              .style({ opacity: 0.5 });
-            scene.addLayer(zoneLayer);
-            layersRef.current.zone = zoneLayer;
-
-            // 3. 地标图层
-            const landmarkLayer = new PointLayer({ zIndex: 10 })
+            const lines = generateFlowLines(currentTime);
+            const hubs = generateHubPoints(currentTime);
+            
+            // 1. 虚线人流线路图层
+            const flowLineLayer = new LineLayer({ zIndex: 2 })
               .source({
                 type: 'FeatureCollection',
-                features: CUSTOM_LANDMARKS.map(lm => ({
+                features: lines.map(line => ({
                   type: 'Feature',
-                  properties: { name: lm.name, type: lm.type },
-                  geometry: { type: 'Point', coordinates: [lm.lng, lm.lat] }
+                  properties: { flow: line.flow, weight: line.weight },
+                  geometry: { type: 'LineString', coordinates: line.coords }
+                }))
+              }, { parser: { type: 'geojson' } })
+              .shape('line')
+              .size('weight')
+              .color('rgba(0, 240, 255, 0.35)')
+              .style({
+                opacity: 0.4,
+                lineType: 'dash',
+                dashArray: [4, 4],
+              });
+            scene.addLayer(flowLineLayer);
+            layersRef.current.flowLines = flowLineLayer;
+
+            // 2. 流动粒子效果层
+            const particleData = [];
+            lines.forEach(line => {
+              for (let i = 0; i < 2; i++) {
+                particleData.push({
+                  lng: line.coords[0][0],
+                  lat: line.coords[0][1],
+                  lineCoords: line.coords,
+                  offset: i / 2,
+                });
+              }
+            });
+
+            const particleLayer = new PointLayer({ zIndex: 3, blend: 'additive' })
+              .source(particleData, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+              .shape('circle')
+              .size(3)
+              .color('rgba(0, 255, 255, 0.8)')
+              .style({ opacity: 0.8 })
+              .animate({ enable: true, speed: 2, rings: 0 });
+            scene.addLayer(particleLayer);
+            layersRef.current.flowParticles = particleLayer;
+
+            // 3. 枢纽点图层 - 地铁站和第二现场
+            const hubLayer = new PointLayer({ zIndex: 10, pickBuffer: 4 })
+              .source({
+                type: 'FeatureCollection',
+                features: hubs.map(hub => ({
+                  type: 'Feature',
+                  properties: { ...hub },
+                  geometry: { type: 'Point', coordinates: [hub.lng, hub.lat] }
+                }))
+              }, { parser: { type: 'geojson' } })
+              .shape('circle')
+              .size('size')
+              .color((d) => d.type === 'metro' ? 'rgba(0, 150, 255, 0.6)' : 'rgba(255, 150, 0, 0.6)')
+              .style({
+                opacity: 0.7,
+                stroke: 'rgba(255, 255, 255, 0.8)',
+                strokeWidth: 1,
+              });
+            
+            scene.addLayer(hubLayer);
+            layersRef.current.hubPoints = hubLayer;
+
+            hubLayer.on('click', (e) => {
+              if (e.feature) {
+                setSelectedItem(e.feature.properties);
+              }
+            });
+
+            hubLayer.on('mouseenter', () => {
+              if (scene.getMap()) scene.getMap().getCanvas().style.cursor = 'pointer';
+            });
+            hubLayer.on('mouseleave', () => {
+              if (scene.getMap()) scene.getMap().getCanvas().style.cursor = '';
+            });
+
+            // 4. 枢纽标签
+            const labelLayer = new PointLayer({ zIndex: 11 })
+              .source({
+                type: 'FeatureCollection',
+                features: hubs.map(hub => ({
+                  type: 'Feature',
+                  properties: { name: hub.name },
+                  geometry: { type: 'Point', coordinates: [hub.lng, hub.lat] }
                 }))
               }, { parser: { type: 'geojson' } })
               .shape('name', 'text')
-              .size(14)
-              .color('#fbbf24')
-              .style({ textAnchor: 'center', textOffset: [0, -20], stroke: '#000', strokeWidth: 2 });
-            scene.addLayer(landmarkLayer);
-            layersRef.current.landmark = landmarkLayer;
+              .size(10)
+              .color('rgba(255, 255, 255, 0.85)')
+              .style({ textAnchor: 'center', textOffset: [0, -25], stroke: '#000', strokeWidth: 2 });
+            scene.addLayer(labelLayer);
+            layersRef.current.hubLabels = labelLayer;
 
-            // 4. 应急通信车图层
-            const vehicleLayer = new PointLayer({ zIndex: 8 })
+            // 5. 目的地 - 奥体中心
+            const destLayer = new PointLayer({ zIndex: 12 })
+              .source({
+                type: 'FeatureCollection',
+                features: [{
+                  type: 'Feature',
+                  properties: { name: OLYMPIC_CENTER.name },
+                  geometry: { type: 'Point', coordinates: [OLYMPIC_CENTER.lng, OLYMPIC_CENTER.lat] }
+                }]
+              }, { parser: { type: 'geojson' } })
+              .shape('circle')
+              .size(28)
+              .color('#FFD700')
+              .style({ opacity: 0.9, stroke: '#fff', strokeWidth: 2 })
+              .animate({ enable: true, speed: 0.5, rings: 3 });
+            scene.addLayer(destLayer);
+            layersRef.current.destination = destLayer;
+
+            // 目的地标签
+            const destLabelLayer = new PointLayer({ zIndex: 13 })
+              .source({
+                type: 'FeatureCollection',
+                features: [{
+                  type: 'Feature',
+                  properties: { name: OLYMPIC_CENTER.name },
+                  geometry: { type: 'Point', coordinates: [OLYMPIC_CENTER.lng, OLYMPIC_CENTER.lat] }
+                }]
+              }, { parser: { type: 'geojson' } })
+              .shape('name', 'text')
+              .size(13)
+              .color('#FFD700')
+              .style({ textAnchor: 'center', textOffset: [0, -40], stroke: '#000', strokeWidth: 3, fontWeight: 'bold' });
+            scene.addLayer(destLabelLayer);
+
+            // 6. 应急通信车图层 - 使用 square 并旋转 45度来实现菱形效果
+            const vehicleLayer = new PointLayer({ zIndex: 8, pickBuffer: 4 })
               .source({
                 type: 'FeatureCollection',
                 features: EMERGENCY_VEHICLES.map(v => ({
@@ -404,68 +663,76 @@ export default function AmapL7Scene({ onStationClick, currentTime = '20:00', onA
                   geometry: { type: 'Point', coordinates: [v.lng, v.lat] }
                 }))
               }, { parser: { type: 'geojson' } })
-              .shape('comm-vehicle')
-              .size(28);
+              .shape('square')  // 使用方形
+              .size(16)
+              .color('#FFA500')
+              .style({
+                opacity: 0.9,
+                stroke: '#fff',
+                strokeWidth: 1,
+              });
             scene.addLayer(vehicleLayer);
-            layersRef.current.vehicle = vehicleLayer;
+            layersRef.current.vehicles = vehicleLayer;
 
-            // 5. 基站图层 - 强制使用 sector-site 图标
-            const stationLayer = new PointLayer({ zIndex: 6 })
-              .source({
-                type: 'FeatureCollection',
-                features: stationData.map(s => ({
-                  type: 'Feature',
-                  properties: { ...s },
-                  geometry: { type: 'Point', coordinates: [s.lng, s.lat] }
-                }))
-              }, { parser: { type: 'geojson' } })
-              .shape('sector-site') // 全部使用三扇区图标，不区分条件
-              .size(30)
-              .style({ opacity: 1 });
-            scene.addLayer(stationLayer);
-            layersRef.current.station = stationLayer;
-
-            // 点击事件 - 打开 3D 爆炸图
-            stationLayer.on('click', (e) => {
+            vehicleLayer.on('click', (e) => {
               if (e.feature) {
-                const station = e.feature.properties;
-                setSelectedStation(station);
-                if (onStationClick) onStationClick(station);
+                setSelectedItem(e.feature.properties);
               }
             });
+            vehicleLayer.on('mouseenter', () => {
+              if (scene.getMap()) scene.getMap().getCanvas().style.cursor = 'pointer';
+            });
+            vehicleLayer.on('mouseleave', () => {
+              if (scene.getMap()) scene.getMap().getCanvas().style.cursor = '';
+            });
 
-            // 6. 保障人员图层
-            const staffLayer = new PointLayer({ zIndex: 7 })
+            // 7. 基站图层 - 使用 simple 形状
+            const stationLayer = new PointLayer({ zIndex: 6, pickBuffer: 4 })
               .source({
                 type: 'FeatureCollection',
-                features: staffData.map(s => ({
+                features: BASE_STATIONS.map(s => ({
                   type: 'Feature',
                   properties: { ...s },
                   geometry: { type: 'Point', coordinates: [s.lng, s.lat] }
                 }))
               }, { parser: { type: 'geojson' } })
-              .shape('circle')
-              .color('#22c55e')
-              .size(6)
-              .style({ opacity: 0.8 });
-            scene.addLayer(staffLayer);
-            layersRef.current.staff = staffLayer;
+              .shape('simple')  // 使用 simple 形状
+              .size(12)
+              .color((d) => d.status === 'warning' ? '#FFAA00' : '#00DDFF')
+              .style({
+                opacity: 0.85,
+                stroke: '#fff',
+                strokeWidth: 1,
+              });
+            
+            scene.addLayer(stationLayer);
+            layersRef.current.stations = stationLayer;
 
-            // 7. 告警呼吸灯图层 - zIndex 最高确保在最上层
-            const alertLayer = new PointLayer({ zIndex: 12 })
+            stationLayer.on('click', (e) => {
+              if (e.feature) {
+                setSelectedItem(e.feature.properties);
+              }
+            });
+            stationLayer.on('mouseenter', () => {
+              if (scene.getMap()) scene.getMap().getCanvas().style.cursor = 'pointer';
+            });
+            stationLayer.on('mouseleave', () => {
+              if (scene.getMap()) scene.getMap().getCanvas().style.cursor = '';
+            });
+
+            // 8. 监控区域图层
+            const zoneLayer = new PolygonLayer({ zIndex: 1 })
               .source(EMPTY_GEOJSON, { parser: { type: 'geojson' } })
-              .shape('circle')
-              .color('#ef4444')
-              .size(25)
-              .animate({ enable: true, speed: 1, rings: 3 })
-              .style({ opacity: 0.9 });
-            scene.addLayer(alertLayer);
-            layersRef.current.alert = alertLayer;
+              .color('rgba(0, 240, 255, 0.05)')
+              .shape('extrude')
+              .size(15)
+              .style({ opacity: 0.2 });
+            scene.addLayer(zoneLayer);
+            layersRef.current.zone = zoneLayer;
 
-            if (isEffectActive && !isDestroyedRef.current) {
+            if (isEffectActive) {
               setSceneLoaded(true);
               setLoading(false);
-              console.log('[AmapL7Scene] 地图初始化完成');
             }
           } catch (layerErr) {
             console.error('[AmapL7Scene] 图层初始化错误:', layerErr);
@@ -476,25 +743,20 @@ export default function AmapL7Scene({ onStationClick, currentTime = '20:00', onA
           }
         });
 
-        // 【安全绑定】错误事件同样检查
-        if (scene) {
-          scene.on('error', (err) => {
-            console.error('[AmapL7Scene] 场景错误:', err);
-            if (isEffectActive && !isDestroyedRef.current) {
-              setError('地图渲染失败');
-              setLoading(false);
-            }
-          });
-        }
+        scene.on('error', (err) => {
+          console.error('[AmapL7Scene] 场景错误:', err);
+          if (isEffectActive) {
+            setError('地图渲染失败');
+            setLoading(false);
+          }
+        });
 
       } catch (err) {
-        console.error('[AmapL7Scene] 初始化严重异常:', err);
+        console.error('[AmapL7Scene] 初始化异常:', err);
         if (isEffectActive) {
           setError(err.message || '地图初始化失败');
           setLoading(false);
         }
-      } finally {
-        isInitializingRef.current = false;
       }
     };
 
@@ -502,92 +764,57 @@ export default function AmapL7Scene({ onStationClick, currentTime = '20:00', onA
 
     return () => {
       isEffectActive = false;
-      isDestroyedRef.current = true;
       if (sceneRef.current) {
         try {
           sceneRef.current.destroy();
         } catch (e) {}
         sceneRef.current = null;
       }
-      layersRef.current = { heatmap: null, zone: null, station: null, landmark: null, vehicle: null, staff: null, alert: null };
-      isInitializingRef.current = false;
     };
   }, []);
 
-  // 获取 API 数据
+  // 更新时间时更新数据
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        const zones = await fetchZoneData('defense');
-        setZoneData(zones);
-      } catch (err) {
-        console.error('[AmapL7Scene] 获取数据失败:', err);
-      }
-    };
-    loadData();
-  }, [currentTime]);
-
-  // 更新热力图数据
-  useEffect(() => {
-    if (!sceneLoaded || !sceneRef.current || isDestroyedRef.current) return;
+    if (!sceneLoaded || !sceneRef.current) return;
     
-    const newHeatData = generateCrowdHeatData(currentTime);
-    setCrowdHeatData(newHeatData);
-    updateAlerts(newHeatData);
+    const newLines = generateFlowLines(currentTime);
+    const newHubs = generateHubPoints(currentTime);
     
-    // 更新热力图层
-    if (layersRef.current.heatmap) {
-      try {
-        layersRef.current.heatmap.setData(newHeatData);
-      } catch (err) {
-        console.error('[AmapL7Scene] 更新热力图失败:', err);
-      }
-    }
+    setFlowData(newLines);
+    setHubData(newHubs);
     
-    // 高密区域告警点 (count > 75)
-    if (layersRef.current.alert) {
+    if (layersRef.current.flowLines) {
       try {
-        const highDensityPoints = newHeatData
-          .filter(p => p.count > 75)
-          .slice(0, 5)
-          .map(p => ({ lng: p.lng, lat: p.lat }));
-        
-        const geojson = {
+        layersRef.current.flowLines.setData({
           type: 'FeatureCollection',
-          features: highDensityPoints.map((p, idx) => ({
+          features: newLines.map(line => ({
             type: 'Feature',
-            properties: { id: `ALERT-${idx}` },
-            geometry: { type: 'Point', coordinates: [p.lng, p.lat] }
+            properties: { flow: line.flow, weight: line.weight },
+            geometry: { type: 'LineString', coordinates: line.coords }
           }))
-        };
-        layersRef.current.alert.setData(geojson);
+        });
       } catch (err) {
-        console.error('[AmapL7Scene] 更新告警图层失败:', err);
+        console.error('[AmapL7Scene] 更新线路失败:', err);
       }
     }
-  }, [sceneLoaded, currentTime, updateAlerts]);
-
-  // 更新其他图层
-  useEffect(() => {
-    if (!sceneLoaded || !sceneRef.current || isDestroyedRef.current) return;
     
-    if (layersRef.current.zone && zoneData) {
+    if (layersRef.current.hubPoints) {
       try {
-        const zones = zoneData.defenseZones || zoneData;
-        const geojson = {
+        layersRef.current.hubPoints.setData({
           type: 'FeatureCollection',
-          features: zones.map(zone => ({
+          features: newHubs.map(hub => ({
             type: 'Feature',
-            properties: { name: zone.name },
-            geometry: { type: 'Polygon', coordinates: [zone.coordinates] }
+            properties: { ...hub },
+            geometry: { type: 'Point', coordinates: [hub.lng, hub.lat] }
           }))
-        };
-        layersRef.current.zone.setData(geojson);
+        });
       } catch (err) {
-        console.error('[AmapL7Scene] 更新区域数据失败:', err);
+        console.error('[AmapL7Scene] 更新枢纽点失败:', err);
       }
     }
-  }, [sceneLoaded, zoneData]);
+  }, [sceneLoaded, currentTime]);
+
+  const totalFlow = flowData.reduce((sum, line) => sum + line.flow, 0);
 
   return (
     <div className="relative w-full h-full overflow-hidden bg-[#0B1A2A]">
@@ -597,8 +824,7 @@ export default function AmapL7Scene({ onStationClick, currentTime = '20:00', onA
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-[#0B1A2A]/90 backdrop-blur-sm">
           <div className="text-center">
             <Loader2 className="w-10 h-10 text-cyan-400 animate-spin mx-auto mb-3" />
-            <div className="text-cyan-400 text-lg">初始化 3D 地图...</div>
-            {!AMAP_KEY && <div className="text-yellow-400 text-sm mt-2">缺少高德地图 Key 配置</div>}
+            <div className="text-cyan-400 text-lg">初始化人流线路图...</div>
           </div>
         </div>
       )}
@@ -612,37 +838,51 @@ export default function AmapL7Scene({ onStationClick, currentTime = '20:00', onA
         </div>
       )}
       
-      {/* 3D 爆炸图详情面板 */}
-      <StationDetailPanel2D data={selectedStation} onClose={() => setSelectedStation(null)} />
+      <DetailPanel data={selectedItem} onClose={() => setSelectedItem(null)} />
       
-      {/* 图例面板 - 已移除 "时空切片" */}
+      {/* 左上角统计面板 */}
       {sceneLoaded && (
-        <div className="absolute bottom-4 left-4 bg-cyber-panel/90 rounded-lg p-3 border border-cyan-400/30 z-10 max-w-[220px]">
-          <div className="text-cyan-400 text-xs font-bold mb-2">图例</div>
-          <div className="space-y-1.5 text-[10px] text-white/70">
+        <div className="absolute top-4 left-4 bg-cyber-panel/90 rounded-xl p-4 border border-cyan-400/30 z-10 min-w-[180px]">
+          <div className="flex items-center gap-2 mb-3">
+            <Footprints className="w-4 h-4 text-cyan-400" />
+            <span className="text-cyan-400 text-sm font-bold">实时人流</span>
+          </div>
+          <div className="text-2xl font-bold text-cyan-400 font-mono mb-2">
+            {totalFlow.toLocaleString()}
+          </div>
+          <div className="text-white/40 text-xs">人</div>
+        </div>
+      )}
+      
+      {/* 左下角图例 */}
+      {sceneLoaded && (
+        <div className="absolute bottom-4 left-4 bg-cyber-panel/90 rounded-xl p-4 border border-cyan-400/30 z-10">
+          <div className="text-cyan-400 text-sm font-bold mb-3">图例</div>
+          <div className="space-y-2 text-xs">
             <div className="flex items-center gap-2">
-              <span className="w-6 h-3 rounded bg-gradient-to-t from-cyan-500/60 via-green-500/60 to-red-500/60" />
-              <span>3D 热力密度</span>
+              <div className="w-6 h-0.5 bg-cyan-400/40" style={{ background: 'repeating-linear-gradient(90deg, rgba(0,240,255,0.4) 0, rgba(0,240,255,0.4) 3px, transparent 3px, transparent 6px)' }} />
+              <span className="text-white/70">人流流向</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-4 h-4 rounded-full bg-yellow-400 border-2 border-yellow-500/50" />
-              <span>智能板基站</span>
+              <div className="w-3 h-3 rounded-full bg-blue-500/60 border border-white/50" />
+              <span className="text-white/70">地铁站</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-4 h-4 rounded-full bg-cyan-400 border-2 border-cyan-500/50" />
-              <span>5G 基站</span>
+              <div className="w-3 h-3 rounded-full bg-orange-500/60 border border-white/50" />
+              <span className="text-white/70">第二现场</span>
             </div>
             <div className="flex items-center gap-2">
-              <img src="/icons/comm-vehicle.svg" className="w-4 h-4" alt="" />
-              <span>应急通信车</span>
+              <div className="w-3 h-3 rounded-full bg-yellow-500 animate-pulse" />
+              <span className="text-white/70 font-medium">奥体中心</span>
+            </div>
+            <div className="h-px bg-white/10 my-1" />
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-orange-500 border border-white/50" />
+              <span className="text-white/70">应急通信车</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
-              <span>保障人员</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
-              <span>人流告警</span>
+              <div className="w-3 h-3 bg-cyan-400 rotate-45 border border-white/50" />
+              <span className="text-white/70">5G 基站</span>
             </div>
           </div>
         </div>

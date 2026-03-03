@@ -7,12 +7,13 @@ import LeftPanelP0 from './components/LeftPanel';
 import RightPanelP0 from './components/RightPanel';
 import MacroMigrationMap from './components/MacroMigrationMap';
 
-// P1 全局防御
+// P1 全局防御 (V1)
 import LeftPanelP1 from './pages/P1/LeftPanelP1';
 import RightPanelP1 from './pages/P1/RightPanelP1';
 import AmapL7Scene from './pages/P1/AmapL7Scene';
-// import AmapL7Scene from './pages/P1/AmapL7Scene';
-// import SiteDetailModal from './pages/P1/components/SiteDetailModal';
+
+// P1 全局防御 V2 (数据契约重构版)
+import GlobalDefenseV2 from './pages/P1/GlobalDefense.v2.jsx';
 
 // P2 场内微观
 import VenueMicro from './pages/P2/VenueMicro';
@@ -83,6 +84,7 @@ export default function App() {
             <Route path="/" element={<MacroOriginView />} />
             <Route path="/p0" element={<MacroOriginView />} />
             <Route path="/p1" element={<GlobalDefense />} />
+            <Route path="/p1/v2" element={<GlobalDefenseV2 />} />
             <Route path="/p2" element={<VenueMicro />} />
             <Route path="/p3" element={<EvaluationView />} />
           </Routes>
