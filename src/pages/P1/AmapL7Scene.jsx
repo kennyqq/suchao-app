@@ -161,7 +161,7 @@ function generatePopupHtml(data) {
   `;
 }
 
-// ========== 脏数据过滤（终极版）==========
+// ========== 脏数据过滤 ==========
 function sanitizeData(data) {
   if (!Array.isArray(data)) return [];
   return data.map(d => ({
@@ -172,11 +172,20 @@ function sanitizeData(data) {
     const valid = !isNaN(d.lng) && !isNaN(d.lat) && 
                   d.lng !== null && d.lat !== null &&
                   d.lng !== undefined && d.lat !== undefined;
-    if (!valid) {
-      console.warn('[AmapL7Scene] 过滤掉无效数据:', d);
-    }
     return valid;
   });
+}
+
+// ========== 延迟初始化钩子 ==========
+function useDelayedInit(delay = 100) {
+  const [ready, setReady] = useState(false);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => setReady(true), delay);
+    return () => clearTimeout(timer);
+  }, [delay]);
+  
+  return ready;
 }
 
 export default function AmapL7Scene({ currentTime = '20:00' }) {
@@ -184,23 +193,35 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
   const sceneRef = useRef(null);
   const popupRef = useRef(null);
   const isDestroyedRef = useRef(false);
+  const initAttemptedRef = useRef(false);
   
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [sceneLoaded, setSceneLoaded] = useState(false);
   const [totalFlow, setTotalFlow] = useState(0);
+  
+  // 延迟初始化，避免父组件动画影响
+  const readyToInit = useDelayedInit(300);
 
   useEffect(() => {
-    // 防止任何情况下重复初始化
-    if (sceneRef.current || !mapContainerRef.current || isDestroyedRef.current) {
+    // 必须满足所有条件才初始化
+    if (!readyToInit || initAttemptedRef.current || !mapContainerRef.current || isDestroyedRef.current) {
       return;
     }
 
+    initAttemptedRef.current = true;
     let scene = null;
     let isCleaningUp = false;
 
     const initMap = async () => {
       try {
+        // 再次检查容器是否仍然存在
+        if (!mapContainerRef.current || isDestroyedRef.current) {
+          setError('地图容器不可用');
+          setLoading(false);
+          return;
+        }
+
         scene = new Scene({
           id: mapContainerRef.current,
           map: new GaodeMap({
@@ -217,7 +238,6 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
         sceneRef.current = scene;
 
         scene.on('loaded', async () => {
-          // 如果已经销毁，立即停止
           if (isDestroyedRef.current || isCleaningUp) return;
 
           try {
@@ -232,7 +252,6 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
             const safeVehicles = sanitizeData(EMERGENCY_VEHICLES);
             const safeStations = sanitizeData(BASE_STATIONS);
 
-            // 空数据保护
             if (safeVehicles.length === 0 && safeStations.length === 0) {
               console.error('[AmapL7Scene] 没有有效数据可渲染');
               setError('没有有效数据');
@@ -431,7 +450,7 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
         sceneRef.current = null;
       }
     };
-  }, []);
+  }, [readyToInit]); // 依赖延迟初始化标志
 
   // 时间变化时更新
   useEffect(() => {
