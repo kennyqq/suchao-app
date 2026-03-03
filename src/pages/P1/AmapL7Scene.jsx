@@ -161,19 +161,29 @@ function generatePopupHtml(data) {
   `;
 }
 
-// ========== 脏数据过滤 ==========
+// ========== 脏数据过滤（终极版）==========
 function sanitizeData(data) {
+  if (!Array.isArray(data)) return [];
   return data.map(d => ({
     ...d,
     lng: Number(d.lng),
     lat: Number(d.lat),
-  })).filter(d => !isNaN(d.lng) && !isNaN(d.lat));
+  })).filter(d => {
+    const valid = !isNaN(d.lng) && !isNaN(d.lat) && 
+                  d.lng !== null && d.lat !== null &&
+                  d.lng !== undefined && d.lat !== undefined;
+    if (!valid) {
+      console.warn('[AmapL7Scene] 过滤掉无效数据:', d);
+    }
+    return valid;
+  });
 }
 
 export default function AmapL7Scene({ currentTime = '20:00' }) {
   const mapContainerRef = useRef(null);
   const sceneRef = useRef(null);
   const popupRef = useRef(null);
+  const isDestroyedRef = useRef(false);
   
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -181,242 +191,239 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
   const [totalFlow, setTotalFlow] = useState(0);
 
   useEffect(() => {
-    let isMounted = true;
+    // 防止任何情况下重复初始化
+    if (sceneRef.current || !mapContainerRef.current || isDestroyedRef.current) {
+      return;
+    }
 
-    if (sceneRef.current || !mapContainerRef.current) return;
+    let scene = null;
+    let isCleaningUp = false;
 
-    const scene = new Scene({
-      id: mapContainerRef.current,
-      map: new GaodeMap({
-        ...CAMERA_CONFIG,
-        viewMode: '3D',
-        style: 'amap://styles/darkblue',
-        token: AMAP_KEY,
-        features: ['bg', 'road', 'building'],
-      }),
-      logoVisible: false,
-    });
-
-    scene.setBgColor('#0B1A2A');
-    sceneRef.current = scene;
-
-    scene.on('loaded', async () => {
-      if (!isMounted) return;
-
+    const initMap = async () => {
       try {
-        // 加载自定义图标
-        await Promise.all([
-          scene.addImage('station', STATION_ICON),
-          scene.addImage('vehicle', VEHICLE_ICON),
-          scene.addImage('center', CENTER_ICON),
-        ]);
+        scene = new Scene({
+          id: mapContainerRef.current,
+          map: new GaodeMap({
+            ...CAMERA_CONFIG,
+            viewMode: '3D',
+            style: 'amap://styles/darkblue',
+            token: AMAP_KEY,
+            features: ['bg', 'road', 'building'],
+          }),
+          logoVisible: false,
+        });
 
-        // 脏数据拦截
-        const safeVehicles = sanitizeData(EMERGENCY_VEHICLES);
-        const safeStations = sanitizeData(BASE_STATIONS);
+        scene.setBgColor('#0B1A2A');
+        sceneRef.current = scene;
 
-        // 空数据保护：如果有效数据为空，直接跳过图层渲染
-        if (safeVehicles.length === 0 || safeStations.length === 0) {
-          console.warn('[AmapL7Scene] 有效数据为空，跳过图层渲染');
-        }
+        scene.on('loaded', async () => {
+          // 如果已经销毁，立即停止
+          if (isDestroyedRef.current || isCleaningUp) return;
 
-        const flowLines = generateFlowLines(currentTime);
-        setTotalFlow(flowLines.reduce((sum, line) => sum + line.flow, 0));
+          try {
+            // 加载图标
+            await Promise.all([
+              scene.addImage('station', STATION_ICON),
+              scene.addImage('vehicle', VEHICLE_ICON),
+              scene.addImage('center', CENTER_ICON),
+            ]);
 
-        // 人流虚线图层
-        const flowLayer = new LineLayer({ zIndex: 2 })
-          .source({
-            type: 'FeatureCollection',
-            features: flowLines.map(line => ({
-              type: 'Feature',
-              properties: { weight: line.weight },
-              geometry: { type: 'LineString', coordinates: line.coords }
-            }))
-          }, { parser: { type: 'geojson' } })
-          .shape('line')
-          .size('weight')
-          .color('rgba(0, 240, 255, 0.35)')
-          .style({ opacity: 0.4, lineType: 'dash', dashArray: [4, 4] });
-        scene.addLayer(flowLayer);
+            // 脏数据拦截
+            const safeVehicles = sanitizeData(EMERGENCY_VEHICLES);
+            const safeStations = sanitizeData(BASE_STATIONS);
 
-        // 流动粒子
-        const particleData = [];
-        flowLines.forEach(line => {
-          for (let i = 0; i < 2; i++) {
-            particleData.push({ lng: line.coords[0][0], lat: line.coords[0][1], lineCoords: line.coords, offset: i / 2 });
+            // 空数据保护
+            if (safeVehicles.length === 0 && safeStations.length === 0) {
+              console.error('[AmapL7Scene] 没有有效数据可渲染');
+              setError('没有有效数据');
+              setLoading(false);
+              return;
+            }
+
+            const flowLines = generateFlowLines(currentTime);
+            setTotalFlow(flowLines.reduce((sum, line) => sum + line.flow, 0));
+
+            // 人流虚线图层
+            const flowLayer = new LineLayer({ zIndex: 2 })
+              .source({
+                type: 'FeatureCollection',
+                features: flowLines.map(line => ({
+                  type: 'Feature',
+                  properties: { weight: line.weight },
+                  geometry: { type: 'LineString', coordinates: line.coords }
+                }))
+              }, { parser: { type: 'geojson' } })
+              .shape('line')
+              .size('weight')
+              .color('rgba(0, 240, 255, 0.35)')
+              .style({ opacity: 0.4, lineType: 'dash', dashArray: [4, 4] });
+            scene.addLayer(flowLayer);
+
+            // 流动粒子
+            const particleData = [];
+            flowLines.forEach(line => {
+              for (let i = 0; i < 2; i++) {
+                particleData.push({ lng: line.coords[0][0], lat: line.coords[0][1] });
+              }
+            });
+            const particleLayer = new PointLayer({ zIndex: 3, blend: 'additive' })
+              .source(particleData, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+              .shape('circle').size(3).color('rgba(0, 255, 255, 0.8)')
+              .animate({ enable: true, speed: 2, rings: 0 });
+            scene.addLayer(particleLayer);
+
+            // 枢纽点
+            const hubData = flowLines.map(line => ({ ...line, size: Math.min(18, Math.max(8, line.flow / 600)) }));
+
+            // 枢纽呼吸灯层
+            const hubBreathingLayer = new PointLayer({ zIndex: 9 })
+              .source(hubData, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+              .shape('circle').size(35)
+              .color('type', t => t === 'metro' ? '#0096ff' : '#ff9900')
+              .animate({ enable: true, speed: 0.03, rings: 3 })
+              .style({ opacity: 0.4 });
+            scene.addLayer(hubBreathingLayer);
+
+            // 枢纽实体层
+            const hubLayer = new PointLayer({ zIndex: 10 })
+              .source(hubData, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+              .shape('circle').size('size')
+              .color('type', t => t === 'metro' ? 'rgba(0, 150, 255, 0.7)' : 'rgba(255, 150, 0, 0.7)')
+              .style({ opacity: 0.8, stroke: 'rgba(255,255,255,0.8)', strokeWidth: 1.5 });
+            scene.addLayer(hubLayer);
+
+            // 点击处理
+            const handleClick = (e) => {
+              if (!e.feature || !e.lngLat || isDestroyedRef.current) return;
+              if (popupRef.current) popupRef.current.remove();
+              const popup = new Popup({ offsets: [0, -20], closeButton: false })
+                .setLnglat(e.lngLat)
+                .setHTML(generatePopupHtml(e.feature));
+              scene.addPopup(popup);
+              popupRef.current = popup;
+            };
+
+            hubLayer.on('click', handleClick);
+            hubBreathingLayer.on('click', handleClick);
+
+            // 鼠标样式
+            const setPointer = () => { if (scene?.getMap && !isDestroyedRef.current) try { scene.getMap().getCanvas().style.cursor = 'pointer'; } catch(e) {} };
+            const setDefault = () => { if (scene?.getMap && !isDestroyedRef.current) try { scene.getMap().getCanvas().style.cursor = ''; } catch(e) {} };
+            
+            hubLayer.on('mouseenter', setPointer);
+            hubLayer.on('mouseleave', setDefault);
+            hubBreathingLayer.on('mouseenter', setPointer);
+            hubBreathingLayer.on('mouseleave', setDefault);
+
+            // 枢纽标签
+            const hubLabelLayer = new PointLayer({ zIndex: 11 })
+              .source(hubData, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+              .shape('name', 'text').size(10).color('rgba(255, 255, 255, 0.85)')
+              .style({ textAnchor: 'center', textOffset: [0, -25], stroke: '#000', strokeWidth: 2 });
+            scene.addLayer(hubLabelLayer);
+
+            // 奥体中心
+            const centerBreathingLayer = new PointLayer({ zIndex: 12 })
+              .source([OLYMPIC_CENTER], { parser: { type: 'json', x: 'lng', y: 'lat' } })
+              .shape('circle').size(50).color('#FFD700')
+              .animate({ enable: true, speed: 0.02, rings: 3 })
+              .style({ opacity: 0.5 });
+            scene.addLayer(centerBreathingLayer);
+
+            const centerLayer = new PointLayer({ zIndex: 13 })
+              .source([OLYMPIC_CENTER], { parser: { type: 'json', x: 'lng', y: 'lat' } })
+              .shape('center').size(28);
+            scene.addLayer(centerLayer);
+
+            const centerLabelLayer = new PointLayer({ zIndex: 14 })
+              .source([OLYMPIC_CENTER], { parser: { type: 'json', x: 'lng', y: 'lat' } })
+              .shape('name', 'text').size(13).color('#FFD700')
+              .style({ textAnchor: 'center', textOffset: [0, -40], stroke: '#000', strokeWidth: 3 });
+            scene.addLayer(centerLabelLayer);
+
+            // 应急通信车
+            if (safeVehicles.length > 0) {
+              const vehicleBreathingLayer = new PointLayer({ zIndex: 7 })
+                .source(safeVehicles, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+                .shape('circle').size(35).color('#ff9900')
+                .animate({ enable: true, speed: 0.03, rings: 3 })
+                .style({ opacity: 0.4 });
+              scene.addLayer(vehicleBreathingLayer);
+
+              const vehicleLayer = new PointLayer({ zIndex: 8 })
+                .source(safeVehicles, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+                .shape('vehicle').size(22);
+              scene.addLayer(vehicleLayer);
+
+              vehicleLayer.on('click', handleClick);
+              vehicleBreathingLayer.on('click', handleClick);
+              vehicleLayer.on('mouseenter', setPointer);
+              vehicleLayer.on('mouseleave', setDefault);
+              vehicleBreathingLayer.on('mouseenter', setPointer);
+              vehicleBreathingLayer.on('mouseleave', setDefault);
+            }
+
+            // 基站
+            if (safeStations.length > 0) {
+              const stationBreathingLayer = new PointLayer({ zIndex: 5 })
+                .source(safeStations, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+                .shape('circle').size(30)
+                .color('status', s => s === 'warning' ? '#ffaa00' : '#00ddff')
+                .animate({ enable: true, speed: 0.03, rings: 3 })
+                .style({ opacity: 0.3 });
+              scene.addLayer(stationBreathingLayer);
+
+              const stationLayer = new PointLayer({ zIndex: 6 })
+                .source(safeStations, { parser: { type: 'json', x: 'lng', y: 'lat' } })
+                .shape('station').size(16);
+              scene.addLayer(stationLayer);
+
+              stationLayer.on('click', handleClick);
+              stationBreathingLayer.on('click', handleClick);
+              stationLayer.on('mouseenter', setPointer);
+              stationLayer.on('mouseleave', setDefault);
+              stationBreathingLayer.on('mouseenter', setPointer);
+              stationBreathingLayer.on('mouseleave', setDefault);
+            }
+
+            if (!isDestroyedRef.current) {
+              setLoading(false);
+              setSceneLoaded(true);
+            }
+          } catch (err) {
+            console.error('[AmapL7Scene] 图层初始化错误:', err);
+            if (!isDestroyedRef.current) {
+              setError(err.message);
+              setLoading(false);
+            }
           }
         });
-        const particleLayer = new PointLayer({ zIndex: 3, blend: 'additive' })
-          .source(particleData, { parser: { type: 'json', x: 'lng', y: 'lat' } })
-          .shape('circle').size(3).color('rgba(0, 255, 255, 0.8)')
-          .style({ opacity: 0.8 })
-          .animate({ enable: true, speed: 2, rings: 0 });
-        scene.addLayer(particleLayer);
 
-        // 枢纽点
-        const hubData = flowLines.map(line => ({ ...line, size: Math.min(18, Math.max(8, line.flow / 600)) }));
-
-        // ====== 枢纽点：呼吸灯层 (zIndex: 9) ======
-        const hubBreathingLayer = new PointLayer({ zIndex: 9 })
-          .source(hubData, { parser: { type: 'json', x: 'lng', y: 'lat' } })
-          .shape('circle').size(35)
-          .color('type', t => t === 'metro' ? '#0096ff' : '#ff9900')
-          .animate({ enable: true, speed: 0.03, rings: 3 })
-          .style({ opacity: 0.4 });
-        scene.addLayer(hubBreathingLayer);
-
-        // ====== 枢纽点：实体层 (zIndex: 10) ======
-        const hubLayer = new PointLayer({ zIndex: 10 })
-          .source(hubData, { parser: { type: 'json', x: 'lng', y: 'lat' } })
-          .shape('circle').size('size')
-          .color('type', t => t === 'metro' ? 'rgba(0, 150, 255, 0.7)' : 'rgba(255, 150, 0, 0.7)')
-          .style({ opacity: 0.8, stroke: 'rgba(255,255,255,0.8)', strokeWidth: 1.5 });
-        scene.addLayer(hubLayer);
-
-        // 枢纽点击处理函数
-        const handleHubClick = (e) => {
-          if (e.feature && e.lngLat) {
-            if (popupRef.current) popupRef.current.remove();
-            const popup = new Popup({ offsets: [0, -20], closeButton: false })
-              .setLnglat(e.lngLat)
-              .setHTML(generatePopupHtml(e.feature));
-            scene.addPopup(popup);
-            popupRef.current = popup;
+        scene.on('error', (err) => {
+          console.error('[AmapL7Scene] 场景错误:', err);
+          if (!isDestroyedRef.current) {
+            setError('地图渲染失败');
+            setLoading(false);
           }
-        };
+        });
 
-        // 事件同时绑定到两层，防止大圈遮挡小图标
-        hubLayer.on('click', handleHubClick);
-        hubBreathingLayer.on('click', handleHubClick);
-
-        // 鼠标悬浮变成"小手"
-        const setCursorPointer = () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = 'pointer'; };
-        const setCursorDefault = () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = ''; };
-        
-        hubLayer.on('mouseenter', setCursorPointer);
-        hubLayer.on('mouseleave', setCursorDefault);
-        hubBreathingLayer.on('mouseenter', setCursorPointer);
-        hubBreathingLayer.on('mouseleave', setCursorDefault);
-
-        // 枢纽标签
-        const hubLabelLayer = new PointLayer({ zIndex: 11 })
-          .source(hubData, { parser: { type: 'json', x: 'lng', y: 'lat' } })
-          .shape('name', 'text').size(10).color('rgba(255, 255, 255, 0.85)')
-          .style({ textAnchor: 'center', textOffset: [0, -25], stroke: '#000', strokeWidth: 2 });
-        scene.addLayer(hubLabelLayer);
-
-        // 奥体中心
-        const centerBreathingLayer = new PointLayer({ zIndex: 12 })
-          .source([OLYMPIC_CENTER], { parser: { type: 'json', x: 'lng', y: 'lat' } })
-          .shape('circle').size(50).color('#FFD700')
-          .animate({ enable: true, speed: 0.02, rings: 3 })
-          .style({ opacity: 0.5 });
-        scene.addLayer(centerBreathingLayer);
-
-        const centerLayer = new PointLayer({ zIndex: 13 })
-          .source([OLYMPIC_CENTER], { parser: { type: 'json', x: 'lng', y: 'lat' } })
-          .shape('center').size(28);
-        scene.addLayer(centerLayer);
-
-        const centerLabelLayer = new PointLayer({ zIndex: 14 })
-          .source([OLYMPIC_CENTER], { parser: { type: 'json', x: 'lng', y: 'lat' } })
-          .shape('name', 'text').size(13).color('#FFD700')
-          .style({ textAnchor: 'center', textOffset: [0, -40], stroke: '#000', strokeWidth: 3, fontWeight: 'bold' });
-        scene.addLayer(centerLabelLayer);
-
-        // ====== 应急通信车：呼吸灯层 (zIndex: 7) ======
-        const vehicleBreathingLayer = new PointLayer({ zIndex: 7 })
-          .source(safeVehicles, { parser: { type: 'json', x: 'lng', y: 'lat' } })
-          .shape('circle').size(35).color('#ff9900')
-          .animate({ enable: true, speed: 0.03, rings: 3 })
-          .style({ opacity: 0.4 });
-        scene.addLayer(vehicleBreathingLayer);
-
-        // ====== 应急通信车：实体层 (zIndex: 8) ======
-        const vehicleLayer = new PointLayer({ zIndex: 8 })
-          .source(safeVehicles, { parser: { type: 'json', x: 'lng', y: 'lat' } })
-          .shape('vehicle').size(22);
-        scene.addLayer(vehicleLayer);
-
-        // 应急车点击处理
-        const handleVehicleClick = (e) => {
-          if (e.feature && e.lngLat) {
-            if (popupRef.current) popupRef.current.remove();
-            const popup = new Popup({ offsets: [0, -20], closeButton: false })
-              .setLnglat(e.lngLat)
-              .setHTML(generatePopupHtml(e.feature));
-            scene.addPopup(popup);
-            popupRef.current = popup;
-          }
-        };
-
-        vehicleLayer.on('click', handleVehicleClick);
-        vehicleBreathingLayer.on('click', handleVehicleClick);
-        vehicleLayer.on('mouseenter', setCursorPointer);
-        vehicleLayer.on('mouseleave', setCursorDefault);
-        vehicleBreathingLayer.on('mouseenter', setCursorPointer);
-        vehicleBreathingLayer.on('mouseleave', setCursorDefault);
-
-        // ====== 基站：呼吸灯层 (zIndex: 5) ======
-        const stationBreathingLayer = new PointLayer({ zIndex: 5 })
-          .source(safeStations, { parser: { type: 'json', x: 'lng', y: 'lat' } })
-          .shape('circle').size(30)
-          .color('status', s => s === 'warning' ? '#ffaa00' : '#00ddff')
-          .animate({ enable: true, speed: 0.03, rings: 3 })
-          .style({ opacity: 0.3 });
-        scene.addLayer(stationBreathingLayer);
-
-        // ====== 基站：实体层 (zIndex: 6) ======
-        const stationLayer = new PointLayer({ zIndex: 6 })
-          .source(safeStations, { parser: { type: 'json', x: 'lng', y: 'lat' } })
-          .shape('station').size(16);
-        scene.addLayer(stationLayer);
-
-        // 基站点击处理
-        const handleStationClick = (e) => {
-          if (e.feature && e.lngLat) {
-            if (popupRef.current) popupRef.current.remove();
-            const popup = new Popup({ offsets: [0, -20], closeButton: false })
-              .setLnglat(e.lngLat)
-              .setHTML(generatePopupHtml(e.feature));
-            scene.addPopup(popup);
-            popupRef.current = popup;
-          }
-        };
-
-        stationLayer.on('click', handleStationClick);
-        stationBreathingLayer.on('click', handleStationClick);
-        stationLayer.on('mouseenter', setCursorPointer);
-        stationLayer.on('mouseleave', setCursorDefault);
-        stationBreathingLayer.on('mouseenter', setCursorPointer);
-        stationBreathingLayer.on('mouseleave', setCursorDefault);
-
-        if (isMounted) {
-          setLoading(false);
-          setSceneLoaded(true);
-        }
       } catch (err) {
-        console.error('[AmapL7Scene] 初始化错误:', err);
-        if (isMounted) {
-          setError(err.message);
-          setLoading(false);
-        }
-      }
-    });
-
-    scene.on('error', (err) => {
-      console.error('[AmapL7Scene] 场景错误:', err);
-      if (isMounted) {
-        setError('地图渲染失败');
+        console.error('[AmapL7Scene] 初始化异常:', err);
+        setError(err.message);
         setLoading(false);
       }
-    });
+    };
+
+    initMap();
 
     return () => {
-      isMounted = false;
-      if (popupRef.current) popupRef.current.remove();
+      isCleaningUp = true;
+      isDestroyedRef.current = true;
+      if (popupRef.current) {
+        try { popupRef.current.remove(); } catch(e) {}
+      }
       if (sceneRef.current) {
-        sceneRef.current.destroy();
+        try { sceneRef.current.destroy(); } catch(e) {}
         sceneRef.current = null;
       }
     };
@@ -424,7 +431,7 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
 
   // 时间变化时更新
   useEffect(() => {
-    if (!sceneLoaded || !sceneRef.current) return;
+    if (!sceneLoaded) return;
     const flowLines = generateFlowLines(currentTime);
     setTotalFlow(flowLines.reduce((sum, line) => sum + line.flow, 0));
   }, [sceneLoaded, currentTime]);
