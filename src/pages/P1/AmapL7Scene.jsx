@@ -181,7 +181,6 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
   const [totalFlow, setTotalFlow] = useState(0);
 
   useEffect(() => {
-    // 1. 设置挂载标志位，防止 React 18 严格模式下重复初始化
     let isMounted = true;
 
     if (sceneRef.current || !mapContainerRef.current) return;
@@ -202,26 +201,24 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
     sceneRef.current = scene;
 
     scene.on('loaded', async () => {
-      // 致命拦截：如果组件已经卸载，立刻终止执行！
       if (!isMounted) return;
 
       try {
-        // 1. 加载自定义图标
+        // 加载自定义图标
         await Promise.all([
           scene.addImage('station', STATION_ICON),
           scene.addImage('vehicle', VEHICLE_ICON),
           scene.addImage('center', CENTER_ICON),
         ]);
 
-        // 2. 脏数据拦截：强制转换为 Number，丢弃无效坐标
-        const safeHubs = sanitizeData(TRANSPORT_HUBS);
+        // 脏数据拦截
         const safeVehicles = sanitizeData(EMERGENCY_VEHICLES);
         const safeStations = sanitizeData(BASE_STATIONS);
 
         const flowLines = generateFlowLines(currentTime);
         setTotalFlow(flowLines.reduce((sum, line) => sum + line.flow, 0));
 
-        // 3. 人流虚线图层
+        // 人流虚线图层
         const flowLayer = new LineLayer({ zIndex: 2 })
           .source({
             type: 'FeatureCollection',
@@ -237,7 +234,7 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           .style({ opacity: 0.4, lineType: 'dash', dashArray: [4, 4] });
         scene.addLayer(flowLayer);
 
-        // 4. 流动粒子
+        // 流动粒子
         const particleData = [];
         flowLines.forEach(line => {
           for (let i = 0; i < 2; i++) {
@@ -251,13 +248,10 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           .animate({ enable: true, speed: 2, rings: 0 });
         scene.addLayer(particleLayer);
 
-        // 5. 枢纽点（地铁站+第二现场）
-        const hubData = flowLines.map(line => ({
-          ...line,
-          size: Math.min(18, Math.max(8, line.flow / 600)),
-        }));
+        // 枢纽点
+        const hubData = flowLines.map(line => ({ ...line, size: Math.min(18, Math.max(8, line.flow / 600)) }));
 
-        // 枢纽呼吸灯层
+        // ====== 枢纽点：呼吸灯层 (zIndex: 9) ======
         const hubBreathingLayer = new PointLayer({ zIndex: 9 })
           .source(hubData, { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('circle').size(35)
@@ -266,15 +260,16 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           .style({ opacity: 0.4 });
         scene.addLayer(hubBreathingLayer);
 
-        // 枢纽实体层
-        const hubLayer = new PointLayer({ zIndex: 10, pickBuffer: 4 })
+        // ====== 枢纽点：实体层 (zIndex: 10) ======
+        const hubLayer = new PointLayer({ zIndex: 10 })
           .source(hubData, { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('circle').size('size')
           .color('type', t => t === 'metro' ? 'rgba(0, 150, 255, 0.7)' : 'rgba(255, 150, 0, 0.7)')
           .style({ opacity: 0.8, stroke: 'rgba(255,255,255,0.8)', strokeWidth: 1.5 });
         scene.addLayer(hubLayer);
 
-        hubLayer.on('click', (e) => {
+        // 枢纽点击处理函数
+        const handleHubClick = (e) => {
           if (e.feature && e.lngLat) {
             if (popupRef.current) popupRef.current.remove();
             const popup = new Popup({ offsets: [0, -20], closeButton: false })
@@ -283,9 +278,20 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
             scene.addPopup(popup);
             popupRef.current = popup;
           }
-        });
-        hubLayer.on('mouseenter', () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = 'pointer'; });
-        hubLayer.on('mouseleave', () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = ''; });
+        };
+
+        // 事件同时绑定到两层，防止大圈遮挡小图标
+        hubLayer.on('click', handleHubClick);
+        hubBreathingLayer.on('click', handleHubClick);
+
+        // 鼠标悬浮变成"小手"
+        const setCursorPointer = () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = 'pointer'; };
+        const setCursorDefault = () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = ''; };
+        
+        hubLayer.on('mouseenter', setCursorPointer);
+        hubLayer.on('mouseleave', setCursorDefault);
+        hubBreathingLayer.on('mouseenter', setCursorPointer);
+        hubBreathingLayer.on('mouseleave', setCursorDefault);
 
         // 枢纽标签
         const hubLabelLayer = new PointLayer({ zIndex: 11 })
@@ -294,7 +300,7 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           .style({ textAnchor: 'center', textOffset: [0, -25], stroke: '#000', strokeWidth: 2 });
         scene.addLayer(hubLabelLayer);
 
-        // 6. 奥体中心
+        // 奥体中心
         const centerBreathingLayer = new PointLayer({ zIndex: 12 })
           .source([OLYMPIC_CENTER], { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('circle').size(50).color('#FFD700')
@@ -313,7 +319,7 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           .style({ textAnchor: 'center', textOffset: [0, -40], stroke: '#000', strokeWidth: 3, fontWeight: 'bold' });
         scene.addLayer(centerLabelLayer);
 
-        // 7. 应急通信车 - 使用脏数据过滤后的 safeVehicles
+        // ====== 应急通信车：呼吸灯层 (zIndex: 7) ======
         const vehicleBreathingLayer = new PointLayer({ zIndex: 7 })
           .source(safeVehicles, { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('circle').size(35).color('#ff9900')
@@ -321,12 +327,14 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           .style({ opacity: 0.4 });
         scene.addLayer(vehicleBreathingLayer);
 
-        const vehicleLayer = new PointLayer({ zIndex: 8, pickBuffer: 4 })
+        // ====== 应急通信车：实体层 (zIndex: 8) ======
+        const vehicleLayer = new PointLayer({ zIndex: 8 })
           .source(safeVehicles, { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('vehicle').size(22);
         scene.addLayer(vehicleLayer);
 
-        vehicleLayer.on('click', (e) => {
+        // 应急车点击处理
+        const handleVehicleClick = (e) => {
           if (e.feature && e.lngLat) {
             if (popupRef.current) popupRef.current.remove();
             const popup = new Popup({ offsets: [0, -20], closeButton: false })
@@ -335,11 +343,16 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
             scene.addPopup(popup);
             popupRef.current = popup;
           }
-        });
-        vehicleLayer.on('mouseenter', () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = 'pointer'; });
-        vehicleLayer.on('mouseleave', () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = ''; });
+        };
 
-        // 8. 基站 - 使用脏数据过滤后的 safeStations
+        vehicleLayer.on('click', handleVehicleClick);
+        vehicleBreathingLayer.on('click', handleVehicleClick);
+        vehicleLayer.on('mouseenter', setCursorPointer);
+        vehicleLayer.on('mouseleave', setCursorDefault);
+        vehicleBreathingLayer.on('mouseenter', setCursorPointer);
+        vehicleBreathingLayer.on('mouseleave', setCursorDefault);
+
+        // ====== 基站：呼吸灯层 (zIndex: 5) ======
         const stationBreathingLayer = new PointLayer({ zIndex: 5 })
           .source(safeStations, { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('circle').size(30)
@@ -348,12 +361,14 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
           .style({ opacity: 0.3 });
         scene.addLayer(stationBreathingLayer);
 
-        const stationLayer = new PointLayer({ zIndex: 6, pickBuffer: 4 })
+        // ====== 基站：实体层 (zIndex: 6) ======
+        const stationLayer = new PointLayer({ zIndex: 6 })
           .source(safeStations, { parser: { type: 'json', x: 'lng', y: 'lat' } })
           .shape('station').size(16);
         scene.addLayer(stationLayer);
 
-        stationLayer.on('click', (e) => {
+        // 基站点击处理
+        const handleStationClick = (e) => {
           if (e.feature && e.lngLat) {
             if (popupRef.current) popupRef.current.remove();
             const popup = new Popup({ offsets: [0, -20], closeButton: false })
@@ -362,9 +377,14 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
             scene.addPopup(popup);
             popupRef.current = popup;
           }
-        });
-        stationLayer.on('mouseenter', () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = 'pointer'; });
-        stationLayer.on('mouseleave', () => { if (scene.getMap()) scene.getMap().getCanvas().style.cursor = ''; });
+        };
+
+        stationLayer.on('click', handleStationClick);
+        stationBreathingLayer.on('click', handleStationClick);
+        stationLayer.on('mouseenter', setCursorPointer);
+        stationLayer.on('mouseleave', setCursorDefault);
+        stationBreathingLayer.on('mouseenter', setCursorPointer);
+        stationBreathingLayer.on('mouseleave', setCursorDefault);
 
         if (isMounted) {
           setLoading(false);
@@ -388,7 +408,6 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
     });
 
     return () => {
-      // 3. 安全卸载：更新标志位并销毁实例
       isMounted = false;
       if (popupRef.current) popupRef.current.remove();
       if (sceneRef.current) {
@@ -396,9 +415,9 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
         sceneRef.current = null;
       }
     };
-  }, []); // <-- 空数组，只在挂载时执行一次
+  }, []);
 
-  // 时间变化时更新 - 只做数据更新，不重新创建 Scene
+  // 时间变化时更新
   useEffect(() => {
     if (!sceneLoaded || !sceneRef.current) return;
     const flowLines = generateFlowLines(currentTime);
