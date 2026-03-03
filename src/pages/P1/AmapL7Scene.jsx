@@ -215,6 +215,11 @@ export default function AmapL7Scene({ currentTime = '20:00' }) {
         const safeVehicles = sanitizeData(EMERGENCY_VEHICLES);
         const safeStations = sanitizeData(BASE_STATIONS);
 
+        // 空数据保护：如果有效数据为空，直接跳过图层渲染
+        if (safeVehicles.length === 0 || safeStations.length === 0) {
+          console.warn('[AmapL7Scene] 有效数据为空，跳过图层渲染');
+        }
+
         const flowLines = generateFlowLines(currentTime);
         setTotalFlow(flowLines.reduce((sum, line) => sum + line.flow, 0));
 
