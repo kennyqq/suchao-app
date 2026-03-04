@@ -1,0 +1,32 @@
+[
+  {
+    "UI 模块 / 展现形式": "分层漏斗图",
+    "前端所需字段 (UI Field)": "funnel_data",
+    "依赖的后端底表 (Source Table)": "07_P2_Zone_User_Agg_Fact",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "第一层 (宽)：total_users第二层 (中)：normal_users第三层 (尖)：vip_users按选择的 zone_name 实时切换数据源。"
+  },
+  {
+    "UI 模块 / 展现形式": "5G-A 终端渗透率",
+    "前端所需字段 (UI Field)": "penetration_rate",
+    "依赖的后端底表 (Source Table)": "07_P2_Zone_User_Agg_Fact",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "rate = terminal_5ga / total_users👉 UI联动：格式化为 xx% 的水波纹球体或大数字。"
+  },
+  {
+    "UI 模块 / 展现形式": "网络放号容量监控",
+    "前端所需字段 (UI Field)": "capacity_rate",
+    "依赖的后端底表 (Source Table)": "07_P2_Zone_User_Agg_Fact",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "rate = total_users / current_capacity👉 UI联动：若 rate > 0.9 触发场馆容量饱和预警动画。"
+  },
+  {
+    "UI 模块 / 展现形式": "热门终端排行榜",
+    "前端所需字段 (UI Field)": "top_devices_list",
+    "依赖的后端底表 (Source Table)": "07_P2_Zone_User_Agg_Fact",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "解析 top_devices_json，直接取数组进行列表渲染（含品牌 Logo 映射）。"
+  },
+  {
+    "UI 模块 / 展现形式": "核心业务体验",
+    "前端所需字段 (UI Field)": "app_latency_status",
+    "依赖的后端底表 (Source Table)": "08_P2_App_Exp_Realtime",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "读取 latency_ms 与 poor_qoe_users。👉 UI联动：若 latency_ms < 50 亮绿灯标“优”；若 poor_qoe_users > 0 亮红灯标“质差”。"
+  }
+]

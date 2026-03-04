@@ -1,0 +1,38 @@
+[
+  {
+    "UI 模块 / 展现形式": "开幕倒计时",
+    "前端所需字段 (UI Field)": "days, hours",
+    "依赖的后端底表 (Source Table)": "(本地配置或全局变量)",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "targetTimestamp - Date.now() 计算出天/时/分"
+  },
+  {
+    "UI 模块 / 展现形式": "当前总人流",
+    "前端所需字段 (UI Field)": "total_flow",
+    "依赖的后端底表 (Source Table)": "03_Master_Cell_Perf_Realtime",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "SUM(rrc_users) 条件：01_Master_Cell_Dim.poi_name == '南京奥体中心'"
+  },
+  {
+    "UI 模块 / 展现形式": "文旅引流指数",
+    "前端所需字段 (UI Field)": "tourism_index",
+    "依赖的后端底表 (Source Table)": "04_P0_User_Active_Hourly + 02_Master_User_Dim",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "过滤：找出当前小时在奥体的 user_id。联表：去02表查，如果 user_type == 'visitor' 则 count++。指数：visitor_count + baseline_index"
+  },
+  {
+    "UI 模块 / 展现形式": "全国/省内迁徙飞线",
+    "前端所需字段 (UI Field)": "flyline_data",
+    "依赖的后端底表 (Source Table)": "同上 04 + 02 表",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "联表与分组：找出所有的 visitor，按他们的 home_city 进行 GroupBy 求和。排序：按人数降序排，取 Top 8 渲染排行榜和 3D 地图飞线起止点。"
+  },
+  {
+    "UI 模块 / 展现形式": "交通枢纽压力",
+    "前端所需字段 (UI Field)": "hub_pressure_ratio",
+    "依赖的后端底表 (Source Table)": "03_Master_Cell_Perf_Realtime",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "聚合南站、机场的小区：ratio = SUM(rrc_users) / SUM(baseline_rrc_users)👉 UI联动：若 ratio > 1.5 进度条标黄，> 2.0 标红。"
+  },
+  {
+    "UI 模块 / 展现形式": "文旅打卡点涨幅",
+    "前端所需字段 (UI Field)": "spot_growth_rate",
+    "依赖的后端底表 (Source Table)": "03_Master_Cell_Perf_Realtime",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "聚合夫子庙等景区小区：rate = (SUM(rrc_users) - SUM(baseline_rrc_users)) / SUM(baseline_rrc_users)👉 UI联动：格式化为 +xx%。"
+  }
+]

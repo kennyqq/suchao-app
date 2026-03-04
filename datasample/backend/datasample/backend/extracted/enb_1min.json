@@ -1,0 +1,36 @@
+{
+  "file_name": "eNB北向接口性能测量数据规范（1分钟）",
+  "description": "4G基站KPI指标，1分钟粒度",
+  "sheet_count": 10,
+  "index": [
+    {
+      "code": "OA",
+      "name": "RRC连接性能测量数据"
+    },
+    {
+      "code": "OB",
+      "name": "E-RAB性能测量数据"
+    },
+    {
+      "code": "OC",
+      "name": "上下文统性能测量数据"
+    },
+    {
+      "code": "OD",
+      "name": "系统内分组域切换性能测量数据"
+    },
+    {
+      "code": "OE",
+      "name": "小区无线承载相关测量数据"
+    },
+    {
+      "code": "OF",
+      "name": "无线资源利用率相关测量数据"
+    },
+    {
+      "code": "OG",
+      "name": "小区无线信道统计数据"
+    }
+  ],
+  "indicators": {}
+}

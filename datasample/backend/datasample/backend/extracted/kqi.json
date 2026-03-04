@@ -1,0 +1,221 @@
+{
+  "file_name": "5G无线网络OMC智能化北向接口技术要求-业务质量数据",
+  "description": "无线智能板北向接口，包含KQI类指标，颗粒度15分钟",
+  "sheet_count": 7,
+  "indicators": {
+    "UE级业务质量指标": [
+      {
+        "code": "GNBAIUE01",
+        "name_en": "SVid.TotVidInitDlyTimeDl",
+        "name_cn": "短视频总初缓时长",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频总初缓时长",
+        "unit": "s"
+      },
+      {
+        "code": "GNBAIUE02",
+        "name_en": "SVid.TotVidInitBuferTime",
+        "name_cn": "短视频初缓完成总次数",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频初缓完成总次数",
+        "unit": "次"
+      },
+      {
+        "code": "GNBAIUE03",
+        "name_en": "SVid.TotVidPauseDur",
+        "name_cn": "短视频总卡顿时长",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频总卡顿时长",
+        "unit": "s"
+      },
+      {
+        "code": "GNBAIUE04",
+        "name_en": "SVid.TotVidStallsTimes",
+        "name_cn": "短视频卡顿次数",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计下行短视频卡顿次数",
+        "unit": "次"
+      },
+      {
+        "code": "GNBAIUE05",
+        "name_en": "SVid.TotVidDownloadDv",
+        "name_cn": "短视频总下载数据量",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频总下载数据量",
+        "unit": "KByte"
+      },
+      {
+        "code": "GNBAIUE06",
+        "name_en": "SVid.TotVidDownloadTime",
+        "name_cn": "短视频总有效下载时长",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频总有效下载时长",
+        "unit": "ms"
+      },
+      {
+        "code": "GNBAIUE07",
+        "name_en": "SVid.TotDlVidTcpRtt",
+        "name_cn": "短视频下行TCP采样报文RTT总时延",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频下行TCP采样报文RTT总时延",
+        "unit": "ms"
+      },
+      {
+        "code": "GNBAIUE08",
+        "name_en": "SVid.TotDlVidPktsForTcpRtt",
+        "name_cn": "短视频下行TCP采样报文总个数",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频下行TCP采样报文总个数",
+        "unit": "个"
+      },
+      {
+        "code": "GNBAIUE09",
+        "name_en": "SVid.TotDlTcpPkts",
+        "name_cn": "短视频下行TCP总包数",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频下行TCP总包数",
+        "unit": "个"
+      },
+      {
+        "code": "GNBAIUE10",
+        "name_en": "SVid.TotDlRetransTcpPkts",
+        "name_cn": "短视频下行TCP重传包数",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频下行TCP重传包数",
+        "unit": "个"
+      },
+      {
+        "code": "GNBAIUE11",
+        "name_en": "SVid.TotDlVidTcpRttXth",
+        "name_cn": "短视频下行TCP采样报文RTT超门限次数",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频下行TCP采样报文RTT超门限次数",
+        "unit": "次"
+      },
+      {
+        "code": "GNBAIUE12",
+        "name_en": "SVid.TotDlVidTcpSyn2SynAckDly",
+        "name_cn": "短视频下行TCP握手SYN2SYNACK总时延",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频下行TCP握手SYN2SYNACK总时延",
+        "unit": "ms"
+      },
+      {
+        "code": "GNBAIUE13",
+        "name_en": "SVid.TotDlVidTcpEstSyn2SynAck",
+        "name_cn": "短视频下行TCP握手SYN2SYNACK次数",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频下行TCP握手SYN2SYNACK次数",
+        "unit": "次"
+      },
+      {
+        "code": "GNBAIUE14",
+        "name_en": "SVid.TotDlVidTcpSynAck2AckDly",
+        "name_cn": "短视频下行TCP握手SYNACK2ACK总时延",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频下行TCP握手SYNACK2ACK总时延",
+        "unit": "ms"
+      },
+      {
+        "code": "GNBAIUE15",
+        "name_en": "SVid.TotDlVidTcpEstSynAck2Ack",
+        "name_cn": "短视频下行TCP握手SYNACK2ACK次数",
+        "definition": "业务识别为短视频时，统计周期内本小区内该UE累计短视频下行TCP握手SYNACK2ACK次数",
+        "unit": "次"
+      }
+    ],
+    "小区级业务质量指标": [
+      {
+        "code": "GNBAICELL01",
+        "name_en": "SVid.TotDlVidPktsForTcpRtt",
+        "name_cn": "短视频下行TCP采样报文总个数",
+        "definition": "业务识别为短视频时，统计周期内本小区内该业务的所有UE累计短视频下行TCP采样报文总个数",
+        "unit": "个"
+      },
+      {
+        "code": "GNBAICELL02",
+        "name_en": "SVid.TotDlVidTcpRtt",
+        "name_cn": "短视频下行TCP采样报文RTT总时延",
+        "definition": "业务识别为短视频时，统计周期内本小区内该业务的所有UE累计短视频下行TCP采样报文RTT总时延",
+        "unit": "ms"
+      },
+      {
+        "code": "GNBAICELL03",
+        "name_en": "SVid.TotVidDownloadDv",
+        "name_cn": "短视频总下载数据量",
+        "definition": "业务识别为短视频时，统计周期内本小区内该业务的所有UE累计短视频总下载数据量",
+        "unit": "KByte"
+      },
+      {
+        "code": "GNBAICELL04",
+        "name_en": "SVid.TotVidDownloadTime",
+        "name_cn": "短视频总有效下载时长",
+        "definition": "业务识别为短视频时，统计周期内本小区内该业务的所有UE累计短视频总有效下载时长",
+        "unit": "ms"
+      },
+      {
+        "code": "GNBAICELL05",
+        "name_en": "SVid.TotVidInitBuferTime",
+        "name_cn": "短视频初缓完成总次数",
+        "definition": "业务识别为短视频时，统计周期内本小区内该业务的所有UE累计短视频初缓完成总次数",
+        "unit": "次"
+      },
+      {
+        "code": "GNBAICELL06",
+        "name_en": "SVid.TotVidInitDlyTimeDl",
+        "name_cn": "短视频总初缓时长",
+        "definition": "业务识别为短视频时，统计周期内本小区内该业务的所有UE累计短视频总初缓时长",
+        "unit": "s"
+      },
+      {
+        "code": "GNBAICELL07",
+        "name_en": "SVid.TotVidPauseDur",
+        "name_cn": "短视频总卡顿时长",
+        "definition": "业务识别为短视频时，统计周期内本小区内该业务的所有UE累计短视频总卡顿时长",
+        "unit": "s"
+      },
+      {
+        "code": "GNBAICELL08",
+        "name_en": "SVid.TotVidStallsTimes",
+        "name_cn": "短视频卡顿次数",
+        "definition": "业务识别为短视频时，统计周期内本小区内该业务的所有UE累计下行短视频卡顿次数",
+        "unit": "次"
+      },
+      {
+        "code": "GNBAICELL09",
+        "name_en": "LVid.TotDlVidPktsForTcpRtt",
+        "name_cn": "长视频下行TCP采样报文总个数",
+        "definition": "业务识别为长视频时，统计周期内本小区内该业务的所有UE累计长视频下行TCP采样报文总个数",
+        "unit": "个"
+      },
+      {
+        "code": "GNBAICELL10",
+        "name_en": "LVid.TotDlVidTcpRtt",
+        "name_cn": "长视频下行TCP采样报文RTT总时延",
+        "definition": "业务识别为长视频时，统计周期内本小区内该业务的所有UE累计长视频下行TCP采样报文RTT总时延",
+        "unit": "ms"
+      },
+      {
+        "code": "GNBAICELL11",
+        "name_en": "LVid.TotVidDownloadDv",
+        "name_cn": "长视频总下载数据量",
+        "definition": "业务识别为长视频时，统计周期内本小区内该业务的所有UE累计长视频总下载数据量",
+        "unit": "KByte"
+      },
+      {
+        "code": "GNBAICELL12",
+        "name_en": "LVid.TotVidDownloadTime",
+        "name_cn": "长视频总有效下载时长",
+        "definition": "业务识别为长视频时，统计周期内本小区内该业务的所有UE累计长视频总有效下载时长",
+        "unit": "ms"
+      },
+      {
+        "code": "GNBAICELL13",
+        "name_en": "LVid.TotVidInitBuferTime",
+        "name_cn": "长视频初缓完成总次数",
+        "definition": "业务识别为长视频时，统计周期内本小区内该业务的所有UE累计长视频初缓完成总次数",
+        "unit": "次"
+      },
+      {
+        "code": "GNBAICELL14",
+        "name_en": "LVid.TotVidInitDlyTimeDl",
+        "name_cn": "长视频总初缓时长",
+        "definition": "业务识别为长视频时，统计周期内本小区内该业务的所有UE累计长视频总初缓时长",
+        "unit": "s"
+      },
+      {
+        "code": "GNBAICELL15",
+        "name_en": "LVid.TotVidPauseDur",
+        "name_cn": "长视频总卡顿时长",
+        "definition": "业务识别为长视频时，统计周期内本小区内该业务的所有UE累计长视频总卡顿时长",
+        "unit": "s"
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "tableName": "MAE_PERF_15MIN",
+  "description": "无线网络管平台-基站性能指标(15分钟粒度)",
+  "lastUpdate": "2024-03-04T20:00:00.000Z",
+  "records": [
+    {
+      "timestamp": 1709542800000,
+      "cell_id": "460-00-1122-01",
+      "zone_name": "南看台F区",
+      "rrc_conn_users": 25000,
+      "vip_rrc_users": 3200,
+      "prb_util_ul": 68.5,
+      "prb_util_dl": 72.3,
+      "traffic_total_ul_mb": 1250.5,
+      "traffic_total_dl_mb": 5680.2
+    },
+    {
+      "timestamp": 1709542800000,
+      "cell_id": "460-00-1122-02",
+      "zone_name": "北看台B区",
+      "rrc_conn_users": 12300,
+      "vip_rrc_users": 4100,
+      "prb_util_ul": 71.2,
+      "prb_util_dl": 75.8,
+      "traffic_total_ul_mb": 1420.8,
+      "traffic_total_dl_mb": 6230.5
+    },
+    {
+      "timestamp": 1709542800000,
+      "cell_id": "460-00-1122-03",
+      "zone_name": "东看台A区",
+      "rrc_conn_users": 89800,
+      "vip_rrc_users": 2800,
+      "prb_util_ul": 65.3,
+      "prb_util_dl": 69.5,
+      "traffic_total_ul_mb": 1180.3,
+      "traffic_total_dl_mb": 5120.7
+    },
+    {
+      "timestamp": 1709542800000,
+      "cell_id": "460-00-1122-04",
+      "zone_name": "西看台VIP",
+      "rrc_conn_users": 42100,
+      "vip_rrc_users": 18900,
+      "prb_util_ul": 58.6,
+      "prb_util_dl": 62.4,
+      "traffic_total_ul_mb": 2150.6,
+      "traffic_total_dl_mb": 8920.3
+    }
+  ]
+}

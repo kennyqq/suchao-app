@@ -1,0 +1,507 @@
+{
+  "file_name": "6-5G SA gNB网元统计数据需求规范-PM(V2.0.0)",
+  "description": "5G基站KPI指标，15分钟粒度",
+  "sheet_count": 26,
+  "index": [
+    {
+      "code": "HA",
+      "name": "PHY层相关测量"
+    },
+    {
+      "code": "HB",
+      "name": "小区无线信道统计数据"
+    },
+    {
+      "code": "HC",
+      "name": "MAC层性能测量数据"
+    },
+    {
+      "code": "HD",
+      "name": "RLC层相关测量"
+    },
+    {
+      "code": "HE",
+      "name": "PDCP层相关测量"
+    },
+    {
+      "code": "HF",
+      "name": "DRB相关统计"
+    },
+    {
+      "code": "HG",
+      "name": "小区发射功率测量"
+    },
+    {
+      "code": "HH",
+      "name": "RRU发射功率测量"
+    },
+    {
+      "code": "HI",
+      "name": "NG接口流量性能数据"
+    },
+    {
+      "code": "HK",
+      "name": "RRC连接相关统计"
+    },
+    {
+      "code": "HL",
+      "name": "PDU session相关统计"
+    },
+    {
+      "code": "HM",
+      "name": "QoS Flow 相关统计"
+    },
+    {
+      "code": "HN",
+      "name": "上下文相关统计"
+    },
+    {
+      "code": "HO",
+      "name": "系统内切换相关统计"
+    },
+    {
+      "code": "HP",
+      "name": "异系统切换相关统计"
+    },
+    {
+      "code": "HQ",
+      "name": "邻区对切换相关统计"
+    },
+    {
+      "code": "HR",
+      "name": "寻呼相关统计"
+    },
+    {
+      "code": "HS",
+      "name": "NG口信令情况相关统计"
+    },
+    {
+      "code": "HT",
+      "name": "能耗相关统计"
+    },
+    {
+      "code": "HU",
+      "name": "切片相关统计"
+    },
+    {
+      "code": "HV",
+      "name": "SSB 波束相关统计"
+    },
+    {
+      "code": "HW",
+      "name": "偶联相关统计"
+    },
+    {
+      "code": "HX",
+      "name": "子小区相关统计"
+    },
+    {
+      "code": "注1：本规范主要考虑5G SA场景",
+      "name": "nan"
+    },
+    {
+      "code": "注2：本规范基于3GPP Release 15版本为基线进行撰写。",
+      "name": "nan"
+    },
+    {
+      "code": "注3: 5QI实例化5QI1-n,默认实例化5QI1-9。针对5QI超出1-9范围的实例化为扩展5QI，上报规则参考《数据上报的统一要求》第8条",
+      "name": "nan"
+    },
+    {
+      "code": "注4：O 列用于小小基站（NanoCell 是否需要上报，值为“否”表示不需要上报改指标）",
+      "name": "nan"
+    },
+    {
+      "code": "注5：P列瞬时指标查询： 周期采样的指标为查询时刻该采样周期对应值，如平均用户数，1秒采样一次在线用户数，瞬时上报为查询时刻对应1s采样时刻在线用户数。",
+      "name": "nan"
+    },
+    {
+      "code": "注6：增加Q列用于NSA 和 SA 双模小区场景下的统计和上报说明。",
+      "name": "nan"
+    },
+    {
+      "code": "注7：本规范共享场景参考NRM。",
+      "name": "nan"
+    },
+    {
+      "code": "注8：分区间统计的伪测量，一个index表示一个区间，直接用数字表示，Index不表示一个区间的则用英文字母加数字，0有具体物理含义从0开始（如MCS、RB），其他从1开始。",
+      "name": "nan"
+    },
+    {
+      "code": "注9：如果某一类配置对象不存在，对应的PM文件不上报。",
+      "name": "nan"
+    },
+    {
+      "code": "注10: 由于支持上报统计切片比业务切片配置的小，因此切片指标以该切片配置了测量上报时才进行上报,减少无效数据上报,切片相关指标,整个切片没有业务(比如该切片没有存活的QosFlow 即：切片Flow建立请求数 为0 且切片RRC连接最大数为0 或切片Flow对应的DRB 为空。 注：CU/DU侧实际存在时间差，CU/DU侧以各自的无业务规则进行识别）,该切片不用上报。",
+      "name": "nan"
+    }
+  ],
+  "indicators": {
+    "HA": [
+      {
+        "code": "GNBHA01",
+        "name_en": "RRU.RachPreambleRcvd",
+        "name_cn": "前导码接收数",
+        "importance": "B",
+        "definition": "统计周期内，同一小区中所有物理随机接入信道所接收到的前导码数量,按照Dedicated统计。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHA02",
+        "name_en": "RRU.CellUnavailableTime",
+        "name_cn": "小区不可用总时长",
+        "importance": "B",
+        "definition": "统计周期内，当gNodeB由于某种原因，小区退服时，记录退服时长。",
+        "unit": "秒"
+      },
+      {
+        "code": "GNBHA03",
+        "name_en": "RRU.PdcchCceAvail",
+        "name_cn": "PDCCH信道CCE可用个数",
+        "importance": "A",
+        "definition": "统计物理下行控制信道（PDCCH）可用的CCE个数。",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHA04",
+        "name_en": "RRU.DtchPrbAssnUl",
+        "name_cn": "上行业务信道占用PRB数",
+        "importance": "A",
+        "definition": "统计周期内PUSCH中DRB所占用的物理资源块（PRB）总数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHA05",
+        "name_en": "RRU.DtchPrbAssnDl",
+        "name_cn": "下行业务信道占用PRB数",
+        "importance": "A",
+        "definition": "统计周期内PDSCH中DRB所占用的物理资源块（PRB）总数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHA06",
+        "name_en": "RRU.PuschPrbAssn",
+        "name_cn": "上行PUSCH PRB占用数",
+        "importance": "A",
+        "definition": "统计上行PUSCH所有（含用户面和控制面）的物理资源块数（PRB）占用数，\r即为统计周期内上行PUSCH占用的所有的物理资源块（PRB）数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHA07",
+        "name_en": "RRU.PdschPrbAssn",
+        "name_cn": "下行PDSCH PRB占用数",
+        "importance": "A",
+        "definition": "统计下行PDSCH所有（含用户面和控制面）的物理资源块数（PRB）占用数。\r即为统计周期内下行PDSCH占用的所有的物理资源块（PRB）数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHA08",
+        "name_en": "RRU.PdcchCceUtil",
+        "name_cn": "PDCCH信道CCE占用个数",
+        "importance": "A",
+        "definition": "统计物理下行控制信道（PDCCH）占用的（不是分配的）CCE个数。并按照承载上行DCI和下行DCI分别进行统计。\n公共信息占用的CSS（即公共搜索空间的CCE）单独统计(注：如一次调度使用了CCE聚合",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHA09",
+        "name_en": "RRU.PuschPrbTot",
+        "name_cn": "上行PUSCH PRB可用数",
+        "importance": "A",
+        "definition": "统计上行PUSCH所有的物理资源块数（PRB）可用数。\r即为统计周期内上行PUSCH可用的物理资源块（PRB）数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHA10",
+        "name_en": "RRU.PdschPrbTot",
+        "name_cn": "下行PDSCH PRB可用数",
+        "importance": "A",
+        "definition": "统计下行PDSCH所有的物理资源块数（PRB）可用数。\r即为统计周期内下行PDSCH可用的物理资源块（PRB）数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHA11",
+        "name_en": "RRU.TotalPrbUl64QAM._Rank._Mcs",
+        "name_cn": "每RANK上行MCS为0-28阶使用的RB个数（64QAM）",
+        "importance": "B",
+        "definition": "区分RANK按照MCS0~28分别统计周期内上行PUSCH占用的物理资源块（PRB）数。\n注：伪测量实例化格式要求：伪测量参数名_对应伪测量值，其中参数名采用大驼峰方式，具体举例如下：RRU.Tota",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHA12",
+        "name_en": "RRU.TotalPrbDl64QAM._Rank._Mcs",
+        "name_cn": "每RANK下行MCS为0-28阶使用的RB个数（64QAM）",
+        "importance": "B",
+        "definition": "区分RANK按照MCS0~28分别统计周期内下行PDSCH占用的物理资源块（PRB）数。\n注：伪测量实例化格式要求：伪测量参数名_对应伪测量值，其中参数名采用大驼峰方式，具体举例如下：RRU.Tota",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHA13",
+        "name_en": "RRU.TotalPrbUl256QAM._Rank._Mcs",
+        "name_cn": "每RANK上行MCS为0-27阶使用的RB个数（256QAM）",
+        "importance": "CB",
+        "definition": "区分RANK按照MCS0~27分别统计周期内上行PUSCH占用的物理资源块（PRB）数。\n注：伪测量实例化格式要求：伪测量参数名_对应伪测量值，其中参数名采用大驼峰方式，具体举例如下：RRU.Tota",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHA14",
+        "name_en": "RRU.TotalPrbDl256QAM._Rank._Mcs",
+        "name_cn": "每RANK下行MCS为0-27阶使用的RB个数（256QAM）",
+        "importance": "B",
+        "definition": "区分RANK按照MCS0~27分别统计周期内下行PDSCH占用的物理资源块（PRB）数。\n注：伪测量实例化格式要求：伪测量参数名_对应伪测量值，其中参数名采用大驼峰方式，具体举例如下：RRU.Tota",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHA15",
+        "name_en": "RRU.TotalPrbUl64QAMLowSE._Rank._Mcs",
+        "name_cn": "每RANK上行MCS为0-28阶使用的RB个数（64QAMLowSE）",
+        "importance": "CB",
+        "definition": "区分RANK按照MCS0~28分别统计周期内上行PUSCH占用的物理资源块（PRB）数。\n注：伪测量实例化格式要求：伪测量参数名_对应伪测量值，其中参数名采用大驼峰方式，具体举例如下：RRU.Tota",
+        "unit": "个\r"
+      }
+    ],
+    "HC": [
+      {
+        "code": "GNBHC01",
+        "name_en": "MAC.NbrTbUl",
+        "name_cn": "上行传输TB数",
+        "importance": "A",
+        "definition": "统计小区上行传输的TB(Transport Block)数，包括重传的TB。",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHC02",
+        "name_en": "MAC.NbrInitTbUl",
+        "name_cn": "上行传输初始TB数",
+        "importance": "A",
+        "definition": "统计小区上行传输的初始TB(Transport Block)数。初始TB相对于重传TB而言，即第一次提交传输的TB。并区分调制方式分别统计。",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHC03",
+        "name_en": "MAC.NbrSuccInitTbUl",
+        "name_cn": "上行成功传输初始TB数",
+        "importance": "B",
+        "definition": "统计小区上行成功接收到的初始TB，并区分调制方式式分别进行统计。",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHC04",
+        "name_en": "MAC.NbrResErrTbUl",
+        "name_cn": "上行残留错误TB数",
+        "importance": "A",
+        "definition": "统计上行初始传输的TB中，经过HARQ重传之后仍然传输错误的数目",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHC05",
+        "name_en": "MAC.NbrTbDl",
+        "name_cn": "下行传输TB数",
+        "importance": "A",
+        "definition": "统计小区下行传输的TB(Transport Block)数，包括重传的TB。\n分开统计SU-MIMO Rank1、Rank2、Rank3、Rank4模式下的小区下行传输的TB数。",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHC06",
+        "name_en": "MAC.NbrInitTbDl",
+        "name_cn": "下行传输初始TB数",
+        "importance": "A",
+        "definition": "统计小区下行传输的初始TB(Transport Block)数（含SRB和DRB）。初始TB相对于重传TB而言，即第一次提交传输的TB。按调制方式分别进行统计。",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHC07",
+        "name_en": "MAC.NbrSuccInitTbDl",
+        "name_cn": "下行成功传输初始TB数",
+        "importance": "B",
+        "definition": "统计小区下行成功发送的初始TB，并区分调制方式式分别进行统计。",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHC08",
+        "name_en": "MAC.NbrResErrTbDl",
+        "name_cn": "下行残留错误TB数",
+        "importance": "A",
+        "definition": "统计下行初始传输的TB中，经过HARQ重传之后仍然传输错误的数目",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHC09",
+        "name_en": "MAC.NbrRbUlMassiveMimoSM._Stream",
+        "name_cn": "MassiveMIMO上行传输RB数",
+        "importance": "B",
+        "definition": "按不同流数统计MassiveMIMO上行传输的RB(Radio Block)数，包括重传RB(不包含MSG 5 之前传输的RB）。（如：支持16流的，统计非空分复用的RB数～统计16流空分复用的RB数",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHC10",
+        "name_en": "MAC.NbrRbDlMassiveMimoSM._Stream",
+        "name_cn": "MassiveMIMO下行传输RB数",
+        "importance": "B",
+        "definition": "按不同流数统计MassiveMIMO下行传输的RB(Radio Block)数，包括重传RB(不包含MSG 5 之前传输的RB）。（如：支持16流的，统计非空分复用的RB数～统计16流空分复用的RB数",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHC11",
+        "name_en": "MAC.OctUlMassiveMimoSM._Stream",
+        "name_cn": "MassiveMIMO上行传输成功字节数",
+        "importance": "B",
+        "definition": "按不同流数统计MassiveMIMO上行MAC层传输成功的字节数.（如：支持16流的，统计非空分复用MAC层传输成功的字节数～统计16流空分复用的MAC层传输成功的字节数。）\n注1：对于非配对（MU-",
+        "unit": "KByte\r"
+      },
+      {
+        "code": "GNBHC12",
+        "name_en": "MAC.OctDlMassiveMimoSM._Stream",
+        "name_cn": "MassiveMIMO下行传输成功字节数",
+        "importance": "B",
+        "definition": "按不同流数统计MassiveMIMO下行MAC层传输成功的字节数.（如：支持16流的，统计非空分复用MAC层传输成功的字节数～统计16流空分复用的MAC层传输成功的字节数。）\n注1：对于非配对（MU-",
+        "unit": "KByte\r"
+      },
+      {
+        "code": "GNBHC13",
+        "name_en": "MAC.CpOctUl",
+        "name_cn": "小区MAC层传输成功的上行流量",
+        "importance": "B",
+        "definition": "在测量周期内，累加小区通过空口成功接收的MAC层字节数，即小区MAC层从下层接收到的字节数。",
+        "unit": "KByte\r"
+      },
+      {
+        "code": "GNBHC14",
+        "name_en": "MAC.CpOctDl",
+        "name_cn": "小区MAC层传输成功的下行流量",
+        "importance": "B",
+        "definition": "在测量周期内，累加小区MAC层通过空口成功发送的字节数，统计小区MAC层向下层发送的字节数。成功发送定义为收到UE对MAC层数据的最后一个分片的ACK确认。",
+        "unit": "KByte\r"
+      },
+      {
+        "code": "GNBHC15",
+        "name_en": "MAC.NbrRbUlSuMimo._Rank",
+        "name_cn": "SU-MIMO上行传输RB数",
+        "importance": "B",
+        "definition": "按不同RANK(RANK 1,RANK2)统计UE SU-MIMO上行传输所有的RB(Radio Block)数（包含SRB、DRB调度的RB，不包含SRS（sounding）、PRACH、PUCCH",
+        "unit": "个"
+      }
+    ],
+    "HK": [
+      {
+        "code": "GNBHK01",
+        "name_en": "RRC.AttConnEstab",
+        "name_cn": "RRC连接建立请求次数",
+        "importance": "A",
+        "definition": "统计RRC连接建立请求的次数（含重发），并区分建立原因（寻呼触发、信令触发、数据触发、语音触发和视频触发等）分别统计。含重发是指RRC 层检测成功一次就累加一次。针对RedCAP终端单独统计。",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBHK02",
+        "name_en": "RRC.SuccConnEstab",
+        "name_cn": "RRC连接建立成功次数",
+        "importance": "A",
+        "definition": "统计RRC连接建立成功的次数，并区分建立原因（寻呼触发、信令触发、数据触发、语音触发和视频触发等）分别统计。针对RedCAP终端单独统计。",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBHK03",
+        "name_en": "RRC.AttConnReestab",
+        "name_cn": "RRC连接重建请求次数",
+        "importance": "A",
+        "definition": "统计RRC连接重建请求次数（不计重发）,并区分重建原因分别统计。\r",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBHK04",
+        "name_en": "RRC.SuccConnReestab",
+        "name_cn": "RRC连接重建成功次数",
+        "importance": "A",
+        "definition": "统计RRC连接重建成功的次数。",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBHK05",
+        "name_en": "RRC.ConnMean",
+        "name_cn": "RRC连接平均数",
+        "importance": "CB",
+        "definition": "统计同时存在的RRC连接平均数量。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHK06",
+        "name_en": "RRC.ConnMax",
+        "name_cn": "RRC连接最大数",
+        "importance": "CB",
+        "definition": "统计同时存在的RRC连接最大数量。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHK07",
+        "name_en": "RRC.ConfigMeanNbrPCellDl",
+        "name_cn": "以本小区为PCell的下行CA平均配置UE数",
+        "importance": "CA",
+        "definition": "在小区范围内，定期采样所有UE（已连接），统计得到此时将本小区做为Pcell的下行CA配置UE数，采样周期不超过1秒，在统计周期末求平均。",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHK08",
+        "name_en": "RRC.ConfigMeanNbrPCellUl",
+        "name_cn": "以本小区为PCell的上行CA平均配置UE数",
+        "importance": "CA",
+        "definition": "在小区范围内，定期采样所有UE（已连接），统计得到此时将本小区做为Pcell的上行CA配置UE数，采样周期不超过1秒，在统计周期末求平均。",
+        "unit": "个"
+      },
+      {
+        "code": "GNBHK09",
+        "name_en": "RRC.RedirectToLTE",
+        "name_cn": "RRC重定向到LTE次数",
+        "importance": "CB",
+        "definition": "统计重定向到LTE的RRC连接释放次数",
+        "unit": "次"
+      },
+      {
+        "code": "GNBHK10",
+        "name_en": "RRC.AttConnResume",
+        "name_cn": "resume请求次数",
+        "importance": "CA",
+        "definition": "统计resume 请求次数,并区分resume请求原因分别统计。",
+        "unit": "次"
+      },
+      {
+        "code": "GNBHK11",
+        "name_en": "RRC.SuccConnResume",
+        "name_cn": "Resume成功次数",
+        "importance": "CA",
+        "definition": "统计RRC resume成功的次数,并区分resume请求原因分别统计。",
+        "unit": "次"
+      },
+      {
+        "code": "GNBHK12",
+        "name_en": "RRC.ConnInactiveUeMean",
+        "name_cn": "处于INACTIVE状态的RRC连接平均数",
+        "importance": "CB",
+        "definition": "统计同时处于INACTIVE 状态RRC连接平均数量。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHK13",
+        "name_en": "RRC.ConnInactiveUeMax",
+        "name_cn": "处于INACTIVE状态的RRC连接最大数",
+        "importance": "CB",
+        "definition": "统计同时处于INACTIVE  状态RRC连接最大数量。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHK14",
+        "name_en": "RRC.NbrMeanActiveUE",
+        "name_cn": "平均激活UE数",
+        "importance": "B",
+        "definition": "在采样时刻统计激活UE个数，激活UE指存在RLC或MAC层有上行或下行缓存数据。在统计周期末，计算采样值的平均值。采样间隔不超过0.1秒。针对RedCAP终端单独统计。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBHK15",
+        "name_en": "RRC.NbrMaxActiveUE",
+        "name_cn": "最大激活UE数",
+        "importance": "B",
+        "definition": "在采样时刻统计激活UE个数，激活UE指存在RLC或MAC层有上行或下行缓存数据。在统计周期末，计算采样值的最大值。采样间隔不超过0.1秒。针对RedCAP终端单独统计。",
+        "unit": "个\r"
+      }
+    ]
+  }
+}

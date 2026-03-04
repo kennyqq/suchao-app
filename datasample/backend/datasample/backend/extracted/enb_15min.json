@@ -1,0 +1,172 @@
+{
+  "file_name": "2-eNB网元统计数据需求规范-PM(V4.4)",
+  "description": "4G基站KPI指标，15分钟粒度，有上千个",
+  "sheet_count": 25,
+  "index": [
+    {
+      "code": "HA",
+      "name": "RRC连接性能测量数据"
+    },
+    {
+      "code": "HB",
+      "name": "E-RAB性能测量数据"
+    },
+    {
+      "code": "HC",
+      "name": "上下文统性能测量数据"
+    },
+    {
+      "code": "HD",
+      "name": "系统内分组域切换性能测量数据"
+    },
+    {
+      "code": "HE",
+      "name": "系统间分组域切换性能测量数据"
+    },
+    {
+      "code": "HF",
+      "name": "基于EutranRelation的切换测量数据"
+    },
+    {
+      "code": "HG",
+      "name": "小区寻呼性能测量数据"
+    },
+    {
+      "code": "HH",
+      "name": "小区无线承载相关测量数据"
+    },
+    {
+      "code": "HI",
+      "name": "无线资源利用率相关测量数据"
+    },
+    {
+      "code": "HJ",
+      "name": "SCTP偶联性能测量数据"
+    },
+    {
+      "code": "HK",
+      "name": "以太网端口性能测量数据"
+    },
+    {
+      "code": "HL",
+      "name": "S1接口流量测量数据"
+    },
+    {
+      "code": "HM",
+      "name": "MAC层性能测量数据"
+    },
+    {
+      "code": "HN",
+      "name": "小区无线信道统计数据"
+    },
+    {
+      "code": "HO",
+      "name": "ENB硬件处理负荷测量"
+    },
+    {
+      "code": "HP",
+      "name": "小区发射功率测量"
+    },
+    {
+      "code": "HQ",
+      "name": "RRU发射功率测量"
+    },
+    {
+      "code": "HR",
+      "name": "基于GSMRelation的切换测量数据"
+    },
+    {
+      "code": "HS",
+      "name": "S1接口信令测量"
+    },
+    {
+      "code": "HT",
+      "name": "子小区测量"
+    },
+    {
+      "code": "HU",
+      "name": "能耗相关测量"
+    },
+    {
+      "code": "HV",
+      "name": "区分PLMN网络共享测量数据"
+    },
+    {
+      "code": "合计",
+      "name": "nan"
+    },
+    {
+      "code": "测量族",
+      "name": "测量族说明"
+    },
+    {
+      "code": "RRC",
+      "name": "RRC连接相关性能测量"
+    },
+    {
+      "code": "ERAB",
+      "name": "E-RAB相关性能测量"
+    },
+    {
+      "code": "CONTEXT",
+      "name": "UE Context相关性能测量"
+    },
+    {
+      "code": "HO",
+      "name": "系统内切换相关性能测量"
+    },
+    {
+      "code": "IRATHO",
+      "name": "系统间切换相关性能测量"
+    },
+    {
+      "code": "PAG",
+      "name": "小区寻呼相关性能测量"
+    },
+    {
+      "code": "PDCP",
+      "name": "PDCP层相关性能测量"
+    },
+    {
+      "code": "RRU",
+      "name": "无线资源利用率相关性能测量"
+    },
+    {
+      "code": "SIG",
+      "name": "通用信令性能测量"
+    },
+    {
+      "code": "EQPT",
+      "name": "网元物理资源性能测量"
+    },
+    {
+      "code": "S1",
+      "name": "S1接口性能测量"
+    },
+    {
+      "code": "PHY",
+      "name": "小区物理层相关性能测量"
+    },
+    {
+      "code": "S1SIG",
+      "name": "S1接口信令测量"
+    },
+    {
+      "code": "MAC",
+      "name": "MAC层相关性能测量"
+    },
+    {
+      "code": "EE",
+      "name": "能耗相关统计"
+    },
+    {
+      "code": "注1：伪测量的命名规则为：\n1）._Qci对应子测量项，命名为“1\"～\"9\"数字，并可递加扩展，如ENBHB01\"每QCI平均E-RAB数\"子项的名称为ERAB.NbrMeanEstab.1～ERAB.NbrMeanEstab.9；  对于备注增加了“支持扩展QCI”的测量项：允许各省在QCI10～256选定其中5个进行统计。对于该测量，不区分QCI时统计的是所有QCI统计结果的总和（即：包含QCI1~QCI9与扩展QCI的总和）。\n2）._Cause对应子测量项，命名为以“Cause”开头，接仅由大小写字母、数字和“_”组成的字符串(例如为3GPP或厂家私有原因英文字符串缩写),不能包含空格；\n3）._PRB对应子测量项，命名为英文字母或数字开头的字符串（仅由大小写字母、数字和“_”组成）。\n4）._Stream对应子测量项，命名为英文字母或数字开头的字符串（仅由大小写字母、数字和“_”组成）。\n5）._Mcs对应MCS 0-28阶，命名为“0\"～\"28\"数字，如ENBHI40、ENBHI41\n6）._PeriodSrs对应SRS周期，命名为{2, 5, 10, 20, 40, 80, 160, 320}数字，如ENBHI42、ENBHI43",
+      "name": "nan"
+    },
+    {
+      "code": "注2：PM的空间粒度里写了TDD/FDD的，则均需要上报，HM14～21写了只针对TDD，则FDD无需上报",
+      "name": "nan"
+    }
+  ],
+  "indicators": {}
+}

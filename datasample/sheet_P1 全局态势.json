@@ -1,0 +1,44 @@
+[
+  {
+    "UI 模块 / 展现形式": "5G-A 资产大盘",
+    "前端所需字段 (UI Field)": "count_5g, count_smartboard, count_3cc, count_vehicle",
+    "依赖的后端底表 (Source Table)": "01_Master_Cell_Dim",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "count_5g = 统计 cell_type == 'macro' 的数量。count_smartboard = 统计 has_smart_board == true 的数量。count_vehicle = 统计 cell_type == 'vehicle' 的数量。"
+  },
+  {
+    "UI 模块 / 展现形式": "3D 地图热力图",
+    "前端所需字段 (UI Field)": "heatmap_points",
+    "依赖的后端底表 (Source Table)": "01_Master_Cell_Dim + 03_Master_Cell_Perf_Realtime",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "联表映射：拿着03表的 cell_id 去01表查 lng, lat。L7 渲染：将 rrc_users 映射为热力图的 weight 和 size。"
+  },
+  {
+    "UI 模块 / 展现形式": "PRB 负载排名",
+    "前端所需字段 (UI Field)": "prb_usage_rate",
+    "依赖的后端底表 (Source Table)": "03_Master_Cell_Perf_Realtime",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "rate = prb_used / prb_total排序：按 rate 降序排 Top 5。👉 UI联动：rate > 0.8 进度条变红。"
+  },
+  {
+    "UI 模块 / 展现形式": "KQI 业务指标",
+    "前端所需字段 (UI Field)": "kqi_trend_rate",
+    "依赖的后端底表 (Source Table)": "05_P1_Venue_KQI_Fact",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "rate = (metric_val - baseline_val) / baseline_val👉 UI联动：根据 rate 的正负，给数字前面加上 + 或 -，并上色。迷你折线图直接使用 history_trend 数组。"
+  },
+  {
+    "UI 模块 / 展现形式": "智能运维终端 (左)",
+    "前端所需字段 (UI Field)": "log_list",
+    "依赖的后端底表 (Source Table)": "06_P1_OAM_Event_Stream",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "过滤 event_type == 'log'，推入本地数组，前端定时器控制 DOM 向上滚动。"
+  },
+  {
+    "UI 模块 / 展现形式": "智能体告警监测 (右)",
+    "前端所需字段 (UI Field)": "alarm_list",
+    "依赖的后端底表 (Source Table)": "06_P1_OAM_Event_Stream",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "过滤 event_type == 'alarm'。按 level 排序（1排最前）。👉 相对时间：Math.floor((Date.now() - timestamp) / 60000) + '分钟前'。"
+  },
+  {
+    "UI 模块 / 展现形式": "地图 3D 告警呼吸灯",
+    "前端所需字段 (UI Field)": "alarm_markers",
+    "依赖的后端底表 (Source Table)": "同上 06 + 01 表",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "如果收到的 alarm 带有 cell_id，立即查 01 表拿到经纬度，在 L7 Scene 中增加一个带 animate 波纹效果的红色 PointLayer。"
+  }
+]

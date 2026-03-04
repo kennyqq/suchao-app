@@ -1,0 +1,371 @@
+{
+  "file_name": "gNB北向接口性能测量数据规范（1分钟）",
+  "description": "5G基站KPI指标，1分钟粒度",
+  "sheet_count": 13,
+  "index": [
+    {
+      "code": "OA",
+      "name": "RRC连接相关统计"
+    },
+    {
+      "code": "OB",
+      "name": "QoS Flow相关统计"
+    },
+    {
+      "code": "OC",
+      "name": "上下文相关统计"
+    },
+    {
+      "code": "OD",
+      "name": "系统内切换相关统计"
+    },
+    {
+      "code": "OE",
+      "name": "RLC层相关测量"
+    },
+    {
+      "code": "OF",
+      "name": "PHY层相关测量"
+    },
+    {
+      "code": "OG",
+      "name": "NG口信令情况相关统计"
+    },
+    {
+      "code": "OH",
+      "name": "异系统切换相关统计"
+    },
+    {
+      "code": "OI",
+      "name": "小区无线信道统计数据"
+    },
+    {
+      "code": "OJ",
+      "name": "MAC层性能测量数据"
+    }
+  ],
+  "indicators": {
+    "数据上报的统一要求": [],
+    "OA": [
+      {
+        "code": "GNBOA01",
+        "name_en": "RRC.ConnMax",
+        "name_cn": "RRC连接最大数",
+        "definition": "统计同时存在的RRC连接最大数量。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOA02",
+        "name_en": "RRC.AttConnEstab",
+        "name_cn": "RRC连接建立请求次数",
+        "definition": "统计RRC连接建立请求的次数（含重发）。含重发是指RRC 层检测成功一次就累加一次。",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBOA03",
+        "name_en": "RRC.SuccConnEstab",
+        "name_cn": "RRC连接建立成功次数",
+        "definition": "统计RRC连接建立成功的次数。",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBOA04",
+        "name_en": "RRC.SuccConnReestab.NonSrccell",
+        "name_cn": "RRC连接重建成功次数(非源侧小区)",
+        "definition": "统计RRC连接重建成功的次数。",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBOA05",
+        "name_en": "RRC.SuccConnResume",
+        "name_cn": "Resume成功次数",
+        "definition": "统计RRC resume成功的次数。",
+        "unit": "次"
+      }
+    ],
+    "OB": [
+      {
+        "code": "GNBOB01",
+        "name_en": "Flow.NbrAttEstab",
+        "name_cn": "Flow建立请求数",
+        "definition": "统计请求建立的Flow个数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOB02",
+        "name_en": "Flow.NbrSuccEstab",
+        "name_cn": "Flow建立成功数",
+        "definition": "统计Flow建立成功个数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOB03",
+        "name_en": "Flow.NbrReqRel.NonSrccellReest",
+        "name_cn": "非源侧重建立导致释放的Flow数",
+        "definition": "统计由于重建立到非源小区的本小区释放的Flow数。",
+        "unit": "个"
+      },
+      {
+        "code": "GNBOB04",
+        "name_en": "Flow.NbrAttEstab.VoNR",
+        "name_cn": "VoNR的Flow建立请求数",
+        "definition": "统计请求建立的VoNRFlow个数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOB05",
+        "name_en": "Flow.NbrSuccEstab.VoNR",
+        "name_cn": "VoNR的Flow建立成功数",
+        "definition": "统计VoNRFlow建立成功个数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOB06",
+        "name_en": "Flow.NbrReqRelGnb.1",
+        "name_cn": "VoNR的gNB请求释放的Flow数",
+        "definition": "按5QI1统计gNB请求释放或挂起的Flow个数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOB07",
+        "name_en": "Flow.NbrReqRelGnb.Normal.1",
+        "name_cn": "VoNR的正常的gNB请求释放的Flow数",
+        "definition": "5QI1统计gNB请求正常释放或挂起的Flow数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOB08",
+        "name_en": "Flow.HoAdmitFail.1",
+        "name_cn": "VoNR的切出接纳失败的Flow数",
+        "definition": "统计切出过程中，由于接纳失败导致未能成功切换的VoNR Flow数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOB09",
+        "name_en": "Flow.NbrLeft.1",
+        "name_cn": "VoNR的遗留Flow个数",
+        "definition": "统计本采集周期开始时已经存在的VONR的Flow个数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOB10",
+        "name_en": "Flow.NbrHoInc.1",
+        "name_cn": "VoNR切换入Flow数",
+        "definition": "统计小区切换入VoNRFlow个数。",
+        "unit": "个\r"
+      }
+    ],
+    "OC": [
+      {
+        "code": "GNBOC01",
+        "name_en": "CONTEXT.AttRelgNB",
+        "name_cn": "gNB请求释放上下文数",
+        "definition": "统计gNB发起的请求释放或挂起的上下文个数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOC02",
+        "name_en": "CONTEXT.AttRelgNB.Normal",
+        "name_cn": "正常的gNB请求释放上下文数",
+        "definition": "统计gNB发起的请求释放或挂起的上下文个数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOC03",
+        "name_en": "CONTEXT.SuccInitalSetup",
+        "name_cn": "初始上下文建立成功次数",
+        "definition": "统计初始上下文建立成功次数。\r",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOC04",
+        "name_en": "CONTEXT.NbrLeft",
+        "name_cn": "遗留上下文个数",
+        "definition": "统计本采集周期开始时已经存在RRC CONNECT状态的UE上下文个数。",
+        "unit": "个\r"
+      }
+    ],
+    "OD": [
+      {
+        "code": "GNBOD01",
+        "name_en": "HO.AttOutInterCuNG",
+        "name_cn": "gNB间NG切换出准备请求次数",
+        "definition": "统计gNB间NG接口的切换出请求次数。",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBOD02",
+        "name_en": "HO.SuccOutInterCuNG",
+        "name_cn": "gNB间NG切换出成功次数",
+        "definition": "统计gNB间通过NG接口的切换出的完成阶段成功结束的次数。\r\n。",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBOD03",
+        "name_en": "HO.AttOutInterCuXn",
+        "name_cn": "gNB间Xn切换出准备请求次数",
+        "definition": "统计gNB间通过Xn接口的切换出请求次数。",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBOD04",
+        "name_en": "HO.SuccOutInterCuXn",
+        "name_cn": "gNB间Xn切换出成功次数",
+        "definition": "统计gNB间通过Xn接口的切换出完成过程成功结束的次数。\n。",
+        "unit": "次\r"
+      }
+    ],
+    "OE": [
+      {
+        "code": "GNBOE01",
+        "name_en": "RLC.UpOctUl",
+        "name_cn": "小区上行RLC SDU接收字节数",
+        "definition": "统计小区的上行RLC层SDU接收字节数",
+        "unit": "KByte\r"
+      },
+      {
+        "code": "GNBOE02",
+        "name_en": "RLC.UpOctDl",
+        "name_cn": "小区下行RLC SDU发送字节数",
+        "definition": "统计小区下行RLC SDU发送字节数",
+        "unit": "KByte\r"
+      },
+      {
+        "code": "GNBOE03",
+        "name_en": "RLC.ThrpTimeUL",
+        "name_cn": "小区RLC层接收上行数据的业务总时长",
+        "definition": "统计小区的RLC层接收上行数据的业务总时长",
+        "unit": "ms\r"
+      },
+      {
+        "code": "GNBOE04",
+        "name_en": "RLC.ThrpTimeDL",
+        "name_cn": "小区RLC层发送下行数据的业务总时长",
+        "definition": "统计小区RLC层发送下行数据的业务总时长",
+        "unit": "ms\r"
+      },
+      {
+        "code": "GNBOE05",
+        "name_en": "RLC.UpLastTtiOctUl",
+        "name_cn": "小区用户面RLC SDU上行尾包字节数",
+        "definition": "统计小区用户面RLC SDU上行尾包字节数",
+        "unit": "KByte\r"
+      },
+      {
+        "code": "GNBOE06",
+        "name_en": "RLC.UpLastTtiOctDl",
+        "name_cn": "小区用户面RLC SDU下行尾包字节数",
+        "definition": "统计小区用户面RLC SDU下行尾包字节数",
+        "unit": "KByte\r"
+      }
+    ],
+    "OF": [
+      {
+        "code": "GNBOF01",
+        "name_en": "RRU.PrbAssnUl",
+        "name_cn": "小区上行PRB占用数",
+        "definition": "统计小区上行PRB占用数",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOF02",
+        "name_en": "RRU.PrbAssnDl",
+        "name_cn": "小区下行PRB占用数",
+        "definition": "统计小区下行PRB占用数",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOF03",
+        "name_en": "RRU.PrbTotUl",
+        "name_cn": "小区上行PRB可用数",
+        "definition": "统计小区上行PRB可用数。",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOF04",
+        "name_en": "RRU.PrbTotDl",
+        "name_cn": "小区下行PRB可用数",
+        "definition": "统计小区下行PRB可用数",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOF05",
+        "name_en": "RRU.DtchPrbAssnUl",
+        "name_cn": "上行业务信道占用PRB数",
+        "definition": "统计上行业务信道占用PRB数",
+        "unit": "个\r"
+      },
+      {
+        "code": "GNBOF06",
+        "name_en": "RRU.DtchPrbAssnDl",
+        "name_cn": "下行业务信道占用PRB数",
+        "definition": "统计下行业务信道占用PRB数",
+        "unit": "个\r"
+      }
+    ],
+    "OG": [
+      {
+        "code": "GNBOG01",
+        "name_en": "NGSIG.ConnEstabAtt",
+        "name_cn": "NG接口UE连接建立请求次数",
+        "definition": "统计从gNB到AMF的 NG接口UE相关逻辑信令连接建立请求次数。",
+        "unit": "次"
+      },
+      {
+        "code": "GNBOG02",
+        "name_en": "NGSIG.ConnEstabSucc",
+        "name_cn": "NG接口UE连接建立成功次数",
+        "definition": "统计从gNB到AMF的 NG接口UE相关逻辑信令连接建立成功次数。",
+        "unit": "次"
+      }
+    ],
+    "OH": [
+      {
+        "code": "GNBOH01",
+        "name_en": "IRATHO.SuccExecInc",
+        "name_cn": "LTE切换入成功次数",
+        "definition": "统计LTE切换入执行成功次数(EUTRAN->NG-RAN）。",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBOH02",
+        "name_en": "IRATHO.AttOutEutran.EpsFallBack",
+        "name_cn": "EpsFallBack切换至LTE准备请求次数",
+        "definition": "统计EpsFallBack切换出准备请求次数（NG-RAN->EUTRAN）。",
+        "unit": "次\r"
+      },
+      {
+        "code": "GNBOH03",
+        "name_en": "IRATHO.SuccOutEutran.EpsFallBack",
+        "name_cn": "EpsFallBack切换至LTE成功次数",
+        "definition": "统计EpsFallBack切换出执行成功次数（NG-RAN->EUTRAN）。",
+        "unit": "次\r"
+      }
+    ],
+    "OI": [
+      {
+        "code": "GNBOI01",
+        "name_en": "PHY.ULMeanNL",
+        "name_cn": "小区上行平均干扰电平",
+        "definition": "统计小区带宽内上行干扰的平均值。",
+        "unit": "dBm"
+      }
+    ],
+    "OJ": [
+      {
+        "code": "GNBOJ01",
+        "name_en": "MAC.CpOctUl",
+        "name_cn": "小区MAC层传输成功的上行流量",
+        "definition": "统计小区MAC层成功接收来自下层的字节数。",
+        "unit": "KByte\r"
+      },
+      {
+        "code": "GNBOJ02",
+        "name_en": "MAC.CpOctDl",
+        "name_cn": "小区MAC层传输成功的下行流量",
+        "definition": "统计小区MAC层向下层成功发送的字节数。成功发送定义为收到UE对MAC层数据的最后一个分片的ACK确认。",
+        "unit": "KByte\r"
+      }
+    ]
+  }
+}

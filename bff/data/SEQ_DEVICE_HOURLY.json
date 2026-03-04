@@ -1,0 +1,29 @@
+{
+  "tableName": "SEQ_DEVICE_HOURLY",
+  "description": "SEQ系统(共享层)-终端统计(小时粒度)",
+  "lastUpdate": "2024-03-04T20:00:00.000Z",
+  "records": [
+    {
+      "timestamp": 1709542800000,
+      "zone_name": "南看台F区",
+      "top_devices_json": [
+        { "model": "华为Mate60 Pro", "count": 8500, "capability": "5G" },
+        { "model": "iPhone 15 Pro Max", "count": 7200, "capability": "5G-A" },
+        { "model": "小米14", "count": 6800, "capability": "5G-A" },
+        { "model": "华为P60", "count": 5400, "capability": "5G" },
+        { "model": "iPhone 14", "count": 4900, "capability": "5G-A" }
+      ]
+    },
+    {
+      "timestamp": 1709542800000,
+      "zone_name": "西看台VIP",
+      "top_devices_json": [
+        { "model": "iPhone 15 Pro Max", "count": 5200, "capability": "5G-A" },
+        { "model": "华为Mate60 Pro", "count": 4800, "capability": "5G-A" },
+        { "model": "华为Mate X5", "count": 3200, "capability": "5G-A" },
+        { "model": "iPhone 15 Pro", "count": 2800, "capability": "5G-A" },
+        { "model": "三星S24 Ultra", "count": 1900, "capability": "5G-A" }
+      ]
+    }
+  ]
+}

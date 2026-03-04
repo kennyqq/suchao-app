@@ -1,9 +1,30 @@
+/**
+ * P2 中央舞台组件 - 场馆地图与交互热点
+ * 
+ * 改造点：
+ * 1. 接收data prop，绑定全局统计到TopInfoBar
+ * 2. 热点标记根据数据动态显示告警状态
+ */
+
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Crown, Wifi, Flame, UserCircle, Video, X, Phone, Mic } from 'lucide-react';
+import { Crown, Wifi, Flame, UserCircle, Video, X, Phone, Mic, Users } from 'lucide-react';
 
 // ========== 顶部悬浮数据条 ==========
-function TopInfoBar() {
+function TopInfoBar({ data }) {
+  // 防御性取值 - 从全局数据中提取统计信息
+  const userTiers = data?.userTiers || [];
+  const totalUsers = userTiers.reduce((sum, t) => sum + (t.value || 0), 0);
+  const vipUsers = userTiers.find(t => t.label?.includes('VIP'))?.value || 
+                   userTiers.find(t => t.label?.includes('场馆包'))?.value || 0;
+  
+  // 饱和度状态
+  const saturation = data?.capacity?.saturation || {};
+  const networkStatus = saturation.status === 'normal' ? '优' :
+                        saturation.status === 'warning' ? '良' : '一般';
+  const statusColor = saturation.status === 'normal' ? 'text-green-400' :
+                      saturation.status === 'warning' ? 'text-yellow-400' : 'text-red-400';
+
   return (
     <motion.div
       initial={{ y: -30, opacity: 0 }}
@@ -15,19 +36,19 @@ function TopInfoBar() {
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse" />
           <span className="text-white/60 text-sm">场馆人数</span>
-          <span className="text-xl font-din text-white">49,700</span>
+          <span className="text-xl font-din text-white">{totalUsers.toLocaleString()}</span>
         </div>
         <div className="w-px h-6 bg-white/20" />
         <div className="flex items-center gap-2">
           <Crown className="w-4 h-4 text-cyber-cyan" />
           <span className="text-white/60 text-sm">VIP专区</span>
-          <span className="text-xl font-din text-cyber-cyan">1,700</span>
+          <span className="text-xl font-din text-cyber-cyan">{vipUsers.toLocaleString()}</span>
         </div>
         <div className="w-px h-6 bg-white/20" />
         <div className="flex items-center gap-2">
           <Wifi className="w-4 h-4 text-green-400" />
           <span className="text-white/60 text-sm">网络状态</span>
-          <span className="text-xl font-din text-green-400">优</span>
+          <span className={`text-xl font-din ${statusColor}`}>{networkStatus}</span>
         </div>
       </div>
     </motion.div>
@@ -83,21 +104,31 @@ function HotspotMarker({ position, label, color, isAlert, onClick, hasVideo }) {
 }
 
 // ========== 南看台 F区画像弹窗 ==========
-function ZoneProfileModal({ isOpen, onClose }) {
+function ZoneProfileModal({ isOpen, onClose, data }) {
   if (!isOpen) return null;
 
+  // 防御性取值 - 使用传入的数据
+  const userTiers = data?.userTiers || [];
+  const saturation = data?.capacity?.saturation || {};
+  const totalUsers = userTiers.reduce((sum, t) => sum + (t.value || 0), 0);
+  const vipUsers = userTiers.find(t => t.label?.includes('VIP'))?.value || 0;
+  const goldUsers = userTiers.find(t => t.label?.includes('金卡') || t.label?.includes('全球通'))?.value || 0;
+  const normalUsers = totalUsers - vipUsers - goldUsers;
+
   const metrics = [
-    { label: '当前人数', value: '2,000', unit: '人', color: 'text-cyber-cyan' },
-    { label: '流量密度', value: '高', unit: '', color: 'text-yellow-400' },
-    { label: '拥塞度', value: '85', unit: '%', color: 'text-red-400' },
-    { label: '平均速率', value: '45', unit: 'Mbps', color: 'text-green-400' },
+    { label: '当前人数', value: totalUsers.toLocaleString(), unit: '人', color: 'text-cyber-cyan' },
+    { label: '容量使用', value: saturation.currentRate?.toFixed(1) || '--', unit: '%', color: saturation.currentRate > 80 ? 'text-red-400' : 'text-yellow-400' },
+    { label: '拥塞度', value: saturation.saturationLevel || '低', unit: '', color: saturation.saturationLevel === 'high' ? 'text-red-400' : 'text-green-400' },
+    { label: '剩余容量', value: (saturation.remaining || 0).toLocaleString(), unit: '人', color: 'text-green-400' },
   ];
 
   const users = [
-    { label: 'VIP用户', value: '45人 (2.3%)', color: 'text-yellow-400' },
-    { label: '全球通用户', value: '380人 (19%)', color: 'text-cyber-cyan' },
-    { label: '普通用户', value: '1,575人 (78.7%)', color: 'text-white/80' },
+    { label: 'VIP用户', value: `${vipUsers.toLocaleString()}人 (${((vipUsers/totalUsers)*100).toFixed(1)}%)`, color: 'text-yellow-400' },
+    { label: '全球通用户', value: `${goldUsers.toLocaleString()}人 (${((goldUsers/totalUsers)*100).toFixed(1)}%)`, color: 'text-cyber-cyan' },
+    { label: '普通用户', value: `${normalUsers.toLocaleString()}人 (${((normalUsers/totalUsers)*100).toFixed(1)}%)`, color: 'text-white/80' },
   ];
+
+  const isCongested = saturation.currentRate > 80;
 
   return (
     <AnimatePresence>
@@ -148,14 +179,16 @@ function ZoneProfileModal({ isOpen, onClose }) {
                   ))}
                 </div>
 
-                {/* 警告横幅 */}
-                <div className="bg-red-900/40 border border-red-500/50 rounded-lg p-3">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Flame className="w-4 h-4 text-red-400" />
-                    <span className="text-sm font-medium text-red-400">拥塞警告</span>
+                {/* 警告横幅 - 根据饱和度动态显示 */}
+                {isCongested && (
+                  <div className="bg-red-900/40 border border-red-500/50 rounded-lg p-3">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Flame className="w-4 h-4 text-red-400" />
+                      <span className="text-sm font-medium text-red-400">拥塞警告</span>
+                    </div>
+                    <p className="text-xs text-white/60">建议启动负载均衡策略</p>
                   </div>
-                  <p className="text-xs text-white/60">建议启动负载均衡策略</p>
-                </div>
+                )}
 
                 {/* 用户构成 */}
                 <div>
@@ -295,7 +328,7 @@ function VideoCallModal({ isOpen, onClose }) {
 }
 
 // ========== 主组件 ==========
-export default function CenterStage() {
+export default function CenterStage({ data }) {
   const [zoneModalOpen, setZoneModalOpen] = useState(false);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
@@ -312,8 +345,8 @@ export default function CenterStage() {
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      {/* 顶部悬浮数据条 */}
-      <TopInfoBar />
+      {/* 顶部悬浮数据条 - 绑定真实数据 */}
+      <TopInfoBar data={data} />
 
       {/* 交互热点层 - 严格对齐背景 */}
       <div className="absolute inset-0">
@@ -353,8 +386,8 @@ export default function CenterStage() {
       {/* 底部渐变遮罩 */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0B1A2A] to-transparent" />
 
-      {/* 弹窗 */}
-      <ZoneProfileModal isOpen={zoneModalOpen} onClose={() => setZoneModalOpen(false)} />
+      {/* 弹窗 - 传递数据 */}
+      <ZoneProfileModal isOpen={zoneModalOpen} onClose={() => setZoneModalOpen(false)} data={data} />
       <VideoCallModal isOpen={videoModalOpen} onClose={() => setVideoModalOpen(false)} />
     </div>
   );

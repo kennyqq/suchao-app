@@ -1,0 +1,33 @@
+{
+  "tableName": "DSP_KQI_15MIN",
+  "description": "无线智能板-KQI业务质量指标(15分钟粒度)",
+  "lastUpdate": "2024-03-04T20:00:00.000Z",
+  "records": [
+    {
+      "timestamp": 1709542800000,
+      "cell_id": "460-00-1122-01",
+      "zone_name": "南看台F区",
+      "ue_5ga_ratio": 32.5,
+      "dy_video_first_frame_delay_ms": 180,
+      "dy_video_freeze_rate": 2.3,
+      "wx_msg_success_rate": 99.2,
+      "wx_pic_ul_rate_mbps": 12.5,
+      "game_avg_delay_ms": 38,
+      "pay_scan_delay_ms": 450,
+      "live_hd_ul_peak_rate_mbps": 28.6
+    },
+    {
+      "timestamp": 1709542800000,
+      "cell_id": "460-00-1122-04",
+      "zone_name": "西看台VIP",
+      "ue_5ga_ratio": 59.2,
+      "dy_video_first_frame_delay_ms": 120,
+      "dy_video_freeze_rate": 0.8,
+      "wx_msg_success_rate": 99.8,
+      "wx_pic_ul_rate_mbps": 45.2,
+      "game_avg_delay_ms": 28,
+      "pay_scan_delay_ms": 180,
+      "live_hd_ul_peak_rate_mbps": 85.4
+    }
+  ]
+}

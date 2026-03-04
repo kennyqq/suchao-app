@@ -1,0 +1,26 @@
+[
+  {
+    "UI 模块 / 展现形式": "核心战报大数",
+    "前端所需字段 (UI Field)": "(全部直出)",
+    "依赖的后端底表 (Source Table)": "09_P3_Match_Summary_Fact",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "无需计算，直接将 peak_users、total_traffic_tb、package_orders 填入对应的金色大数字 UI 框体中。"
+  },
+  {
+    "UI 模块 / 展现形式": "智能体工作复盘",
+    "前端所需字段 (UI Field)": "(全部直出)",
+    "依赖的后端底表 (Source Table)": "10_P3_AI_Opt_Log_Fact",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "无需计算，直接提取各项优化拦截次数。"
+  },
+  {
+    "UI 模块 / 展现形式": "VIP 投诉核查",
+    "前端所需字段 (UI Field)": "vip_satisfaction",
+    "依赖的后端底表 (Source Table)": "11_P3_VIP_Care_Fact",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "rate = (vip_total_count - vip_complaints) / vip_total_count👉 UI联动：只要 complaints 为 0，就显示极其耀眼的 100% 满意度 金牌图标。"
+  },
+  {
+    "UI 模块 / 展现形式": "分层速率对比图",
+    "前端所需字段 (UI Field)": "radar_chart_data",
+    "依赖的后端底表 (Source Table)": "11_P3_VIP_Care_Fact",
+    "前端计算公式与处理逻辑 (Formula / JS Logic)": "将 vip_avg_speed 和 normal_avg_speed 组装成 ECharts 雷达图或柱状图的 Series 数据，用不同颜色凸显 VIP 的专享网络优势。"
+  }
+]
