@@ -163,13 +163,19 @@ function MacroOriginView() {
     }
   }, [timelineIndex]);
 
-  const data = currentData?.data;
+  // 🚑 致命调试：确认数据是否到达
+  console.log('====== 🚑 P0 真实接收到的状态数据 ======', currentData);
+  console.log('====== 🚑 timelineIndex 状态 ======', timelineIndex);
+  
+  // ⚠️ 注意：fetchP0Data 已经返回 result.data，所以 currentData 本身就是业务数据
+  // 不需要再 .data 解包！
+  const p0Data = currentData;
 
   return (
     <div className="w-full h-full flex flex-col overflow-hidden">
       <div className="flex-1 flex overflow-hidden pb-20">
         <LeftPanelP0 
-          p0Data={data} 
+          p0Data={p0Data} 
           isLoading={isLoading}
           currentTimePoint={currentTimePoint}
         />
@@ -189,14 +195,14 @@ function MacroOriginView() {
               <span className="corner-bl" />
               <span className="corner-br" />
               <MacroMigrationMap 
-                p0Data={data}
+                p0Data={p0Data}
                 isLoading={isLoading}
               />
             </div>
           </div>
         </div>
         <RightPanelP0 
-          p0Data={data}
+          p0Data={p0Data}
           isLoading={isLoading}
         />
       </div>
