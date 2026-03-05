@@ -1,0 +1,13 @@
+{
+  "tableName": "MANUAL_POI_BASELINE",
+  "description": "人工维护-POI点位基准客流配置(静态)",
+  "lastUpdate": "2024-03-01T00:00:00.000Z",
+  "records": [
+    { "poi_name": "南京南站", "poi_type": "transport", "baseline_total_traffic": 150000 },
+    { "poi_name": "禄口机场", "poi_type": "transport", "baseline_total_traffic": 80000 },
+    { "poi_name": "南京站", "poi_type": "transport", "baseline_total_traffic": 90000 },
+    { "poi_name": "夫子庙", "poi_type": "tourism", "baseline_visitor_traffic": 60000 },
+    { "poi_name": "中山陵", "poi_type": "tourism", "baseline_visitor_traffic": 50000 },
+    { "poi_name": "玄武湖", "poi_type": "tourism", "baseline_visitor_traffic": 45000 }
+  ]
+}

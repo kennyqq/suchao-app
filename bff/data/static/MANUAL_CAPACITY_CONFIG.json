@@ -1,0 +1,23 @@
+{
+  "tableName": "MANUAL_CAPACITY_CONFIG",
+  "description": "人工维护-区域容量配置表(静态)",
+  "lastUpdate": "2026-03-04T11:23:56.751Z",
+  "records": [
+    {
+      "zone_name": "南看台F区",
+      "cell_capacity_config": 62543
+    },
+    {
+      "zone_name": "北看台B区",
+      "cell_capacity_config": 62501
+    },
+    {
+      "zone_name": "东看台A区",
+      "cell_capacity_config": 61246
+    },
+    {
+      "zone_name": "西看台VIP",
+      "cell_capacity_config": 35000
+    }
+  ]
+}

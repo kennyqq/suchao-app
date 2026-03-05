@@ -1,0 +1,17 @@
+{
+  "code": 200,
+  "message": "success",
+  "timestamp": 1772678505193,
+  "data": {
+    "overview": {
+      "totalAttendance": 48500,
+      "networkQuality": "优",
+      "activeCells": 24,
+      "alarmCount": 2
+    },
+    "meta": {
+      "dataSource": "cron",
+      "lastUpdate": "2026-03-05T02:41:45.193Z"
+    }
+  }
+}

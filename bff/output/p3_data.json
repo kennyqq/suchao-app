@@ -1,0 +1,18 @@
+{
+  "code": 200,
+  "message": "success",
+  "timestamp": 1772678505267,
+  "data": {
+    "matchSummary": {
+      "matchId": "MATCH_20240304_001",
+      "matchName": "江苏vs山东",
+      "satisfactionScore": 92,
+      "totalIssues": 3,
+      "resolvedIssues": 2
+    },
+    "meta": {
+      "dataSource": "cron",
+      "lastUpdate": "2026-03-05T02:41:45.267Z"
+    }
+  }
+}

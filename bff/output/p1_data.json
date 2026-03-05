@@ -1,0 +1,17 @@
+{
+  "code": 200,
+  "message": "success",
+  "timestamp": 1772678505195,
+  "data": {
+    "globalStatus": {
+      "totalUsers": 48500,
+      "peakUsers": 52300,
+      "avgPrbUtil": 68.5,
+      "totalTrafficTb": 5.68
+    },
+    "meta": {
+      "dataSource": "cron",
+      "lastUpdate": "2026-03-05T02:41:45.195Z"
+    }
+  }
+}

@@ -11,8 +11,10 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 
 // 导入路由
+const p0Routes = require('./routes/p0');
 const p2Routes = require('./routes/p2');
 
 const app = express();
@@ -51,6 +53,9 @@ app.get('/health', (req, res) => {
 });
 
 // ===== API路由注册 =====
+
+// P0 宏观溯源视图路由
+app.use('/api/v1/p0', p0Routes);
 
 // P2 场内微观视图路由
 app.use('/api/v1/p2', p2Routes);

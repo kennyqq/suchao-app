@@ -1,0 +1,71 @@
+{
+  "tableName": "SEQ_USER_PROFILE_DAILY",
+  "description": "SEQ系统(共享层)-用户画像日统计(静态)",
+  "lastUpdate": "2026-03-04T11:23:56.751Z",
+  "records": [
+    {
+      "date": "2026-03-04",
+      "zone_name": "南看台F区",
+      "total_subscribers": 46329,
+      "vip_subscribers": 2922,
+      "gold_card_ratio": 15.4,
+      "silver_card_ratio": 23.7,
+      "normal_ratio": 62.7,
+      "avg_age": 36,
+      "top_app": [
+        "微信",
+        "抖音",
+        "王者荣耀",
+        "支付宝"
+      ]
+    },
+    {
+      "date": "2026-03-04",
+      "zone_name": "北看台B区",
+      "total_subscribers": 47791,
+      "vip_subscribers": 2972,
+      "gold_card_ratio": 19.3,
+      "silver_card_ratio": 23.3,
+      "normal_ratio": 64,
+      "avg_age": 38,
+      "top_app": [
+        "微信",
+        "抖音",
+        "王者荣耀",
+        "支付宝"
+      ]
+    },
+    {
+      "date": "2026-03-04",
+      "zone_name": "东看台A区",
+      "total_subscribers": 51179,
+      "vip_subscribers": 2560,
+      "gold_card_ratio": 18.4,
+      "silver_card_ratio": 21.1,
+      "normal_ratio": 63.5,
+      "avg_age": 30,
+      "top_app": [
+        "微信",
+        "抖音",
+        "王者荣耀",
+        "支付宝"
+      ]
+    },
+    {
+      "date": "2026-03-04",
+      "zone_name": "西看台VIP",
+      "total_subscribers": 33492,
+      "vip_subscribers": 19594,
+      "gold_card_ratio": 18,
+      "silver_card_ratio": 23.1,
+      "normal_ratio": 61.4,
+      "avg_age": 33,
+      "top_app": [
+        "微信",
+        "抖音",
+        "王者荣耀",
+        "支付宝"
+      ]
+    }
+  ]
+}

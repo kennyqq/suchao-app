@@ -1,0 +1,6727 @@
+{
+  "tableName": "SEQ_USER_HOURLY",
+  "description": "SEQ系统(共享层)-用户行为小时统计(小时粒度)",
+  "lastUpdate": "2026-03-04T11:23:56.751Z",
+  "records": [
+    {
+      "timestamp": 1772018636751,
+      "hour": 19,
+      "zone_name": "南看台F区",
+      "active_users": 40158,
+      "new_users": 1262,
+      "roaming_users": 3236,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1005.9869999999999
+    },
+    {
+      "timestamp": 1772018636751,
+      "hour": 19,
+      "zone_name": "北看台B区",
+      "active_users": 40176,
+      "new_users": 823,
+      "roaming_users": 4468,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1017.4079999999999
+    },
+    {
+      "timestamp": 1772018636751,
+      "hour": 19,
+      "zone_name": "东看台A区",
+      "active_users": 39721,
+      "new_users": 1256,
+      "roaming_users": 4161,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1432.3990000000001
+    },
+    {
+      "timestamp": 1772018636751,
+      "hour": 19,
+      "zone_name": "西看台VIP",
+      "active_users": 31680,
+      "new_users": 1218,
+      "roaming_users": 4717,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1195.4879999999998
+    },
+    {
+      "timestamp": 1772022236751,
+      "hour": 20,
+      "zone_name": "南看台F区",
+      "active_users": 42322,
+      "new_users": 1359,
+      "roaming_users": 9737,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 831.6
+    },
+    {
+      "timestamp": 1772022236751,
+      "hour": 20,
+      "zone_name": "北看台B区",
+      "active_users": 43650,
+      "new_users": 1161,
+      "roaming_users": 6525,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 977.9540000000001
+    },
+    {
+      "timestamp": 1772022236751,
+      "hour": 20,
+      "zone_name": "东看台A区",
+      "active_users": 40158,
+      "new_users": 1362,
+      "roaming_users": 9135,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 1102.8899999999999
+    },
+    {
+      "timestamp": 1772022236751,
+      "hour": 20,
+      "zone_name": "西看台VIP",
+      "active_users": 29925,
+      "new_users": 754,
+      "roaming_users": 5034,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 971.8499999999999
+    },
+    {
+      "timestamp": 1772025836751,
+      "hour": 21,
+      "zone_name": "南看台F区",
+      "active_users": 40050,
+      "new_users": 687,
+      "roaming_users": 4780,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 959.242
+    },
+    {
+      "timestamp": 1772025836751,
+      "hour": 21,
+      "zone_name": "北看台B区",
+      "active_users": 45315,
+      "new_users": 1271,
+      "roaming_users": 8576,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1373.13
+    },
+    {
+      "timestamp": 1772025836751,
+      "hour": 21,
+      "zone_name": "东看台A区",
+      "active_users": 35793,
+      "new_users": 419,
+      "roaming_users": 6947,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 666.1679999999999
+    },
+    {
+      "timestamp": 1772025836751,
+      "hour": 21,
+      "zone_name": "西看台VIP",
+      "active_users": 22356,
+      "new_users": 1162,
+      "roaming_users": 6929,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1142.91
+    },
+    {
+      "timestamp": 1772029436751,
+      "hour": 22,
+      "zone_name": "南看台F区",
+      "active_users": 33169,
+      "new_users": 913,
+      "roaming_users": 4088,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 674.4870000000001
+    },
+    {
+      "timestamp": 1772029436751,
+      "hour": 22,
+      "zone_name": "北看台B区",
+      "active_users": 43524,
+      "new_users": 882,
+      "roaming_users": 5883,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 1277.727
+    },
+    {
+      "timestamp": 1772029436751,
+      "hour": 22,
+      "zone_name": "东看台A区",
+      "active_users": 36432,
+      "new_users": 1116,
+      "roaming_users": 3423,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1121.2079999999999
+    },
+    {
+      "timestamp": 1772029436751,
+      "hour": 22,
+      "zone_name": "西看台VIP",
+      "active_users": 27360,
+      "new_users": 1054,
+      "roaming_users": 8870,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1039.7749999999999
+    },
+    {
+      "timestamp": 1772033036751,
+      "hour": 23,
+      "zone_name": "南看台F区",
+      "active_users": 23760,
+      "new_users": 394,
+      "roaming_users": 2208,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 472.46399999999994
+    },
+    {
+      "timestamp": 1772033036751,
+      "hour": 23,
+      "zone_name": "北看台B区",
+      "active_users": 18333,
+      "new_users": 418,
+      "roaming_users": 2372,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 590.226
+    },
+    {
+      "timestamp": 1772033036751,
+      "hour": 23,
+      "zone_name": "东看台A区",
+      "active_users": 21870,
+      "new_users": 388,
+      "roaming_users": 4003,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 506.835
+    },
+    {
+      "timestamp": 1772033036751,
+      "hour": 23,
+      "zone_name": "西看台VIP",
+      "active_users": 10098,
+      "new_users": 325,
+      "roaming_users": 1384,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 462.29800000000006
+    },
+    {
+      "timestamp": 1772036636751,
+      "hour": 0,
+      "zone_name": "南看台F区",
+      "active_users": 17496,
+      "new_users": 394,
+      "roaming_users": 3166,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 439.2
+    },
+    {
+      "timestamp": 1772036636751,
+      "hour": 0,
+      "zone_name": "北看台B区",
+      "active_users": 22270,
+      "new_users": 455,
+      "roaming_users": 1600,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 725.1510000000001
+    },
+    {
+      "timestamp": 1772036636751,
+      "hour": 0,
+      "zone_name": "东看台A区",
+      "active_users": 13923,
+      "new_users": 508,
+      "roaming_users": 1260,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 426.97200000000004
+    },
+    {
+      "timestamp": 1772036636751,
+      "hour": 0,
+      "zone_name": "西看台VIP",
+      "active_users": 12255,
+      "new_users": 336,
+      "roaming_users": 2484,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 597.8720000000001
+    },
+    {
+      "timestamp": 1772040236751,
+      "hour": 1,
+      "zone_name": "南看台F区",
+      "active_users": 17955,
+      "new_users": 622,
+      "roaming_users": 3966,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 430.626
+    },
+    {
+      "timestamp": 1772040236751,
+      "hour": 1,
+      "zone_name": "北看台B区",
+      "active_users": 15390,
+      "new_users": 324,
+      "roaming_users": 1321,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 356.29200000000003
+    },
+    {
+      "timestamp": 1772040236751,
+      "hour": 1,
+      "zone_name": "东看台A区",
+      "active_users": 17784,
+      "new_users": 294,
+      "roaming_users": 3764,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 454.594
+    },
+    {
+      "timestamp": 1772040236751,
+      "hour": 1,
+      "zone_name": "西看台VIP",
+      "active_users": 13536,
+      "new_users": 468,
+      "roaming_users": 3861,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 532.896
+    },
+    {
+      "timestamp": 1772043836751,
+      "hour": 2,
+      "zone_name": "南看台F区",
+      "active_users": 19440,
+      "new_users": 345,
+      "roaming_users": 4623,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 577.1999999999999
+    },
+    {
+      "timestamp": 1772043836751,
+      "hour": 2,
+      "zone_name": "北看台B区",
+      "active_users": 20506,
+      "new_users": 550,
+      "roaming_users": 4738,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 683.305
+    },
+    {
+      "timestamp": 1772043836751,
+      "hour": 2,
+      "zone_name": "东看台A区",
+      "active_users": 19404,
+      "new_users": 578,
+      "roaming_users": 1489,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 658.02
+    },
+    {
+      "timestamp": 1772043836751,
+      "hour": 2,
+      "zone_name": "西看台VIP",
+      "active_users": 14241,
+      "new_users": 659,
+      "roaming_users": 4326,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 533.638
+    },
+    {
+      "timestamp": 1772047436751,
+      "hour": 3,
+      "zone_name": "南看台F区",
+      "active_users": 19845,
+      "new_users": 604,
+      "roaming_users": 3644,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 554.568
+    },
+    {
+      "timestamp": 1772047436751,
+      "hour": 3,
+      "zone_name": "北看台B区",
+      "active_users": 16150,
+      "new_users": 239,
+      "roaming_users": 3488,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 448.736
+    },
+    {
+      "timestamp": 1772047436751,
+      "hour": 3,
+      "zone_name": "东看台A区",
+      "active_users": 15434,
+      "new_users": 467,
+      "roaming_users": 1931,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 353.71
+    },
+    {
+      "timestamp": 1772047436751,
+      "hour": 3,
+      "zone_name": "西看台VIP",
+      "active_users": 12972,
+      "new_users": 261,
+      "roaming_users": 3376,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 462.104
+    },
+    {
+      "timestamp": 1772051036751,
+      "hour": 4,
+      "zone_name": "南看台F区",
+      "active_users": 18216,
+      "new_users": 524,
+      "roaming_users": 4103,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 473.132
+    },
+    {
+      "timestamp": 1772051036751,
+      "hour": 4,
+      "zone_name": "北看台B区",
+      "active_users": 17640,
+      "new_users": 578,
+      "roaming_users": 2116,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 531.4
+    },
+    {
+      "timestamp": 1772051036751,
+      "hour": 4,
+      "zone_name": "东看台A区",
+      "active_users": 16064,
+      "new_users": 479,
+      "roaming_users": 1693,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 344.19
+    },
+    {
+      "timestamp": 1772051036751,
+      "hour": 4,
+      "zone_name": "西看台VIP",
+      "active_users": 11340,
+      "new_users": 252,
+      "roaming_users": 1119,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 488.19599999999997
+    },
+    {
+      "timestamp": 1772054636751,
+      "hour": 5,
+      "zone_name": "南看台F区",
+      "active_users": 16852,
+      "new_users": 217,
+      "roaming_users": 3252,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 370.65
+    },
+    {
+      "timestamp": 1772054636751,
+      "hour": 5,
+      "zone_name": "北看台B区",
+      "active_users": 19044,
+      "new_users": 541,
+      "roaming_users": 3259,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 507.10400000000004
+    },
+    {
+      "timestamp": 1772054636751,
+      "hour": 5,
+      "zone_name": "东看台A区",
+      "active_users": 19035,
+      "new_users": 674,
+      "roaming_users": 3790,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 589.6619999999999
+    },
+    {
+      "timestamp": 1772054636751,
+      "hour": 5,
+      "zone_name": "西看台VIP",
+      "active_users": 8280,
+      "new_users": 156,
+      "roaming_users": 1080,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 283.91999999999996
+    },
+    {
+      "timestamp": 1772058236751,
+      "hour": 6,
+      "zone_name": "南看台F区",
+      "active_users": 14256,
+      "new_users": 323,
+      "roaming_users": 2860,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 309.504
+    },
+    {
+      "timestamp": 1772058236751,
+      "hour": 6,
+      "zone_name": "北看台B区",
+      "active_users": 18720,
+      "new_users": 455,
+      "roaming_users": 3078,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 500.64
+    },
+    {
+      "timestamp": 1772058236751,
+      "hour": 6,
+      "zone_name": "东看台A区",
+      "active_users": 19080,
+      "new_users": 280,
+      "roaming_users": 2229,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 404.08000000000004
+    },
+    {
+      "timestamp": 1772058236751,
+      "hour": 6,
+      "zone_name": "西看台VIP",
+      "active_users": 13818,
+      "new_users": 458,
+      "roaming_users": 3457,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 461.164
+    },
+    {
+      "timestamp": 1772061836751,
+      "hour": 7,
+      "zone_name": "南看台F区",
+      "active_users": 16150,
+      "new_users": 406,
+      "roaming_users": 2345,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 450.40099999999995
+    },
+    {
+      "timestamp": 1772061836751,
+      "hour": 7,
+      "zone_name": "北看台B区",
+      "active_users": 23625,
+      "new_users": 470,
+      "roaming_users": 4211,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 613.7
+    },
+    {
+      "timestamp": 1772061836751,
+      "hour": 7,
+      "zone_name": "东看台A区",
+      "active_users": 13968,
+      "new_users": 175,
+      "roaming_users": 2848,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 407.392
+    },
+    {
+      "timestamp": 1772061836751,
+      "hour": 7,
+      "zone_name": "西看台VIP",
+      "active_users": 8730,
+      "new_users": 251,
+      "roaming_users": 2012,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 417.72
+    },
+    {
+      "timestamp": 1772065436751,
+      "hour": 8,
+      "zone_name": "南看台F区",
+      "active_users": 36603,
+      "new_users": 610,
+      "roaming_users": 3373,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 812.736
+    },
+    {
+      "timestamp": 1772065436751,
+      "hour": 8,
+      "zone_name": "北看台B区",
+      "active_users": 41580,
+      "new_users": 533,
+      "roaming_users": 5559,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1008
+    },
+    {
+      "timestamp": 1772065436751,
+      "hour": 8,
+      "zone_name": "东看台A区",
+      "active_users": 34776,
+      "new_users": 1202,
+      "roaming_users": 5648,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 1057.812
+    },
+    {
+      "timestamp": 1772065436751,
+      "hour": 8,
+      "zone_name": "西看台VIP",
+      "active_users": 23436,
+      "new_users": 662,
+      "roaming_users": 4642,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1251.432
+    },
+    {
+      "timestamp": 1772069036751,
+      "hour": 9,
+      "zone_name": "南看台F区",
+      "active_users": 40635,
+      "new_users": 841,
+      "roaming_users": 7358,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 730.6560000000001
+    },
+    {
+      "timestamp": 1772069036751,
+      "hour": 9,
+      "zone_name": "北看台B区",
+      "active_users": 35532,
+      "new_users": 876,
+      "roaming_users": 4529,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 967.596
+    },
+    {
+      "timestamp": 1772069036751,
+      "hour": 9,
+      "zone_name": "东看台A区",
+      "active_users": 40851,
+      "new_users": 594,
+      "roaming_users": 5680,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 910.47
+    },
+    {
+      "timestamp": 1772069036751,
+      "hour": 9,
+      "zone_name": "西看台VIP",
+      "active_users": 24960,
+      "new_users": 613,
+      "roaming_users": 4677,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1070.72
+    },
+    {
+      "timestamp": 1772072636751,
+      "hour": 10,
+      "zone_name": "南看台F区",
+      "active_users": 39204,
+      "new_users": 762,
+      "roaming_users": 3354,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 871.552
+    },
+    {
+      "timestamp": 1772072636751,
+      "hour": 10,
+      "zone_name": "北看台B区",
+      "active_users": 42228,
+      "new_users": 1360,
+      "roaming_users": 5994,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1160.7640000000001
+    },
+    {
+      "timestamp": 1772072636751,
+      "hour": 10,
+      "zone_name": "东看台A区",
+      "active_users": 42120,
+      "new_users": 1286,
+      "roaming_users": 5319,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 760.95
+    },
+    {
+      "timestamp": 1772072636751,
+      "hour": 10,
+      "zone_name": "西看台VIP",
+      "active_users": 30030,
+      "new_users": 456,
+      "roaming_users": 8966,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 1104.558
+    },
+    {
+      "timestamp": 1772076236751,
+      "hour": 11,
+      "zone_name": "南看台F区",
+      "active_users": 41409,
+      "new_users": 823,
+      "roaming_users": 8532,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 749.146
+    },
+    {
+      "timestamp": 1772076236751,
+      "hour": 11,
+      "zone_name": "北看台B区",
+      "active_users": 39240,
+      "new_users": 1069,
+      "roaming_users": 5550,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1052.48
+    },
+    {
+      "timestamp": 1772076236751,
+      "hour": 11,
+      "zone_name": "东看台A区",
+      "active_users": 35109,
+      "new_users": 916,
+      "roaming_users": 6197,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 944.042
+    },
+    {
+      "timestamp": 1772076236751,
+      "hour": 11,
+      "zone_name": "西看台VIP",
+      "active_users": 25110,
+      "new_users": 650,
+      "roaming_users": 4056,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 1035.27
+    },
+    {
+      "timestamp": 1772079836751,
+      "hour": 12,
+      "zone_name": "南看台F区",
+      "active_users": 40158,
+      "new_users": 714,
+      "roaming_users": 6053,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 1170.4019999999998
+    },
+    {
+      "timestamp": 1772079836751,
+      "hour": 12,
+      "zone_name": "北看台B区",
+      "active_users": 44541,
+      "new_users": 1241,
+      "roaming_users": 7805,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 937.566
+    },
+    {
+      "timestamp": 1772079836751,
+      "hour": 12,
+      "zone_name": "东看台A区",
+      "active_users": 41400,
+      "new_users": 746,
+      "roaming_users": 7765,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1197.1
+    },
+    {
+      "timestamp": 1772079836751,
+      "hour": 12,
+      "zone_name": "西看台VIP",
+      "active_users": 29403,
+      "new_users": 1380,
+      "roaming_users": 7886,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1072.269
+    },
+    {
+      "timestamp": 1772083436751,
+      "hour": 13,
+      "zone_name": "南看台F区",
+      "active_users": 44995,
+      "new_users": 1377,
+      "roaming_users": 9801,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1235.223
+    },
+    {
+      "timestamp": 1772083436751,
+      "hour": 13,
+      "zone_name": "北看台B区",
+      "active_users": 41431,
+      "new_users": 778,
+      "roaming_users": 5563,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 878.031
+    },
+    {
+      "timestamp": 1772083436751,
+      "hour": 13,
+      "zone_name": "东看台A区",
+      "active_users": 48559,
+      "new_users": 1297,
+      "roaming_users": 4696,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 945.549
+    },
+    {
+      "timestamp": 1772083436751,
+      "hour": 13,
+      "zone_name": "西看台VIP",
+      "active_users": 28200,
+      "new_users": 825,
+      "roaming_users": 4171,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 943.4
+    },
+    {
+      "timestamp": 1772087036751,
+      "hour": 14,
+      "zone_name": "南看台F区",
+      "active_users": 45360,
+      "new_users": 550,
+      "roaming_users": 6264,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1234.08
+    },
+    {
+      "timestamp": 1772087036751,
+      "hour": 14,
+      "zone_name": "北看台B区",
+      "active_users": 44032,
+      "new_users": 799,
+      "roaming_users": 5326,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 920.645
+    },
+    {
+      "timestamp": 1772087036751,
+      "hour": 14,
+      "zone_name": "东看台A区",
+      "active_users": 40131,
+      "new_users": 633,
+      "roaming_users": 4036,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1399.734
+    },
+    {
+      "timestamp": 1772087036751,
+      "hour": 14,
+      "zone_name": "西看台VIP",
+      "active_users": 31428,
+      "new_users": 1326,
+      "roaming_users": 9124,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1453.933
+    },
+    {
+      "timestamp": 1772090636751,
+      "hour": 15,
+      "zone_name": "南看台F区",
+      "active_users": 42322,
+      "new_users": 1277,
+      "roaming_users": 6718,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1161.6599999999999
+    },
+    {
+      "timestamp": 1772090636751,
+      "hour": 15,
+      "zone_name": "北看台B区",
+      "active_users": 42777,
+      "new_users": 1458,
+      "roaming_users": 7643,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 816.928
+    },
+    {
+      "timestamp": 1772090636751,
+      "hour": 15,
+      "zone_name": "东看台A区",
+      "active_users": 41040,
+      "new_users": 1263,
+      "roaming_users": 5926,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 955.68
+    },
+    {
+      "timestamp": 1772090636751,
+      "hour": 15,
+      "zone_name": "西看台VIP",
+      "active_users": 30888,
+      "new_users": 1192,
+      "roaming_users": 7461,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 918.126
+    },
+    {
+      "timestamp": 1772094236751,
+      "hour": 16,
+      "zone_name": "南看台F区",
+      "active_users": 45864,
+      "new_users": 1083,
+      "roaming_users": 8680,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1213.926
+    },
+    {
+      "timestamp": 1772094236751,
+      "hour": 16,
+      "zone_name": "北看台B区",
+      "active_users": 41895,
+      "new_users": 1116,
+      "roaming_users": 7267,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 1446.48
+    },
+    {
+      "timestamp": 1772094236751,
+      "hour": 16,
+      "zone_name": "东看台A区",
+      "active_users": 48559,
+      "new_users": 922,
+      "roaming_users": 8093,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1438.965
+    },
+    {
+      "timestamp": 1772094236751,
+      "hour": 16,
+      "zone_name": "西看台VIP",
+      "active_users": 32400,
+      "new_users": 596,
+      "roaming_users": 8324,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1326.6
+    },
+    {
+      "timestamp": 1772097836751,
+      "hour": 17,
+      "zone_name": "南看台F区",
+      "active_users": 47520,
+      "new_users": 872,
+      "roaming_users": 9230,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1044
+    },
+    {
+      "timestamp": 1772097836751,
+      "hour": 17,
+      "zone_name": "北看台B区",
+      "active_users": 39330,
+      "new_users": 975,
+      "roaming_users": 3845,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 906.87
+    },
+    {
+      "timestamp": 1772097836751,
+      "hour": 17,
+      "zone_name": "东看台A区",
+      "active_users": 45900,
+      "new_users": 936,
+      "roaming_users": 8731,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 1237.2
+    },
+    {
+      "timestamp": 1772097836751,
+      "hour": 17,
+      "zone_name": "西看台VIP",
+      "active_users": 30000,
+      "new_users": 774,
+      "roaming_users": 5156,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 971.2
+    },
+    {
+      "timestamp": 1772101436751,
+      "hour": 18,
+      "zone_name": "南看台F区",
+      "active_users": 41040,
+      "new_users": 643,
+      "roaming_users": 5142,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1203.175
+    },
+    {
+      "timestamp": 1772101436751,
+      "hour": 18,
+      "zone_name": "北看台B区",
+      "active_users": 47223,
+      "new_users": 777,
+      "roaming_users": 3931,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 1002.6719999999999
+    },
+    {
+      "timestamp": 1772101436751,
+      "hour": 18,
+      "zone_name": "东看台A区",
+      "active_users": 43650,
+      "new_users": 1413,
+      "roaming_users": 3488,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1483.8
+    },
+    {
+      "timestamp": 1772101436751,
+      "hour": 18,
+      "zone_name": "西看台VIP",
+      "active_users": 29100,
+      "new_users": 642,
+      "roaming_users": 3947,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 1302.1280000000002
+    },
+    {
+      "timestamp": 1772105036751,
+      "hour": 19,
+      "zone_name": "南看台F区",
+      "active_users": 44541,
+      "new_users": 525,
+      "roaming_users": 7620,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1281.546
+    },
+    {
+      "timestamp": 1772105036751,
+      "hour": 19,
+      "zone_name": "北看台B区",
+      "active_users": 42777,
+      "new_users": 1394,
+      "roaming_users": 8042,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 910.2239999999999
+    },
+    {
+      "timestamp": 1772105036751,
+      "hour": 19,
+      "zone_name": "东看台A区",
+      "active_users": 42336,
+      "new_users": 1395,
+      "roaming_users": 3079,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 810.166
+    },
+    {
+      "timestamp": 1772105036751,
+      "hour": 19,
+      "zone_name": "西看台VIP",
+      "active_users": 30282,
+      "new_users": 1089,
+      "roaming_users": 7300,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 933.7439999999999
+    },
+    {
+      "timestamp": 1772108636751,
+      "hour": 20,
+      "zone_name": "南看台F区",
+      "active_users": 46332,
+      "new_users": 853,
+      "roaming_users": 9591,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1116.522
+    },
+    {
+      "timestamp": 1772108636751,
+      "hour": 20,
+      "zone_name": "北看台B区",
+      "active_users": 40594,
+      "new_users": 1002,
+      "roaming_users": 4841,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1404.366
+    },
+    {
+      "timestamp": 1772108636751,
+      "hour": 20,
+      "zone_name": "东看台A区",
+      "active_users": 42750,
+      "new_users": 775,
+      "roaming_users": 3618,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 1126.0349999999999
+    },
+    {
+      "timestamp": 1772108636751,
+      "hour": 20,
+      "zone_name": "西看台VIP",
+      "active_users": 28215,
+      "new_users": 1284,
+      "roaming_users": 4948,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 1137.807
+    },
+    {
+      "timestamp": 1772112236751,
+      "hour": 21,
+      "zone_name": "南看台F区",
+      "active_users": 40131,
+      "new_users": 1273,
+      "roaming_users": 5620,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1246.2450000000001
+    },
+    {
+      "timestamp": 1772112236751,
+      "hour": 21,
+      "zone_name": "北看台B区",
+      "active_users": 39249,
+      "new_users": 708,
+      "roaming_users": 6319,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 769.85
+    },
+    {
+      "timestamp": 1772112236751,
+      "hour": 21,
+      "zone_name": "东看台A区",
+      "active_users": 35280,
+      "new_users": 1176,
+      "roaming_users": 2876,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 1142
+    },
+    {
+      "timestamp": 1772112236751,
+      "hour": 21,
+      "zone_name": "西看台VIP",
+      "active_users": 27354,
+      "new_users": 1361,
+      "roaming_users": 8820,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 1321.358
+    },
+    {
+      "timestamp": 1772115836751,
+      "hour": 22,
+      "zone_name": "南看台F区",
+      "active_users": 41431,
+      "new_users": 565,
+      "roaming_users": 7857,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1044.111
+    },
+    {
+      "timestamp": 1772115836751,
+      "hour": 22,
+      "zone_name": "北看台B区",
+      "active_users": 34398,
+      "new_users": 864,
+      "roaming_users": 5907,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1148.532
+    },
+    {
+      "timestamp": 1772115836751,
+      "hour": 22,
+      "zone_name": "东看台A区",
+      "active_users": 35955,
+      "new_users": 892,
+      "roaming_users": 7451,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1062.075
+    },
+    {
+      "timestamp": 1772115836751,
+      "hour": 22,
+      "zone_name": "西看台VIP",
+      "active_users": 26790,
+      "new_users": 531,
+      "roaming_users": 3310,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 957.39
+    },
+    {
+      "timestamp": 1772119436751,
+      "hour": 23,
+      "zone_name": "南看台F区",
+      "active_users": 16929,
+      "new_users": 401,
+      "roaming_users": 1777,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 531.924
+    },
+    {
+      "timestamp": 1772119436751,
+      "hour": 23,
+      "zone_name": "北看台B区",
+      "active_users": 20092,
+      "new_users": 608,
+      "roaming_users": 4529,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 535.518
+    },
+    {
+      "timestamp": 1772119436751,
+      "hour": 23,
+      "zone_name": "东看台A区",
+      "active_users": 24525,
+      "new_users": 698,
+      "roaming_users": 3529,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 560.85
+    },
+    {
+      "timestamp": 1772119436751,
+      "hour": 23,
+      "zone_name": "西看台VIP",
+      "active_users": 13524,
+      "new_users": 333,
+      "roaming_users": 2092,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 537.775
+    },
+    {
+      "timestamp": 1772123036751,
+      "hour": 0,
+      "zone_name": "南看台F区",
+      "active_users": 16416,
+      "new_users": 568,
+      "roaming_users": 1832,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 414.01
+    },
+    {
+      "timestamp": 1772123036751,
+      "hour": 0,
+      "zone_name": "北看台B区",
+      "active_users": 14580,
+      "new_users": 300,
+      "roaming_users": 1125,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 492.444
+    },
+    {
+      "timestamp": 1772123036751,
+      "hour": 0,
+      "zone_name": "东看台A区",
+      "active_users": 15300,
+      "new_users": 286,
+      "roaming_users": 1713,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 410.074
+    },
+    {
+      "timestamp": 1772123036751,
+      "hour": 0,
+      "zone_name": "西看台VIP",
+      "active_users": 10098,
+      "new_users": 395,
+      "roaming_users": 2036,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 485.28200000000004
+    },
+    {
+      "timestamp": 1772126636751,
+      "hour": 1,
+      "zone_name": "南看台F区",
+      "active_users": 13671,
+      "new_users": 388,
+      "roaming_users": 3071,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 309.59700000000004
+    },
+    {
+      "timestamp": 1772126636751,
+      "hour": 1,
+      "zone_name": "北看台B区",
+      "active_users": 17712,
+      "new_users": 412,
+      "roaming_users": 2519,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 349.32
+    },
+    {
+      "timestamp": 1772126636751,
+      "hour": 1,
+      "zone_name": "东看台A区",
+      "active_users": 18180,
+      "new_users": 488,
+      "roaming_users": 2603,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 376.8
+    },
+    {
+      "timestamp": 1772126636751,
+      "hour": 1,
+      "zone_name": "西看台VIP",
+      "active_users": 13677,
+      "new_users": 414,
+      "roaming_users": 3540,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 585.1969999999999
+    },
+    {
+      "timestamp": 1772130236751,
+      "hour": 2,
+      "zone_name": "南看台F区",
+      "active_users": 14904,
+      "new_users": 513,
+      "roaming_users": 1715,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 327.132
+    },
+    {
+      "timestamp": 1772130236751,
+      "hour": 2,
+      "zone_name": "北看台B区",
+      "active_users": 21996,
+      "new_users": 561,
+      "roaming_users": 4679,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 455.9
+    },
+    {
+      "timestamp": 1772130236751,
+      "hour": 2,
+      "zone_name": "东看台A区",
+      "active_users": 14332,
+      "new_users": 295,
+      "roaming_users": 2605,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 469.17499999999995
+    },
+    {
+      "timestamp": 1772130236751,
+      "hour": 2,
+      "zone_name": "西看台VIP",
+      "active_users": 11988,
+      "new_users": 436,
+      "roaming_users": 3378,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 528.138
+    },
+    {
+      "timestamp": 1772133836751,
+      "hour": 3,
+      "zone_name": "南看台F区",
+      "active_users": 15732,
+      "new_users": 228,
+      "roaming_users": 2455,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 522.69
+    },
+    {
+      "timestamp": 1772133836751,
+      "hour": 3,
+      "zone_name": "北看台B区",
+      "active_users": 13104,
+      "new_users": 171,
+      "roaming_users": 1981,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 470.176
+    },
+    {
+      "timestamp": 1772133836751,
+      "hour": 3,
+      "zone_name": "东看台A区",
+      "active_users": 19926,
+      "new_users": 390,
+      "roaming_users": 3927,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 516.4359999999999
+    },
+    {
+      "timestamp": 1772133836751,
+      "hour": 3,
+      "zone_name": "西看台VIP",
+      "active_users": 10944,
+      "new_users": 505,
+      "roaming_users": 2130,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 497.078
+    },
+    {
+      "timestamp": 1772137436751,
+      "hour": 4,
+      "zone_name": "南看台F区",
+      "active_users": 19278,
+      "new_users": 537,
+      "roaming_users": 1981,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 522.144
+    },
+    {
+      "timestamp": 1772137436751,
+      "hour": 4,
+      "zone_name": "北看台B区",
+      "active_users": 15295,
+      "new_users": 238,
+      "roaming_users": 2918,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 479.16
+    },
+    {
+      "timestamp": 1772137436751,
+      "hour": 4,
+      "zone_name": "东看台A区",
+      "active_users": 20515,
+      "new_users": 481,
+      "roaming_users": 4403,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 386.81
+    },
+    {
+      "timestamp": 1772137436751,
+      "hour": 4,
+      "zone_name": "西看台VIP",
+      "active_users": 10914,
+      "new_users": 389,
+      "roaming_users": 2202,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 296.106
+    },
+    {
+      "timestamp": 1772141036751,
+      "hour": 5,
+      "zone_name": "南看台F区",
+      "active_users": 14985,
+      "new_users": 281,
+      "roaming_users": 3606,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 406.075
+    },
+    {
+      "timestamp": 1772141036751,
+      "hour": 5,
+      "zone_name": "北看台B区",
+      "active_users": 13392,
+      "new_users": 414,
+      "roaming_users": 1768,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 269.056
+    },
+    {
+      "timestamp": 1772141036751,
+      "hour": 5,
+      "zone_name": "东看台A区",
+      "active_users": 20452,
+      "new_users": 391,
+      "roaming_users": 1832,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 563.49
+    },
+    {
+      "timestamp": 1772141036751,
+      "hour": 5,
+      "zone_name": "西看台VIP",
+      "active_users": 9207,
+      "new_users": 325,
+      "roaming_users": 2715,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 446.29200000000003
+    },
+    {
+      "timestamp": 1772144636751,
+      "hour": 6,
+      "zone_name": "南看台F区",
+      "active_users": 14112,
+      "new_users": 369,
+      "roaming_users": 1072,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 289.888
+    },
+    {
+      "timestamp": 1772144636751,
+      "hour": 6,
+      "zone_name": "北看台B区",
+      "active_users": 15151,
+      "new_users": 256,
+      "roaming_users": 1479,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 475.968
+    },
+    {
+      "timestamp": 1772144636751,
+      "hour": 6,
+      "zone_name": "东看台A区",
+      "active_users": 19035,
+      "new_users": 475,
+      "roaming_users": 3410,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 558.585
+    },
+    {
+      "timestamp": 1772144636751,
+      "hour": 6,
+      "zone_name": "西看台VIP",
+      "active_users": 14628,
+      "new_users": 263,
+      "roaming_users": 4024,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 390.35600000000005
+    },
+    {
+      "timestamp": 1772148236751,
+      "hour": 7,
+      "zone_name": "南看台F区",
+      "active_users": 20110,
+      "new_users": 305,
+      "roaming_users": 2352,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 399.832
+    },
+    {
+      "timestamp": 1772148236751,
+      "hour": 7,
+      "zone_name": "北看台B区",
+      "active_users": 13635,
+      "new_users": 302,
+      "roaming_users": 2459,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 396.53999999999996
+    },
+    {
+      "timestamp": 1772148236751,
+      "hour": 7,
+      "zone_name": "东看台A区",
+      "active_users": 16150,
+      "new_users": 357,
+      "roaming_users": 3505,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 364.894
+    },
+    {
+      "timestamp": 1772148236751,
+      "hour": 7,
+      "zone_name": "西看台VIP",
+      "active_users": 14904,
+      "new_users": 444,
+      "roaming_users": 3879,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 637.33
+    },
+    {
+      "timestamp": 1772151836751,
+      "hour": 8,
+      "zone_name": "南看台F区",
+      "active_users": 38916,
+      "new_users": 662,
+      "roaming_users": 7020,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 859.2800000000001
+    },
+    {
+      "timestamp": 1772151836751,
+      "hour": 8,
+      "zone_name": "北看台B区",
+      "active_users": 41359,
+      "new_users": 1018,
+      "roaming_users": 6395,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1110.9279999999999
+    },
+    {
+      "timestamp": 1772151836751,
+      "hour": 8,
+      "zone_name": "东看台A区",
+      "active_users": 33480,
+      "new_users": 1025,
+      "roaming_users": 6013,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1191.5200000000002
+    },
+    {
+      "timestamp": 1772151836751,
+      "hour": 8,
+      "zone_name": "西看台VIP",
+      "active_users": 27000,
+      "new_users": 1058,
+      "roaming_users": 8042,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 760.23
+    },
+    {
+      "timestamp": 1772155436751,
+      "hour": 9,
+      "zone_name": "南看台F区",
+      "active_users": 37539,
+      "new_users": 1070,
+      "roaming_users": 6523,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1092.8020000000001
+    },
+    {
+      "timestamp": 1772155436751,
+      "hour": 9,
+      "zone_name": "北看台B区",
+      "active_users": 40851,
+      "new_users": 772,
+      "roaming_users": 4076,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 1197.5839999999998
+    },
+    {
+      "timestamp": 1772155436751,
+      "hour": 9,
+      "zone_name": "东看台A区",
+      "active_users": 39649,
+      "new_users": 1310,
+      "roaming_users": 7412,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1017.092
+    },
+    {
+      "timestamp": 1772155436751,
+      "hour": 9,
+      "zone_name": "西看台VIP",
+      "active_users": 29430,
+      "new_users": 1135,
+      "roaming_users": 4516,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 1279.8899999999999
+    },
+    {
+      "timestamp": 1772159036751,
+      "hour": 10,
+      "zone_name": "南看台F区",
+      "active_users": 41692,
+      "new_users": 1194,
+      "roaming_users": 6010,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 1240.7450000000001
+    },
+    {
+      "timestamp": 1772159036751,
+      "hour": 10,
+      "zone_name": "北看台B区",
+      "active_users": 37674,
+      "new_users": 864,
+      "roaming_users": 5318,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 755.573
+    },
+    {
+      "timestamp": 1772159036751,
+      "hour": 10,
+      "zone_name": "东看台A区",
+      "active_users": 36765,
+      "new_users": 1285,
+      "roaming_users": 6389,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 785.266
+    },
+    {
+      "timestamp": 1772159036751,
+      "hour": 10,
+      "zone_name": "西看台VIP",
+      "active_users": 27027,
+      "new_users": 697,
+      "roaming_users": 5895,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1269.268
+    },
+    {
+      "timestamp": 1772162636751,
+      "hour": 11,
+      "zone_name": "南看台F区",
+      "active_users": 43740,
+      "new_users": 942,
+      "roaming_users": 4447,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 738.81
+    },
+    {
+      "timestamp": 1772162636751,
+      "hour": 11,
+      "zone_name": "北看台B区",
+      "active_users": 39150,
+      "new_users": 963,
+      "roaming_users": 5022,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 762.033
+    },
+    {
+      "timestamp": 1772162636751,
+      "hour": 11,
+      "zone_name": "东看台A区",
+      "active_users": 40851,
+      "new_users": 729,
+      "roaming_users": 3793,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 864.9019999999999
+    },
+    {
+      "timestamp": 1772162636751,
+      "hour": 11,
+      "zone_name": "西看台VIP",
+      "active_users": 30174,
+      "new_users": 711,
+      "roaming_users": 8885,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1354.728
+    },
+    {
+      "timestamp": 1772166236751,
+      "hour": 12,
+      "zone_name": "南看台F区",
+      "active_users": 44086,
+      "new_users": 763,
+      "roaming_users": 6753,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 787.543
+    },
+    {
+      "timestamp": 1772166236751,
+      "hour": 12,
+      "zone_name": "北看台B区",
+      "active_users": 44032,
+      "new_users": 1045,
+      "roaming_users": 8110,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 892.905
+    },
+    {
+      "timestamp": 1772166236751,
+      "hour": 12,
+      "zone_name": "东看台A区",
+      "active_users": 46305,
+      "new_users": 546,
+      "roaming_users": 4953,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1288.406
+    },
+    {
+      "timestamp": 1772166236751,
+      "hour": 12,
+      "zone_name": "西看台VIP",
+      "active_users": 29391,
+      "new_users": 1372,
+      "roaming_users": 7812,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1237.914
+    },
+    {
+      "timestamp": 1772169836751,
+      "hour": 13,
+      "zone_name": "南看台F区",
+      "active_users": 44100,
+      "new_users": 593,
+      "roaming_users": 6692,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1404.7
+    },
+    {
+      "timestamp": 1772169836751,
+      "hour": 13,
+      "zone_name": "北看台B区",
+      "active_users": 42322,
+      "new_users": 998,
+      "roaming_users": 5172,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 784.415
+    },
+    {
+      "timestamp": 1772169836751,
+      "hour": 13,
+      "zone_name": "东看台A区",
+      "active_users": 44982,
+      "new_users": 950,
+      "roaming_users": 7153,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 982.4499999999999
+    },
+    {
+      "timestamp": 1772169836751,
+      "hour": 13,
+      "zone_name": "西看台VIP",
+      "active_users": 29664,
+      "new_users": 1138,
+      "roaming_users": 9280,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1343.712
+    },
+    {
+      "timestamp": 1772173436751,
+      "hour": 14,
+      "zone_name": "南看台F区",
+      "active_users": 45396,
+      "new_users": 1371,
+      "roaming_users": 3173,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1284.7649999999999
+    },
+    {
+      "timestamp": 1772173436751,
+      "hour": 14,
+      "zone_name": "北看台B区",
+      "active_users": 42336,
+      "new_users": 1381,
+      "roaming_users": 5010,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 887.04
+    },
+    {
+      "timestamp": 1772173436751,
+      "hour": 14,
+      "zone_name": "东看台A区",
+      "active_users": 42777,
+      "new_users": 890,
+      "roaming_users": 6167,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 807.9119999999999
+    },
+    {
+      "timestamp": 1772173436751,
+      "hour": 14,
+      "zone_name": "西看台VIP",
+      "active_users": 30294,
+      "new_users": 606,
+      "roaming_users": 3830,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 1038.708
+    },
+    {
+      "timestamp": 1772177036751,
+      "hour": 15,
+      "zone_name": "南看台F区",
+      "active_users": 42300,
+      "new_users": 871,
+      "roaming_users": 9998,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1311.3
+    },
+    {
+      "timestamp": 1772177036751,
+      "hour": 15,
+      "zone_name": "北看台B区",
+      "active_users": 43605,
+      "new_users": 1111,
+      "roaming_users": 8805,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1377.5
+    },
+    {
+      "timestamp": 1772177036751,
+      "hour": 15,
+      "zone_name": "东看台A区",
+      "active_users": 39744,
+      "new_users": 1369,
+      "roaming_users": 3499,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 1406.112
+    },
+    {
+      "timestamp": 1772177036751,
+      "hour": 15,
+      "zone_name": "西看台VIP",
+      "active_users": 27600,
+      "new_users": 706,
+      "roaming_users": 9006,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 983.8
+    },
+    {
+      "timestamp": 1772180636751,
+      "hour": 16,
+      "zone_name": "南看台F区",
+      "active_users": 38475,
+      "new_users": 912,
+      "roaming_users": 6779,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1044.05
+    },
+    {
+      "timestamp": 1772180636751,
+      "hour": 16,
+      "zone_name": "北看台B区",
+      "active_users": 42768,
+      "new_users": 1118,
+      "roaming_users": 4960,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 944.559
+    },
+    {
+      "timestamp": 1772180636751,
+      "hour": 16,
+      "zone_name": "东看台A区",
+      "active_users": 46746,
+      "new_users": 626,
+      "roaming_users": 5136,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 1012.046
+    },
+    {
+      "timestamp": 1772180636751,
+      "hour": 16,
+      "zone_name": "西看台VIP",
+      "active_users": 31779,
+      "new_users": 807,
+      "roaming_users": 9169,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1447.3799999999999
+    },
+    {
+      "timestamp": 1772184236751,
+      "hour": 17,
+      "zone_name": "南看台F区",
+      "active_users": 47668,
+      "new_users": 749,
+      "roaming_users": 3708,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 1280.961
+    },
+    {
+      "timestamp": 1772184236751,
+      "hour": 17,
+      "zone_name": "北看台B区",
+      "active_users": 47088,
+      "new_users": 1333,
+      "roaming_users": 7438,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1152.7679999999998
+    },
+    {
+      "timestamp": 1772184236751,
+      "hour": 17,
+      "zone_name": "东看台A区",
+      "active_users": 41895,
+      "new_users": 1360,
+      "roaming_users": 5103,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 1193.2949999999998
+    },
+    {
+      "timestamp": 1772184236751,
+      "hour": 17,
+      "zone_name": "西看台VIP",
+      "active_users": 29400,
+      "new_users": 852,
+      "roaming_users": 9588,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 1166.69
+    },
+    {
+      "timestamp": 1772187836751,
+      "hour": 18,
+      "zone_name": "南看台F区",
+      "active_users": 47628,
+      "new_users": 1135,
+      "roaming_users": 6865,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 1007.93
+    },
+    {
+      "timestamp": 1772187836751,
+      "hour": 18,
+      "zone_name": "北看台B区",
+      "active_users": 48114,
+      "new_users": 1290,
+      "roaming_users": 3663,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1042.371
+    },
+    {
+      "timestamp": 1772187836751,
+      "hour": 18,
+      "zone_name": "东看台A区",
+      "active_users": 40095,
+      "new_users": 1082,
+      "roaming_users": 5286,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 1400.256
+    },
+    {
+      "timestamp": 1772187836751,
+      "hour": 18,
+      "zone_name": "西看台VIP",
+      "active_users": 30264,
+      "new_users": 973,
+      "roaming_users": 6468,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1098.719
+    },
+    {
+      "timestamp": 1772191436751,
+      "hour": 19,
+      "zone_name": "南看台F区",
+      "active_users": 47142,
+      "new_users": 1185,
+      "roaming_users": 6471,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1346.6509999999998
+    },
+    {
+      "timestamp": 1772191436751,
+      "hour": 19,
+      "zone_name": "北看台B区",
+      "active_users": 42300,
+      "new_users": 1481,
+      "roaming_users": 3433,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 879
+    },
+    {
+      "timestamp": 1772191436751,
+      "hour": 19,
+      "zone_name": "东看台A区",
+      "active_users": 41895,
+      "new_users": 519,
+      "roaming_users": 3680,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1124.515
+    },
+    {
+      "timestamp": 1772191436751,
+      "hour": 19,
+      "zone_name": "西看台VIP",
+      "active_users": 28809,
+      "new_users": 629,
+      "roaming_users": 3647,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1161.072
+    },
+    {
+      "timestamp": 1772195036751,
+      "hour": 20,
+      "zone_name": "南看台F区",
+      "active_users": 45742,
+      "new_users": 479,
+      "roaming_users": 7303,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1393.84
+    },
+    {
+      "timestamp": 1772195036751,
+      "hour": 20,
+      "zone_name": "北看台B区",
+      "active_users": 41895,
+      "new_users": 587,
+      "roaming_users": 4683,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 767.79
+    },
+    {
+      "timestamp": 1772195036751,
+      "hour": 20,
+      "zone_name": "东看台A区",
+      "active_users": 39312,
+      "new_users": 994,
+      "roaming_users": 5968,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 880.896
+    },
+    {
+      "timestamp": 1772195036751,
+      "hour": 20,
+      "zone_name": "西看台VIP",
+      "active_users": 30816,
+      "new_users": 1333,
+      "roaming_users": 6035,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 823.968
+    },
+    {
+      "timestamp": 1772198636751,
+      "hour": 21,
+      "zone_name": "南看台F区",
+      "active_users": 38475,
+      "new_users": 732,
+      "roaming_users": 4842,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1181.52
+    },
+    {
+      "timestamp": 1772198636751,
+      "hour": 21,
+      "zone_name": "北看台B区",
+      "active_users": 34735,
+      "new_users": 790,
+      "roaming_users": 2893,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 800.7839999999999
+    },
+    {
+      "timestamp": 1772198636751,
+      "hour": 21,
+      "zone_name": "东看台A区",
+      "active_users": 39217,
+      "new_users": 872,
+      "roaming_users": 4295,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 992.016
+    },
+    {
+      "timestamp": 1772198636751,
+      "hour": 21,
+      "zone_name": "西看台VIP",
+      "active_users": 23736,
+      "new_users": 1064,
+      "roaming_users": 7475,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 838.1560000000001
+    },
+    {
+      "timestamp": 1772202236751,
+      "hour": 22,
+      "zone_name": "南看台F区",
+      "active_users": 38848,
+      "new_users": 1132,
+      "roaming_users": 4878,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 724.46
+    },
+    {
+      "timestamp": 1772202236751,
+      "hour": 22,
+      "zone_name": "北看台B区",
+      "active_users": 42183,
+      "new_users": 957,
+      "roaming_users": 3219,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 731.43
+    },
+    {
+      "timestamp": 1772202236751,
+      "hour": 22,
+      "zone_name": "东看台A区",
+      "active_users": 37926,
+      "new_users": 976,
+      "roaming_users": 6142,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1054.79
+    },
+    {
+      "timestamp": 1772202236751,
+      "hour": 22,
+      "zone_name": "西看台VIP",
+      "active_users": 24534,
+      "new_users": 797,
+      "roaming_users": 6357,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 1258.803
+    },
+    {
+      "timestamp": 1772205836751,
+      "hour": 23,
+      "zone_name": "南看台F区",
+      "active_users": 21060,
+      "new_users": 593,
+      "roaming_users": 4354,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 387.63
+    },
+    {
+      "timestamp": 1772205836751,
+      "hour": 23,
+      "zone_name": "北看台B区",
+      "active_users": 14841,
+      "new_users": 465,
+      "roaming_users": 1269,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 288.252
+    },
+    {
+      "timestamp": 1772205836751,
+      "hour": 23,
+      "zone_name": "东看台A区",
+      "active_users": 20412,
+      "new_users": 483,
+      "roaming_users": 2989,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 356.454
+    },
+    {
+      "timestamp": 1772205836751,
+      "hour": 23,
+      "zone_name": "西看台VIP",
+      "active_users": 11664,
+      "new_users": 534,
+      "roaming_users": 2952,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 529.92
+    },
+    {
+      "timestamp": 1772209436751,
+      "hour": 0,
+      "zone_name": "南看台F区",
+      "active_users": 17802,
+      "new_users": 457,
+      "roaming_users": 3866,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 418.82
+    },
+    {
+      "timestamp": 1772209436751,
+      "hour": 0,
+      "zone_name": "北看台B区",
+      "active_users": 19642,
+      "new_users": 449,
+      "roaming_users": 3751,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 610.47
+    },
+    {
+      "timestamp": 1772209436751,
+      "hour": 0,
+      "zone_name": "东看台A区",
+      "active_users": 20110,
+      "new_users": 592,
+      "roaming_users": 3302,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 587.6529999999999
+    },
+    {
+      "timestamp": 1772209436751,
+      "hour": 0,
+      "zone_name": "西看台VIP",
+      "active_users": 14190,
+      "new_users": 584,
+      "roaming_users": 4021,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 362.447
+    },
+    {
+      "timestamp": 1772213036751,
+      "hour": 1,
+      "zone_name": "南看台F区",
+      "active_users": 20412,
+      "new_users": 485,
+      "roaming_users": 1728,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 370.062
+    },
+    {
+      "timestamp": 1772213036751,
+      "hour": 1,
+      "zone_name": "北看台B区",
+      "active_users": 22680,
+      "new_users": 501,
+      "roaming_users": 1695,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 612.8639999999999
+    },
+    {
+      "timestamp": 1772213036751,
+      "hour": 1,
+      "zone_name": "东看台A区",
+      "active_users": 23265,
+      "new_users": 403,
+      "roaming_users": 2339,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 615.747
+    },
+    {
+      "timestamp": 1772213036751,
+      "hour": 1,
+      "zone_name": "西看台VIP",
+      "active_users": 13818,
+      "new_users": 497,
+      "roaming_users": 2245,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 621.3399999999999
+    },
+    {
+      "timestamp": 1772216636751,
+      "hour": 2,
+      "zone_name": "南看台F区",
+      "active_users": 21186,
+      "new_users": 418,
+      "roaming_users": 2439,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 591.58
+    },
+    {
+      "timestamp": 1772216636751,
+      "hour": 2,
+      "zone_name": "北看台B区",
+      "active_users": 14229,
+      "new_users": 220,
+      "roaming_users": 1327,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 382.633
+    },
+    {
+      "timestamp": 1772216636751,
+      "hour": 2,
+      "zone_name": "东看台A区",
+      "active_users": 17010,
+      "new_users": 360,
+      "roaming_users": 2112,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 293.832
+    },
+    {
+      "timestamp": 1772216636751,
+      "hour": 2,
+      "zone_name": "西看台VIP",
+      "active_users": 12753,
+      "new_users": 465,
+      "roaming_users": 3306,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 503.802
+    },
+    {
+      "timestamp": 1772220236751,
+      "hour": 3,
+      "zone_name": "南看台F区",
+      "active_users": 16587,
+      "new_users": 563,
+      "roaming_users": 2427,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 393.45200000000006
+    },
+    {
+      "timestamp": 1772220236751,
+      "hour": 3,
+      "zone_name": "北看台B区",
+      "active_users": 17649,
+      "new_users": 215,
+      "roaming_users": 3091,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 396.825
+    },
+    {
+      "timestamp": 1772220236751,
+      "hour": 3,
+      "zone_name": "东看台A区",
+      "active_users": 19156,
+      "new_users": 634,
+      "roaming_users": 2694,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 366.532
+    },
+    {
+      "timestamp": 1772220236751,
+      "hour": 3,
+      "zone_name": "西看台VIP",
+      "active_users": 9405,
+      "new_users": 249,
+      "roaming_users": 2107,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 425.89799999999997
+    },
+    {
+      "timestamp": 1772223836751,
+      "hour": 4,
+      "zone_name": "南看台F区",
+      "active_users": 12690,
+      "new_users": 429,
+      "roaming_users": 1442,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 397.37999999999994
+    },
+    {
+      "timestamp": 1772223836751,
+      "hour": 4,
+      "zone_name": "北看台B区",
+      "active_users": 20286,
+      "new_users": 400,
+      "roaming_users": 2380,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 415.42600000000004
+    },
+    {
+      "timestamp": 1772223836751,
+      "hour": 4,
+      "zone_name": "东看台A区",
+      "active_users": 17460,
+      "new_users": 370,
+      "roaming_users": 2894,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 494.44
+    },
+    {
+      "timestamp": 1772223836751,
+      "hour": 4,
+      "zone_name": "西看台VIP",
+      "active_users": 11070,
+      "new_users": 350,
+      "roaming_users": 1342,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 461.7009999999999
+    },
+    {
+      "timestamp": 1772227436751,
+      "hour": 5,
+      "zone_name": "南看台F区",
+      "active_users": 21388,
+      "new_users": 635,
+      "roaming_users": 2235,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 612.549
+    },
+    {
+      "timestamp": 1772227436751,
+      "hour": 5,
+      "zone_name": "北看台B区",
+      "active_users": 18634,
+      "new_users": 366,
+      "roaming_users": 4020,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 508.072
+    },
+    {
+      "timestamp": 1772227436751,
+      "hour": 5,
+      "zone_name": "东看台A区",
+      "active_users": 16065,
+      "new_users": 261,
+      "roaming_users": 3088,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 320.144
+    },
+    {
+      "timestamp": 1772227436751,
+      "hour": 5,
+      "zone_name": "西看台VIP",
+      "active_users": 10302,
+      "new_users": 435,
+      "roaming_users": 1242,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 317.152
+    },
+    {
+      "timestamp": 1772231036751,
+      "hour": 6,
+      "zone_name": "南看台F区",
+      "active_users": 15408,
+      "new_users": 256,
+      "roaming_users": 1224,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 417.536
+    },
+    {
+      "timestamp": 1772231036751,
+      "hour": 6,
+      "zone_name": "北看台B区",
+      "active_users": 16929,
+      "new_users": 471,
+      "roaming_users": 1376,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 449.88200000000006
+    },
+    {
+      "timestamp": 1772231036751,
+      "hour": 6,
+      "zone_name": "东看台A区",
+      "active_users": 19305,
+      "new_users": 282,
+      "roaming_users": 2850,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 429.15600000000006
+    },
+    {
+      "timestamp": 1772231036751,
+      "hour": 6,
+      "zone_name": "西看台VIP",
+      "active_users": 13068,
+      "new_users": 607,
+      "roaming_users": 4204,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 646.7560000000001
+    },
+    {
+      "timestamp": 1772234636751,
+      "hour": 7,
+      "zone_name": "南看台F区",
+      "active_users": 19656,
+      "new_users": 484,
+      "roaming_users": 2354,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 526.05
+    },
+    {
+      "timestamp": 1772234636751,
+      "hour": 7,
+      "zone_name": "北看台B区",
+      "active_users": 17415,
+      "new_users": 398,
+      "roaming_users": 3849,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 592.4970000000001
+    },
+    {
+      "timestamp": 1772234636751,
+      "hour": 7,
+      "zone_name": "东看台A区",
+      "active_users": 17815,
+      "new_users": 355,
+      "roaming_users": 2825,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 444.74
+    },
+    {
+      "timestamp": 1772234636751,
+      "hour": 7,
+      "zone_name": "西看台VIP",
+      "active_users": 10944,
+      "new_users": 476,
+      "roaming_users": 1240,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 553.014
+    },
+    {
+      "timestamp": 1772238236751,
+      "hour": 8,
+      "zone_name": "南看台F区",
+      "active_users": 36720,
+      "new_users": 861,
+      "roaming_users": 5638,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1057.06
+    },
+    {
+      "timestamp": 1772238236751,
+      "hour": 8,
+      "zone_name": "北看台B区",
+      "active_users": 43740,
+      "new_users": 764,
+      "roaming_users": 8399,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1243.2600000000002
+    },
+    {
+      "timestamp": 1772238236751,
+      "hour": 8,
+      "zone_name": "东看台A区",
+      "active_users": 38313,
+      "new_users": 670,
+      "roaming_users": 3618,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1138.21
+    },
+    {
+      "timestamp": 1772238236751,
+      "hour": 8,
+      "zone_name": "西看台VIP",
+      "active_users": 26487,
+      "new_users": 754,
+      "roaming_users": 3188,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 1063.287
+    },
+    {
+      "timestamp": 1772241836751,
+      "hour": 9,
+      "zone_name": "南看台F区",
+      "active_users": 42183,
+      "new_users": 1107,
+      "roaming_users": 7655,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 1097.532
+    },
+    {
+      "timestamp": 1772241836751,
+      "hour": 9,
+      "zone_name": "北看台B区",
+      "active_users": 43105,
+      "new_users": 544,
+      "roaming_users": 8409,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 824.817
+    },
+    {
+      "timestamp": 1772241836751,
+      "hour": 9,
+      "zone_name": "东看台A区",
+      "active_users": 34200,
+      "new_users": 538,
+      "roaming_users": 3990,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 819.84
+    },
+    {
+      "timestamp": 1772241836751,
+      "hour": 9,
+      "zone_name": "西看台VIP",
+      "active_users": 22356,
+      "new_users": 1149,
+      "roaming_users": 4655,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 896.346
+    },
+    {
+      "timestamp": 1772245436751,
+      "hour": 10,
+      "zone_name": "南看台F区",
+      "active_users": 39591,
+      "new_users": 1187,
+      "roaming_users": 5541,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1072.692
+    },
+    {
+      "timestamp": 1772245436751,
+      "hour": 10,
+      "zone_name": "北看台B区",
+      "active_users": 39312,
+      "new_users": 1017,
+      "roaming_users": 5476,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 1122.3239999999998
+    },
+    {
+      "timestamp": 1772245436751,
+      "hour": 10,
+      "zone_name": "东看台A区",
+      "active_users": 42687,
+      "new_users": 670,
+      "roaming_users": 4719,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1115.535
+    },
+    {
+      "timestamp": 1772245436751,
+      "hour": 10,
+      "zone_name": "西看台VIP",
+      "active_users": 26145,
+      "new_users": 671,
+      "roaming_users": 5652,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 1175.612
+    },
+    {
+      "timestamp": 1772249036751,
+      "hour": 11,
+      "zone_name": "南看台F区",
+      "active_users": 37152,
+      "new_users": 959,
+      "roaming_users": 6947,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1246.2259999999999
+    },
+    {
+      "timestamp": 1772249036751,
+      "hour": 11,
+      "zone_name": "北看台B区",
+      "active_users": 37674,
+      "new_users": 674,
+      "roaming_users": 7664,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1163.071
+    },
+    {
+      "timestamp": 1772249036751,
+      "hour": 11,
+      "zone_name": "东看台A区",
+      "active_users": 42268,
+      "new_users": 1217,
+      "roaming_users": 2962,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1005.051
+    },
+    {
+      "timestamp": 1772249036751,
+      "hour": 11,
+      "zone_name": "西看台VIP",
+      "active_users": 25584,
+      "new_users": 861,
+      "roaming_users": 4551,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 923.156
+    },
+    {
+      "timestamp": 1772252636751,
+      "hour": 12,
+      "zone_name": "南看台F区",
+      "active_users": 40950,
+      "new_users": 1497,
+      "roaming_users": 7726,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 856.3
+    },
+    {
+      "timestamp": 1772252636751,
+      "hour": 12,
+      "zone_name": "北看台B区",
+      "active_users": 40572,
+      "new_users": 1263,
+      "roaming_users": 4755,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1071.826
+    },
+    {
+      "timestamp": 1772252636751,
+      "hour": 12,
+      "zone_name": "东看台A区",
+      "active_users": 45360,
+      "new_users": 700,
+      "roaming_users": 8836,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 1048.608
+    },
+    {
+      "timestamp": 1772252636751,
+      "hour": 12,
+      "zone_name": "西看台VIP",
+      "active_users": 30294,
+      "new_users": 580,
+      "roaming_users": 5081,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 994.95
+    },
+    {
+      "timestamp": 1772256236751,
+      "hour": 13,
+      "zone_name": "南看台F区",
+      "active_users": 44086,
+      "new_users": 1341,
+      "roaming_users": 3920,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1356.545
+    },
+    {
+      "timestamp": 1772256236751,
+      "hour": 13,
+      "zone_name": "北看台B区",
+      "active_users": 41904,
+      "new_users": 642,
+      "roaming_users": 9040,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1162.157
+    },
+    {
+      "timestamp": 1772256236751,
+      "hour": 13,
+      "zone_name": "东看台A区",
+      "active_users": 45000,
+      "new_users": 1465,
+      "roaming_users": 6367,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 958.7
+    },
+    {
+      "timestamp": 1772256236751,
+      "hour": 13,
+      "zone_name": "西看台VIP",
+      "active_users": 28227,
+      "new_users": 962,
+      "roaming_users": 4382,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1053.323
+    },
+    {
+      "timestamp": 1772259836751,
+      "hour": 14,
+      "zone_name": "南看台F区",
+      "active_users": 44100,
+      "new_users": 1007,
+      "roaming_users": 3804,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1064.476
+    },
+    {
+      "timestamp": 1772259836751,
+      "hour": 14,
+      "zone_name": "北看台B区",
+      "active_users": 48114,
+      "new_users": 661,
+      "roaming_users": 8649,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1424.511
+    },
+    {
+      "timestamp": 1772259836751,
+      "hour": 14,
+      "zone_name": "东看台A区",
+      "active_users": 44086,
+      "new_users": 859,
+      "roaming_users": 5757,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1233.064
+    },
+    {
+      "timestamp": 1772259836751,
+      "hour": 14,
+      "zone_name": "西看台VIP",
+      "active_users": 26481,
+      "new_users": 973,
+      "roaming_users": 7890,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 902.973
+    },
+    {
+      "timestamp": 1772263436751,
+      "hour": 15,
+      "zone_name": "南看台F区",
+      "active_users": 42340,
+      "new_users": 1169,
+      "roaming_users": 5839,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 1435.794
+    },
+    {
+      "timestamp": 1772263436751,
+      "hour": 15,
+      "zone_name": "北看台B区",
+      "active_users": 41400,
+      "new_users": 1188,
+      "roaming_users": 8118,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1376.8
+    },
+    {
+      "timestamp": 1772263436751,
+      "hour": 15,
+      "zone_name": "东看台A区",
+      "active_users": 46746,
+      "new_users": 1266,
+      "roaming_users": 6340,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 1278.41
+    },
+    {
+      "timestamp": 1772263436751,
+      "hour": 15,
+      "zone_name": "西看台VIP",
+      "active_users": 26754,
+      "new_users": 1065,
+      "roaming_users": 4414,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1321.628
+    },
+    {
+      "timestamp": 1772267036751,
+      "hour": 16,
+      "zone_name": "南看台F区",
+      "active_users": 41904,
+      "new_users": 1030,
+      "roaming_users": 4797,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 864.576
+    },
+    {
+      "timestamp": 1772267036751,
+      "hour": 16,
+      "zone_name": "北看台B区",
+      "active_users": 47250,
+      "new_users": 921,
+      "roaming_users": 8970,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 991.4
+    },
+    {
+      "timestamp": 1772267036751,
+      "hour": 16,
+      "zone_name": "东看台A区",
+      "active_users": 40986,
+      "new_users": 1072,
+      "roaming_users": 3399,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 1033.56
+    },
+    {
+      "timestamp": 1772267036751,
+      "hour": 16,
+      "zone_name": "西看台VIP",
+      "active_users": 27636,
+      "new_users": 876,
+      "roaming_users": 9549,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1342.0120000000002
+    },
+    {
+      "timestamp": 1772270636751,
+      "hour": 17,
+      "zone_name": "南看台F区",
+      "active_users": 40572,
+      "new_users": 1181,
+      "roaming_users": 6829,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1172.1779999999999
+    },
+    {
+      "timestamp": 1772270636751,
+      "hour": 17,
+      "zone_name": "北看台B区",
+      "active_users": 48150,
+      "new_users": 698,
+      "roaming_users": 8990,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1033.3
+    },
+    {
+      "timestamp": 1772270636751,
+      "hour": 17,
+      "zone_name": "东看台A区",
+      "active_users": 42750,
+      "new_users": 891,
+      "roaming_users": 3344,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 936.9849999999999
+    },
+    {
+      "timestamp": 1772270636751,
+      "hour": 17,
+      "zone_name": "西看台VIP",
+      "active_users": 29403,
+      "new_users": 1192,
+      "roaming_users": 3910,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1389.267
+    },
+    {
+      "timestamp": 1772274236751,
+      "hour": 18,
+      "zone_name": "南看台F区",
+      "active_users": 42777,
+      "new_users": 1449,
+      "roaming_users": 6447,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1166.7879999999998
+    },
+    {
+      "timestamp": 1772274236751,
+      "hour": 18,
+      "zone_name": "北看台B区",
+      "active_users": 39312,
+      "new_users": 1373,
+      "roaming_users": 2933,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1433.664
+    },
+    {
+      "timestamp": 1772274236751,
+      "hour": 18,
+      "zone_name": "东看台A区",
+      "active_users": 40572,
+      "new_users": 617,
+      "roaming_users": 6442,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1071.5320000000002
+    },
+    {
+      "timestamp": 1772274236751,
+      "hour": 18,
+      "zone_name": "西看台VIP",
+      "active_users": 27048,
+      "new_users": 1409,
+      "roaming_users": 9435,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 1221.57
+    },
+    {
+      "timestamp": 1772277836751,
+      "hour": 19,
+      "zone_name": "南看台F区",
+      "active_users": 42336,
+      "new_users": 572,
+      "roaming_users": 3877,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 936.7819999999999
+    },
+    {
+      "timestamp": 1772277836751,
+      "hour": 19,
+      "zone_name": "北看台B区",
+      "active_users": 44064,
+      "new_users": 1430,
+      "roaming_users": 4394,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 1392.672
+    },
+    {
+      "timestamp": 1772277836751,
+      "hour": 19,
+      "zone_name": "东看台A区",
+      "active_users": 47187,
+      "new_users": 1212,
+      "roaming_users": 3806,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1004.99
+    },
+    {
+      "timestamp": 1772277836751,
+      "hour": 19,
+      "zone_name": "西看台VIP",
+      "active_users": 31428,
+      "new_users": 1364,
+      "roaming_users": 3314,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 911.6059999999999
+    },
+    {
+      "timestamp": 1772281436751,
+      "hour": 20,
+      "zone_name": "南看台F区",
+      "active_users": 44995,
+      "new_users": 1378,
+      "roaming_users": 6754,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 869.814
+    },
+    {
+      "timestamp": 1772281436751,
+      "hour": 20,
+      "zone_name": "北看台B区",
+      "active_users": 42768,
+      "new_users": 1089,
+      "roaming_users": 4843,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1129.887
+    },
+    {
+      "timestamp": 1772281436751,
+      "hour": 20,
+      "zone_name": "东看台A区",
+      "active_users": 40594,
+      "new_users": 887,
+      "roaming_users": 8042,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1261
+    },
+    {
+      "timestamp": 1772281436751,
+      "hour": 20,
+      "zone_name": "西看台VIP",
+      "active_users": 29952,
+      "new_users": 971,
+      "roaming_users": 8454,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 792.9599999999999
+    },
+    {
+      "timestamp": 1772285036751,
+      "hour": 21,
+      "zone_name": "南看台F区",
+      "active_users": 42120,
+      "new_users": 1196,
+      "roaming_users": 4551,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 914.94
+    },
+    {
+      "timestamp": 1772285036751,
+      "hour": 21,
+      "zone_name": "北看台B区",
+      "active_users": 34992,
+      "new_users": 648,
+      "roaming_users": 7392,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1086.615
+    },
+    {
+      "timestamp": 1772285036751,
+      "hour": 21,
+      "zone_name": "东看台A区",
+      "active_users": 44415,
+      "new_users": 873,
+      "roaming_users": 4250,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1273.606
+    },
+    {
+      "timestamp": 1772285036751,
+      "hour": 21,
+      "zone_name": "西看台VIP",
+      "active_users": 25758,
+      "new_users": 618,
+      "roaming_users": 4865,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 876.258
+    },
+    {
+      "timestamp": 1772288636751,
+      "hour": 22,
+      "zone_name": "南看台F区",
+      "active_users": 39483,
+      "new_users": 740,
+      "roaming_users": 6975,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 798.762
+    },
+    {
+      "timestamp": 1772288636751,
+      "hour": 22,
+      "zone_name": "北看台B区",
+      "active_users": 37539,
+      "new_users": 464,
+      "roaming_users": 5866,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1068.12
+    },
+    {
+      "timestamp": 1772288636751,
+      "hour": 22,
+      "zone_name": "东看台A区",
+      "active_users": 41013,
+      "new_users": 1129,
+      "roaming_users": 7838,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 815.982
+    },
+    {
+      "timestamp": 1772288636751,
+      "hour": 22,
+      "zone_name": "西看台VIP",
+      "active_users": 23328,
+      "new_users": 488,
+      "roaming_users": 3643,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1113.345
+    },
+    {
+      "timestamp": 1772292236751,
+      "hour": 23,
+      "zone_name": "南看台F区",
+      "active_users": 13500,
+      "new_users": 201,
+      "roaming_users": 1548,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 416.34
+    },
+    {
+      "timestamp": 1772292236751,
+      "hour": 23,
+      "zone_name": "北看台B区",
+      "active_users": 15714,
+      "new_users": 329,
+      "roaming_users": 3190,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 308.12399999999997
+    },
+    {
+      "timestamp": 1772292236751,
+      "hour": 23,
+      "zone_name": "东看台A区",
+      "active_users": 21150,
+      "new_users": 444,
+      "roaming_users": 3011,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 663.123
+    },
+    {
+      "timestamp": 1772292236751,
+      "hour": 23,
+      "zone_name": "西看台VIP",
+      "active_users": 14520,
+      "new_users": 426,
+      "roaming_users": 2315,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 470.62399999999997
+    },
+    {
+      "timestamp": 1772295836751,
+      "hour": 0,
+      "zone_name": "南看台F区",
+      "active_users": 17658,
+      "new_users": 523,
+      "roaming_users": 2218,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 332.424
+    },
+    {
+      "timestamp": 1772295836751,
+      "hour": 0,
+      "zone_name": "北看台B区",
+      "active_users": 22248,
+      "new_users": 372,
+      "roaming_users": 1615,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 622.272
+    },
+    {
+      "timestamp": 1772295836751,
+      "hour": 0,
+      "zone_name": "东看台A区",
+      "active_users": 17995,
+      "new_users": 636,
+      "roaming_users": 3520,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 407.597
+    },
+    {
+      "timestamp": 1772295836751,
+      "hour": 0,
+      "zone_name": "西看台VIP",
+      "active_users": 15288,
+      "new_users": 340,
+      "roaming_users": 2343,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 569.429
+    },
+    {
+      "timestamp": 1772299436751,
+      "hour": 1,
+      "zone_name": "南看台F区",
+      "active_users": 18720,
+      "new_users": 438,
+      "roaming_users": 2798,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 569.4399999999999
+    },
+    {
+      "timestamp": 1772299436751,
+      "hour": 1,
+      "zone_name": "北看台B区",
+      "active_users": 18076,
+      "new_users": 227,
+      "roaming_users": 1745,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 371.046
+    },
+    {
+      "timestamp": 1772299436751,
+      "hour": 1,
+      "zone_name": "东看台A区",
+      "active_users": 21816,
+      "new_users": 715,
+      "roaming_users": 4378,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 650.736
+    },
+    {
+      "timestamp": 1772299436751,
+      "hour": 1,
+      "zone_name": "西看台VIP",
+      "active_users": 14256,
+      "new_users": 567,
+      "roaming_users": 4551,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 606.6239999999999
+    },
+    {
+      "timestamp": 1772303036751,
+      "hour": 2,
+      "zone_name": "南看台F区",
+      "active_users": 18297,
+      "new_users": 536,
+      "roaming_users": 3125,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 487.99600000000004
+    },
+    {
+      "timestamp": 1772303036751,
+      "hour": 2,
+      "zone_name": "北看台B区",
+      "active_users": 16650,
+      "new_users": 208,
+      "roaming_users": 1238,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 387.945
+    },
+    {
+      "timestamp": 1772303036751,
+      "hour": 2,
+      "zone_name": "东看台A区",
+      "active_users": 18189,
+      "new_users": 224,
+      "roaming_users": 4065,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 402.351
+    },
+    {
+      "timestamp": 1772303036751,
+      "hour": 2,
+      "zone_name": "西看台VIP",
+      "active_users": 12150,
+      "new_users": 612,
+      "roaming_users": 3453,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 388.71
+    },
+    {
+      "timestamp": 1772306636751,
+      "hour": 3,
+      "zone_name": "南看台F区",
+      "active_users": 20304,
+      "new_users": 248,
+      "roaming_users": 1582,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 495.99099999999993
+    },
+    {
+      "timestamp": 1772306636751,
+      "hour": 3,
+      "zone_name": "北看台B区",
+      "active_users": 20124,
+      "new_users": 542,
+      "roaming_users": 3541,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 372.423
+    },
+    {
+      "timestamp": 1772306636751,
+      "hour": 3,
+      "zone_name": "东看台A区",
+      "active_users": 15300,
+      "new_users": 323,
+      "roaming_users": 2564,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 336.192
+    },
+    {
+      "timestamp": 1772306636751,
+      "hour": 3,
+      "zone_name": "西看台VIP",
+      "active_users": 14445,
+      "new_users": 388,
+      "roaming_users": 4028,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 483.79499999999996
+    },
+    {
+      "timestamp": 1772310236751,
+      "hour": 4,
+      "zone_name": "南看台F区",
+      "active_users": 20700,
+      "new_users": 632,
+      "roaming_users": 1893,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 567.41
+    },
+    {
+      "timestamp": 1772310236751,
+      "hour": 4,
+      "zone_name": "北看台B区",
+      "active_users": 14089,
+      "new_users": 346,
+      "roaming_users": 2765,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 339.94599999999997
+    },
+    {
+      "timestamp": 1772310236751,
+      "hour": 4,
+      "zone_name": "东看台A区",
+      "active_users": 19372,
+      "new_users": 254,
+      "roaming_users": 1596,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 561.659
+    },
+    {
+      "timestamp": 1772310236751,
+      "hour": 4,
+      "zone_name": "西看台VIP",
+      "active_users": 9180,
+      "new_users": 289,
+      "roaming_users": 2637,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 352.65
+    },
+    {
+      "timestamp": 1772313836751,
+      "hour": 5,
+      "zone_name": "南看台F区",
+      "active_users": 16064,
+      "new_users": 371,
+      "roaming_users": 1698,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 414.575
+    },
+    {
+      "timestamp": 1772313836751,
+      "hour": 5,
+      "zone_name": "北看台B区",
+      "active_users": 21816,
+      "new_users": 456,
+      "roaming_users": 3512,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 637.584
+    },
+    {
+      "timestamp": 1772313836751,
+      "hour": 5,
+      "zone_name": "东看台A区",
+      "active_users": 19930,
+      "new_users": 281,
+      "roaming_users": 2440,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 585.961
+    },
+    {
+      "timestamp": 1772313836751,
+      "hour": 5,
+      "zone_name": "西看台VIP",
+      "active_users": 9696,
+      "new_users": 284,
+      "roaming_users": 2651,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 441.24800000000005
+    },
+    {
+      "timestamp": 1772317436751,
+      "hour": 6,
+      "zone_name": "南看台F区",
+      "active_users": 13365,
+      "new_users": 393,
+      "roaming_users": 2190,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 370.92
+    },
+    {
+      "timestamp": 1772317436751,
+      "hour": 6,
+      "zone_name": "北看台B区",
+      "active_users": 22275,
+      "new_users": 261,
+      "roaming_users": 4167,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 453.42
+    },
+    {
+      "timestamp": 1772317436751,
+      "hour": 6,
+      "zone_name": "东看台A区",
+      "active_users": 17982,
+      "new_users": 479,
+      "roaming_users": 2636,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 549.524
+    },
+    {
+      "timestamp": 1772317436751,
+      "hour": 6,
+      "zone_name": "西看台VIP",
+      "active_users": 13200,
+      "new_users": 568,
+      "roaming_users": 2459,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 630.872
+    },
+    {
+      "timestamp": 1772321036751,
+      "hour": 7,
+      "zone_name": "南看台F区",
+      "active_users": 20898,
+      "new_users": 521,
+      "roaming_users": 2341,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 534.361
+    },
+    {
+      "timestamp": 1772321036751,
+      "hour": 7,
+      "zone_name": "北看台B区",
+      "active_users": 22050,
+      "new_users": 460,
+      "roaming_users": 3887,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 722.064
+    },
+    {
+      "timestamp": 1772321036751,
+      "hour": 7,
+      "zone_name": "东看台A区",
+      "active_users": 16672,
+      "new_users": 238,
+      "roaming_users": 3784,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 506.649
+    },
+    {
+      "timestamp": 1772321036751,
+      "hour": 7,
+      "zone_name": "西看台VIP",
+      "active_users": 11856,
+      "new_users": 407,
+      "roaming_users": 2733,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 452.23799999999994
+    },
+    {
+      "timestamp": 1772324636751,
+      "hour": 8,
+      "zone_name": "南看台F区",
+      "active_users": 37665,
+      "new_users": 716,
+      "roaming_users": 7660,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1036.0800000000002
+    },
+    {
+      "timestamp": 1772324636751,
+      "hour": 8,
+      "zone_name": "北看台B区",
+      "active_users": 41085,
+      "new_users": 1020,
+      "roaming_users": 6710,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1043.559
+    },
+    {
+      "timestamp": 1772324636751,
+      "hour": 8,
+      "zone_name": "东看台A区",
+      "active_users": 42228,
+      "new_users": 714,
+      "roaming_users": 6345,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1247.336
+    },
+    {
+      "timestamp": 1772324636751,
+      "hour": 8,
+      "zone_name": "西看台VIP",
+      "active_users": 26316,
+      "new_users": 577,
+      "roaming_users": 8018,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1066.658
+    },
+    {
+      "timestamp": 1772328236751,
+      "hour": 9,
+      "zone_name": "南看台F区",
+      "active_users": 45126,
+      "new_users": 1133,
+      "roaming_users": 4512,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 1264.816
+    },
+    {
+      "timestamp": 1772328236751,
+      "hour": 9,
+      "zone_name": "北看台B区",
+      "active_users": 42588,
+      "new_users": 619,
+      "roaming_users": 4224,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1344.98
+    },
+    {
+      "timestamp": 1772328236751,
+      "hour": 9,
+      "zone_name": "东看台A区",
+      "active_users": 40950,
+      "new_users": 823,
+      "roaming_users": 7673,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 845.208
+    },
+    {
+      "timestamp": 1772328236751,
+      "hour": 9,
+      "zone_name": "西看台VIP",
+      "active_users": 24153,
+      "new_users": 760,
+      "roaming_users": 3242,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1093.359
+    },
+    {
+      "timestamp": 1772331836751,
+      "hour": 10,
+      "zone_name": "南看台F区",
+      "active_users": 37647,
+      "new_users": 1225,
+      "roaming_users": 8472,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1257.57
+    },
+    {
+      "timestamp": 1772331836751,
+      "hour": 10,
+      "zone_name": "北看台B区",
+      "active_users": 32760,
+      "new_users": 1035,
+      "roaming_users": 5302,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 782
+    },
+    {
+      "timestamp": 1772331836751,
+      "hour": 10,
+      "zone_name": "东看台A区",
+      "active_users": 39474,
+      "new_users": 634,
+      "roaming_users": 7892,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 765.6579999999999
+    },
+    {
+      "timestamp": 1772331836751,
+      "hour": 10,
+      "zone_name": "西看台VIP",
+      "active_users": 24990,
+      "new_users": 934,
+      "roaming_users": 8096,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 1008.6099999999999
+    },
+    {
+      "timestamp": 1772335436751,
+      "hour": 11,
+      "zone_name": "南看台F区",
+      "active_users": 38448,
+      "new_users": 569,
+      "roaming_users": 6016,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1033.468
+    },
+    {
+      "timestamp": 1772335436751,
+      "hour": 11,
+      "zone_name": "北看台B区",
+      "active_users": 40158,
+      "new_users": 831,
+      "roaming_users": 3619,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1289.656
+    },
+    {
+      "timestamp": 1772335436751,
+      "hour": 11,
+      "zone_name": "东看台A区",
+      "active_users": 36018,
+      "new_users": 774,
+      "roaming_users": 5093,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 726.798
+    },
+    {
+      "timestamp": 1772335436751,
+      "hour": 11,
+      "zone_name": "西看台VIP",
+      "active_users": 29700,
+      "new_users": 511,
+      "roaming_users": 5568,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 835.65
+    },
+    {
+      "timestamp": 1772339036751,
+      "hour": 12,
+      "zone_name": "南看台F区",
+      "active_users": 44100,
+      "new_users": 609,
+      "roaming_users": 8474,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 884.548
+    },
+    {
+      "timestamp": 1772339036751,
+      "hour": 12,
+      "zone_name": "北看台B区",
+      "active_users": 42768,
+      "new_users": 1442,
+      "roaming_users": 7770,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 1004.6519999999999
+    },
+    {
+      "timestamp": 1772339036751,
+      "hour": 12,
+      "zone_name": "东看台A区",
+      "active_users": 44928,
+      "new_users": 993,
+      "roaming_users": 7909,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1106.3999999999999
+    },
+    {
+      "timestamp": 1772339036751,
+      "hour": 12,
+      "zone_name": "西看台VIP",
+      "active_users": 28809,
+      "new_users": 985,
+      "roaming_users": 7657,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1098.0089999999998
+    },
+    {
+      "timestamp": 1772342636751,
+      "hour": 13,
+      "zone_name": "南看台F区",
+      "active_users": 44104,
+      "new_users": 1222,
+      "roaming_users": 6437,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 877.9319999999999
+    },
+    {
+      "timestamp": 1772342636751,
+      "hour": 13,
+      "zone_name": "北看台B区",
+      "active_users": 42777,
+      "new_users": 1137,
+      "roaming_users": 9355,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 937.762
+    },
+    {
+      "timestamp": 1772342636751,
+      "hour": 13,
+      "zone_name": "东看台A区",
+      "active_users": 46705,
+      "new_users": 1085,
+      "roaming_users": 5976,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 986.781
+    },
+    {
+      "timestamp": 1772342636751,
+      "hour": 13,
+      "zone_name": "西看台VIP",
+      "active_users": 27930,
+      "new_users": 903,
+      "roaming_users": 9040,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 773.49
+    },
+    {
+      "timestamp": 1772346236751,
+      "hour": 14,
+      "zone_name": "南看台F区",
+      "active_users": 45792,
+      "new_users": 843,
+      "roaming_users": 8155,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 935.04
+    },
+    {
+      "timestamp": 1772346236751,
+      "hour": 14,
+      "zone_name": "北看台B区",
+      "active_users": 43650,
+      "new_users": 846,
+      "roaming_users": 8252,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1215.4099999999999
+    },
+    {
+      "timestamp": 1772346236751,
+      "hour": 14,
+      "zone_name": "东看台A区",
+      "active_users": 42750,
+      "new_users": 1108,
+      "roaming_users": 8999,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1172.2
+    },
+    {
+      "timestamp": 1772346236751,
+      "hour": 14,
+      "zone_name": "西看台VIP",
+      "active_users": 30816,
+      "new_users": 785,
+      "roaming_users": 8337,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1106.3999999999999
+    },
+    {
+      "timestamp": 1772349836751,
+      "hour": 15,
+      "zone_name": "南看台F区",
+      "active_users": 41467,
+      "new_users": 908,
+      "roaming_users": 7572,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 964.8199999999999
+    },
+    {
+      "timestamp": 1772349836751,
+      "hour": 15,
+      "zone_name": "北看台B区",
+      "active_users": 40608,
+      "new_users": 1273,
+      "roaming_users": 8294,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 904.5120000000001
+    },
+    {
+      "timestamp": 1772349836751,
+      "hour": 15,
+      "zone_name": "东看台A区",
+      "active_users": 44104,
+      "new_users": 1386,
+      "roaming_users": 5132,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 910.206
+    },
+    {
+      "timestamp": 1772349836751,
+      "hour": 15,
+      "zone_name": "西看台VIP",
+      "active_users": 30294,
+      "new_users": 1228,
+      "roaming_users": 5680,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 1418.5710000000001
+    },
+    {
+      "timestamp": 1772353436751,
+      "hour": 16,
+      "zone_name": "南看台F区",
+      "active_users": 39721,
+      "new_users": 1206,
+      "roaming_users": 4627,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1045.466
+    },
+    {
+      "timestamp": 1772353436751,
+      "hour": 16,
+      "zone_name": "北看台B区",
+      "active_users": 44550,
+      "new_users": 1028,
+      "roaming_users": 7822,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1083.654
+    },
+    {
+      "timestamp": 1772353436751,
+      "hour": 16,
+      "zone_name": "东看台A区",
+      "active_users": 43659,
+      "new_users": 1101,
+      "roaming_users": 7856,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 1301.636
+    },
+    {
+      "timestamp": 1772353436751,
+      "hour": 16,
+      "zone_name": "西看台VIP",
+      "active_users": 28785,
+      "new_users": 620,
+      "roaming_users": 5327,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 848.16
+    },
+    {
+      "timestamp": 1772357036751,
+      "hour": 17,
+      "zone_name": "南看台F区",
+      "active_users": 46332,
+      "new_users": 1441,
+      "roaming_users": 5143,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1136.619
+    },
+    {
+      "timestamp": 1772357036751,
+      "hour": 17,
+      "zone_name": "北看台B区",
+      "active_users": 42777,
+      "new_users": 1156,
+      "roaming_users": 4981,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 982.5129999999999
+    },
+    {
+      "timestamp": 1772357036751,
+      "hour": 17,
+      "zone_name": "东看台A区",
+      "active_users": 43213,
+      "new_users": 514,
+      "roaming_users": 5354,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1248.875
+    },
+    {
+      "timestamp": 1772357036751,
+      "hour": 17,
+      "zone_name": "西看台VIP",
+      "active_users": 30282,
+      "new_users": 587,
+      "roaming_users": 4760,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 966.574
+    },
+    {
+      "timestamp": 1772360636751,
+      "hour": 18,
+      "zone_name": "南看台F区",
+      "active_users": 44995,
+      "new_users": 531,
+      "roaming_users": 7784,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1303.6319999999998
+    },
+    {
+      "timestamp": 1772360636751,
+      "hour": 18,
+      "zone_name": "北看台B区",
+      "active_users": 38902,
+      "new_users": 487,
+      "roaming_users": 7246,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 771.685
+    },
+    {
+      "timestamp": 1772360636751,
+      "hour": 18,
+      "zone_name": "东看台A区",
+      "active_users": 44995,
+      "new_users": 1485,
+      "roaming_users": 9365,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 810.513
+    },
+    {
+      "timestamp": 1772360636751,
+      "hour": 18,
+      "zone_name": "西看台VIP",
+      "active_users": 28518,
+      "new_users": 1053,
+      "roaming_users": 4977,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 923.537
+    },
+    {
+      "timestamp": 1772364236751,
+      "hour": 19,
+      "zone_name": "南看台F区",
+      "active_users": 40500,
+      "new_users": 684,
+      "roaming_users": 4549,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1077.5
+    },
+    {
+      "timestamp": 1772364236751,
+      "hour": 19,
+      "zone_name": "北看台B区",
+      "active_users": 46170,
+      "new_users": 573,
+      "roaming_users": 4461,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 884.165
+    },
+    {
+      "timestamp": 1772364236751,
+      "hour": 19,
+      "zone_name": "东看台A区",
+      "active_users": 40572,
+      "new_users": 1082,
+      "roaming_users": 5400,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 950.6
+    },
+    {
+      "timestamp": 1772364236751,
+      "hour": 19,
+      "zone_name": "西看台VIP",
+      "active_users": 26208,
+      "new_users": 1191,
+      "roaming_users": 9384,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 771.2639999999999
+    },
+    {
+      "timestamp": 1772367836751,
+      "hour": 20,
+      "zone_name": "南看台F区",
+      "active_users": 41877,
+      "new_users": 828,
+      "roaming_users": 9027,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1479.357
+    },
+    {
+      "timestamp": 1772367836751,
+      "hour": 20,
+      "zone_name": "北看台B区",
+      "active_users": 41467,
+      "new_users": 1274,
+      "roaming_users": 5852,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1389.816
+    },
+    {
+      "timestamp": 1772367836751,
+      "hour": 20,
+      "zone_name": "东看台A区",
+      "active_users": 41904,
+      "new_users": 965,
+      "roaming_users": 7138,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1193.488
+    },
+    {
+      "timestamp": 1772367836751,
+      "hour": 20,
+      "zone_name": "西看台VIP",
+      "active_users": 26784,
+      "new_users": 1304,
+      "roaming_users": 6356,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 1128
+    },
+    {
+      "timestamp": 1772371436751,
+      "hour": 21,
+      "zone_name": "南看台F区",
+      "active_users": 41814,
+      "new_users": 839,
+      "roaming_users": 5453,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1319.372
+    },
+    {
+      "timestamp": 1772371436751,
+      "hour": 21,
+      "zone_name": "北看台B区",
+      "active_users": 44226,
+      "new_users": 746,
+      "roaming_users": 5580,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 778.323
+    },
+    {
+      "timestamp": 1772371436751,
+      "hour": 21,
+      "zone_name": "东看台A区",
+      "active_users": 41251,
+      "new_users": 796,
+      "roaming_users": 6440,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 723.125
+    },
+    {
+      "timestamp": 1772371436751,
+      "hour": 21,
+      "zone_name": "西看台VIP",
+      "active_users": 23940,
+      "new_users": 504,
+      "roaming_users": 7914,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 863.9399999999999
+    },
+    {
+      "timestamp": 1772375036751,
+      "hour": 22,
+      "zone_name": "南看台F区",
+      "active_users": 35109,
+      "new_users": 587,
+      "roaming_users": 4734,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1231.9689999999998
+    },
+    {
+      "timestamp": 1772375036751,
+      "hour": 22,
+      "zone_name": "北看台B区",
+      "active_users": 37260,
+      "new_users": 1248,
+      "roaming_users": 5524,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 1077.412
+    },
+    {
+      "timestamp": 1772375036751,
+      "hour": 22,
+      "zone_name": "东看台A区",
+      "active_users": 41400,
+      "new_users": 1210,
+      "roaming_users": 5873,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 901.14
+    },
+    {
+      "timestamp": 1772375036751,
+      "hour": 22,
+      "zone_name": "西看台VIP",
+      "active_users": 26400,
+      "new_users": 997,
+      "roaming_users": 2429,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 1037.3600000000001
+    },
+    {
+      "timestamp": 1772378636751,
+      "hour": 23,
+      "zone_name": "南看台F区",
+      "active_users": 20304,
+      "new_users": 669,
+      "roaming_users": 4644,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 416.688
+    },
+    {
+      "timestamp": 1772378636751,
+      "hour": 23,
+      "zone_name": "北看台B区",
+      "active_users": 15390,
+      "new_users": 520,
+      "roaming_users": 3050,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 303.69599999999997
+    },
+    {
+      "timestamp": 1772378636751,
+      "hour": 23,
+      "zone_name": "东看台A区",
+      "active_users": 13662,
+      "new_users": 325,
+      "roaming_users": 1885,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 460.185
+    },
+    {
+      "timestamp": 1772378636751,
+      "hour": 23,
+      "zone_name": "西看台VIP",
+      "active_users": 14175,
+      "new_users": 627,
+      "roaming_users": 3182,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 551.205
+    },
+    {
+      "timestamp": 1772382236751,
+      "hour": 0,
+      "zone_name": "南看台F区",
+      "active_users": 17199,
+      "new_users": 467,
+      "roaming_users": 3489,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 371.742
+    },
+    {
+      "timestamp": 1772382236751,
+      "hour": 0,
+      "zone_name": "北看台B区",
+      "active_users": 14535,
+      "new_users": 430,
+      "roaming_users": 2574,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 473.58600000000007
+    },
+    {
+      "timestamp": 1772382236751,
+      "hour": 0,
+      "zone_name": "东看台A区",
+      "active_users": 19129,
+      "new_users": 288,
+      "roaming_users": 1659,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 446.745
+    },
+    {
+      "timestamp": 1772382236751,
+      "hour": 0,
+      "zone_name": "西看台VIP",
+      "active_users": 10602,
+      "new_users": 282,
+      "roaming_users": 3766,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 484.53799999999995
+    },
+    {
+      "timestamp": 1772385836751,
+      "hour": 1,
+      "zone_name": "南看台F区",
+      "active_users": 14175,
+      "new_users": 260,
+      "roaming_users": 1518,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 440.94
+    },
+    {
+      "timestamp": 1772385836751,
+      "hour": 1,
+      "zone_name": "北看台B区",
+      "active_users": 18427,
+      "new_users": 543,
+      "roaming_users": 1171,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 545.7660000000001
+    },
+    {
+      "timestamp": 1772385836751,
+      "hour": 1,
+      "zone_name": "东看台A区",
+      "active_users": 22500,
+      "new_users": 657,
+      "roaming_users": 4078,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 419.85
+    },
+    {
+      "timestamp": 1772385836751,
+      "hour": 1,
+      "zone_name": "西看台VIP",
+      "active_users": 11193,
+      "new_users": 232,
+      "roaming_users": 1330,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 597.78
+    },
+    {
+      "timestamp": 1772389436751,
+      "hour": 2,
+      "zone_name": "南看台F区",
+      "active_users": 14850,
+      "new_users": 340,
+      "roaming_users": 3233,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 427.02000000000004
+    },
+    {
+      "timestamp": 1772389436751,
+      "hour": 2,
+      "zone_name": "北看台B区",
+      "active_users": 18297,
+      "new_users": 440,
+      "roaming_users": 1404,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 342.228
+    },
+    {
+      "timestamp": 1772389436751,
+      "hour": 2,
+      "zone_name": "东看台A区",
+      "active_users": 16416,
+      "new_users": 480,
+      "roaming_users": 3449,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 414.39
+    },
+    {
+      "timestamp": 1772389436751,
+      "hour": 2,
+      "zone_name": "西看台VIP",
+      "active_users": 15876,
+      "new_users": 719,
+      "roaming_users": 2349,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 468.979
+    },
+    {
+      "timestamp": 1772393036751,
+      "hour": 3,
+      "zone_name": "南看台F区",
+      "active_users": 15295,
+      "new_users": 275,
+      "roaming_users": 1885,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 285.978
+    },
+    {
+      "timestamp": 1772393036751,
+      "hour": 3,
+      "zone_name": "北看台B区",
+      "active_users": 14508,
+      "new_users": 381,
+      "roaming_users": 3099,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 255.998
+    },
+    {
+      "timestamp": 1772393036751,
+      "hour": 3,
+      "zone_name": "东看台A区",
+      "active_users": 18837,
+      "new_users": 382,
+      "roaming_users": 2351,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 587.328
+    },
+    {
+      "timestamp": 1772393036751,
+      "hour": 3,
+      "zone_name": "西看台VIP",
+      "active_users": 12726,
+      "new_users": 607,
+      "roaming_users": 1546,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 589.596
+    },
+    {
+      "timestamp": 1772396636751,
+      "hour": 4,
+      "zone_name": "南看台F区",
+      "active_users": 20317,
+      "new_users": 530,
+      "roaming_users": 2810,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 582.779
+    },
+    {
+      "timestamp": 1772396636751,
+      "hour": 4,
+      "zone_name": "北看台B区",
+      "active_users": 19845,
+      "new_users": 699,
+      "roaming_users": 4765,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 602.2589999999999
+    },
+    {
+      "timestamp": 1772396636751,
+      "hour": 4,
+      "zone_name": "东看台A区",
+      "active_users": 17820,
+      "new_users": 530,
+      "roaming_users": 2388,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 527.1600000000001
+    },
+    {
+      "timestamp": 1772396636751,
+      "hour": 4,
+      "zone_name": "西看台VIP",
+      "active_users": 13536,
+      "new_users": 433,
+      "roaming_users": 2495,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 669.36
+    },
+    {
+      "timestamp": 1772400236751,
+      "hour": 5,
+      "zone_name": "南看台F区",
+      "active_users": 21600,
+      "new_users": 669,
+      "roaming_users": 3486,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 709.824
+    },
+    {
+      "timestamp": 1772400236751,
+      "hour": 5,
+      "zone_name": "北看台B区",
+      "active_users": 15732,
+      "new_users": 350,
+      "roaming_users": 2941,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 335.882
+    },
+    {
+      "timestamp": 1772400236751,
+      "hour": 5,
+      "zone_name": "东看台A区",
+      "active_users": 15912,
+      "new_users": 455,
+      "roaming_users": 2472,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 391.884
+    },
+    {
+      "timestamp": 1772400236751,
+      "hour": 5,
+      "zone_name": "西看台VIP",
+      "active_users": 14112,
+      "new_users": 661,
+      "roaming_users": 4522,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 561.9839999999999
+    },
+    {
+      "timestamp": 1772403836751,
+      "hour": 6,
+      "zone_name": "南看台F区",
+      "active_users": 14256,
+      "new_users": 381,
+      "roaming_users": 2499,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 335.874
+    },
+    {
+      "timestamp": 1772403836751,
+      "hour": 6,
+      "zone_name": "北看台B区",
+      "active_users": 16650,
+      "new_users": 259,
+      "roaming_users": 1529,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 541.939
+    },
+    {
+      "timestamp": 1772403836751,
+      "hour": 6,
+      "zone_name": "东看台A区",
+      "active_users": 19543,
+      "new_users": 311,
+      "roaming_users": 4040,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 377.755
+    },
+    {
+      "timestamp": 1772403836751,
+      "hour": 6,
+      "zone_name": "西看台VIP",
+      "active_users": 8280,
+      "new_users": 236,
+      "roaming_users": 2912,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 409.67999999999995
+    },
+    {
+      "timestamp": 1772407436751,
+      "hour": 7,
+      "zone_name": "南看台F区",
+      "active_users": 14107,
+      "new_users": 488,
+      "roaming_users": 1902,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 386.826
+    },
+    {
+      "timestamp": 1772407436751,
+      "hour": 7,
+      "zone_name": "北看台B区",
+      "active_users": 16983,
+      "new_users": 282,
+      "roaming_users": 3389,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 365.005
+    },
+    {
+      "timestamp": 1772407436751,
+      "hour": 7,
+      "zone_name": "东看台A区",
+      "active_users": 14107,
+      "new_users": 460,
+      "roaming_users": 1069,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 284.36100000000005
+    },
+    {
+      "timestamp": 1772407436751,
+      "hour": 7,
+      "zone_name": "西看台VIP",
+      "active_users": 10602,
+      "new_users": 418,
+      "roaming_users": 3434,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 483.93
+    },
+    {
+      "timestamp": 1772411036751,
+      "hour": 8,
+      "zone_name": "南看台F区",
+      "active_users": 38016,
+      "new_users": 679,
+      "roaming_users": 8076,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 914.936
+    },
+    {
+      "timestamp": 1772411036751,
+      "hour": 8,
+      "zone_name": "北看台B区",
+      "active_users": 40324,
+      "new_users": 1010,
+      "roaming_users": 7723,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1240.0980000000002
+    },
+    {
+      "timestamp": 1772411036751,
+      "hour": 8,
+      "zone_name": "东看台A区",
+      "active_users": 34398,
+      "new_users": 779,
+      "roaming_users": 6743,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1118.5439999999999
+    },
+    {
+      "timestamp": 1772411036751,
+      "hour": 8,
+      "zone_name": "西看台VIP",
+      "active_users": 28704,
+      "new_users": 1097,
+      "roaming_users": 3461,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 1193.4240000000002
+    },
+    {
+      "timestamp": 1772414636751,
+      "hour": 9,
+      "zone_name": "南看台F区",
+      "active_users": 38007,
+      "new_users": 847,
+      "roaming_users": 8156,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 705.036
+    },
+    {
+      "timestamp": 1772414636751,
+      "hour": 9,
+      "zone_name": "北看台B区",
+      "active_users": 35955,
+      "new_users": 470,
+      "roaming_users": 4733,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 732.445
+    },
+    {
+      "timestamp": 1772414636751,
+      "hour": 9,
+      "zone_name": "东看台A区",
+      "active_users": 42750,
+      "new_users": 528,
+      "roaming_users": 7448,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1219.325
+    },
+    {
+      "timestamp": 1772414636751,
+      "hour": 9,
+      "zone_name": "西看台VIP",
+      "active_users": 24273,
+      "new_users": 1197,
+      "roaming_users": 4846,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 835.896
+    },
+    {
+      "timestamp": 1772418236751,
+      "hour": 10,
+      "zone_name": "南看台F区",
+      "active_users": 35604,
+      "new_users": 1141,
+      "roaming_users": 2963,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 930.1759999999999
+    },
+    {
+      "timestamp": 1772418236751,
+      "hour": 10,
+      "zone_name": "北看台B区",
+      "active_users": 41310,
+      "new_users": 435,
+      "roaming_users": 8157,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 742.05
+    },
+    {
+      "timestamp": 1772418236751,
+      "hour": 10,
+      "zone_name": "东看台A区",
+      "active_users": 39330,
+      "new_users": 1307,
+      "roaming_users": 4966,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 759.0920000000001
+    },
+    {
+      "timestamp": 1772418236751,
+      "hour": 10,
+      "zone_name": "西看台VIP",
+      "active_users": 23571,
+      "new_users": 1189,
+      "roaming_users": 2823,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1163.16
+    },
+    {
+      "timestamp": 1772421836751,
+      "hour": 11,
+      "zone_name": "南看台F区",
+      "active_users": 41310,
+      "new_users": 517,
+      "roaming_users": 2686,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 984.215
+    },
+    {
+      "timestamp": 1772421836751,
+      "hour": 11,
+      "zone_name": "北看台B区",
+      "active_users": 37674,
+      "new_users": 605,
+      "roaming_users": 8739,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 1302.996
+    },
+    {
+      "timestamp": 1772421836751,
+      "hour": 11,
+      "zone_name": "东看台A区",
+      "active_users": 36976,
+      "new_users": 883,
+      "roaming_users": 5062,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1020.5679999999999
+    },
+    {
+      "timestamp": 1772421836751,
+      "hour": 11,
+      "zone_name": "西看台VIP",
+      "active_users": 24480,
+      "new_users": 853,
+      "roaming_users": 3779,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 725.22
+    },
+    {
+      "timestamp": 1772425436751,
+      "hour": 12,
+      "zone_name": "南看台F区",
+      "active_users": 45886,
+      "new_users": 1109,
+      "roaming_users": 5253,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 1317.393
+    },
+    {
+      "timestamp": 1772425436751,
+      "hour": 12,
+      "zone_name": "北看台B区",
+      "active_users": 46777,
+      "new_users": 1422,
+      "roaming_users": 6229,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 928.719
+    },
+    {
+      "timestamp": 1772425436751,
+      "hour": 12,
+      "zone_name": "东看台A区",
+      "active_users": 40158,
+      "new_users": 1453,
+      "roaming_users": 5025,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1355.3809999999999
+    },
+    {
+      "timestamp": 1772425436751,
+      "hour": 12,
+      "zone_name": "西看台VIP",
+      "active_users": 27360,
+      "new_users": 956,
+      "roaming_users": 4278,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 924.7679999999999
+    },
+    {
+      "timestamp": 1772429036751,
+      "hour": 13,
+      "zone_name": "南看台F区",
+      "active_users": 40158,
+      "new_users": 704,
+      "roaming_users": 9223,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 910.539
+    },
+    {
+      "timestamp": 1772429036751,
+      "hour": 13,
+      "zone_name": "北看台B区",
+      "active_users": 45832,
+      "new_users": 1442,
+      "roaming_users": 8196,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 800.929
+    },
+    {
+      "timestamp": 1772429036751,
+      "hour": 13,
+      "zone_name": "东看台A区",
+      "active_users": 44995,
+      "new_users": 1002,
+      "roaming_users": 5732,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1479.555
+    },
+    {
+      "timestamp": 1772429036751,
+      "hour": 13,
+      "zone_name": "西看台VIP",
+      "active_users": 29952,
+      "new_users": 552,
+      "roaming_users": 3150,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 995.712
+    },
+    {
+      "timestamp": 1772432636751,
+      "hour": 14,
+      "zone_name": "南看台F区",
+      "active_users": 49050,
+      "new_users": 832,
+      "roaming_users": 9092,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 1152.1
+    },
+    {
+      "timestamp": 1772432636751,
+      "hour": 14,
+      "zone_name": "北看台B区",
+      "active_users": 43213,
+      "new_users": 496,
+      "roaming_users": 9654,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1142.272
+    },
+    {
+      "timestamp": 1772432636751,
+      "hour": 14,
+      "zone_name": "东看台A区",
+      "active_users": 44104,
+      "new_users": 1364,
+      "roaming_users": 7241,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 1161.171
+    },
+    {
+      "timestamp": 1772432636751,
+      "hour": 14,
+      "zone_name": "西看台VIP",
+      "active_users": 29400,
+      "new_users": 1139,
+      "roaming_users": 7240,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 1334.76
+    },
+    {
+      "timestamp": 1772436236751,
+      "hour": 15,
+      "zone_name": "南看台F区",
+      "active_users": 43213,
+      "new_users": 754,
+      "roaming_users": 9214,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1050.39
+    },
+    {
+      "timestamp": 1772436236751,
+      "hour": 15,
+      "zone_name": "北看台B区",
+      "active_users": 44104,
+      "new_users": 1273,
+      "roaming_users": 7832,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 808.83
+    },
+    {
+      "timestamp": 1772436236751,
+      "hour": 15,
+      "zone_name": "东看台A区",
+      "active_users": 42336,
+      "new_users": 826,
+      "roaming_users": 9383,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 833.196
+    },
+    {
+      "timestamp": 1772436236751,
+      "hour": 15,
+      "zone_name": "西看台VIP",
+      "active_users": 26460,
+      "new_users": 645,
+      "roaming_users": 3348,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 1036.644
+    },
+    {
+      "timestamp": 1772439836751,
+      "hour": 16,
+      "zone_name": "南看台F区",
+      "active_users": 40176,
+      "new_users": 1137,
+      "roaming_users": 8049,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 916.4159999999999
+    },
+    {
+      "timestamp": 1772439836751,
+      "hour": 16,
+      "zone_name": "北看台B区",
+      "active_users": 45423,
+      "new_users": 1118,
+      "roaming_users": 9255,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1246.364
+    },
+    {
+      "timestamp": 1772439836751,
+      "hour": 16,
+      "zone_name": "东看台A区",
+      "active_users": 40608,
+      "new_users": 996,
+      "roaming_users": 8966,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1431.168
+    },
+    {
+      "timestamp": 1772439836751,
+      "hour": 16,
+      "zone_name": "西看台VIP",
+      "active_users": 31752,
+      "new_users": 583,
+      "roaming_users": 9235,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1286.0539999999999
+    },
+    {
+      "timestamp": 1772443436751,
+      "hour": 17,
+      "zone_name": "南看台F区",
+      "active_users": 41400,
+      "new_users": 1281,
+      "roaming_users": 7956,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 1413.6
+    },
+    {
+      "timestamp": 1772443436751,
+      "hour": 17,
+      "zone_name": "北看台B区",
+      "active_users": 48114,
+      "new_users": 1472,
+      "roaming_users": 5780,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 987.525
+    },
+    {
+      "timestamp": 1772443436751,
+      "hour": 17,
+      "zone_name": "东看台A区",
+      "active_users": 44887,
+      "new_users": 991,
+      "roaming_users": 3408,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 1174.01
+    },
+    {
+      "timestamp": 1772443436751,
+      "hour": 17,
+      "zone_name": "西看台VIP",
+      "active_users": 29664,
+      "new_users": 729,
+      "roaming_users": 6903,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 1187.232
+    },
+    {
+      "timestamp": 1772447036751,
+      "hour": 18,
+      "zone_name": "南看台F区",
+      "active_users": 43200,
+      "new_users": 970,
+      "roaming_users": 8584,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1063.4879999999998
+    },
+    {
+      "timestamp": 1772447036751,
+      "hour": 18,
+      "zone_name": "北看台B区",
+      "active_users": 47142,
+      "new_users": 513,
+      "roaming_users": 7944,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 1381.28
+    },
+    {
+      "timestamp": 1772447036751,
+      "hour": 18,
+      "zone_name": "东看台A区",
+      "active_users": 43218,
+      "new_users": 636,
+      "roaming_users": 5612,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1215.2
+    },
+    {
+      "timestamp": 1772447036751,
+      "hour": 18,
+      "zone_name": "西看台VIP",
+      "active_users": 29106,
+      "new_users": 1347,
+      "roaming_users": 3208,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 1091.673
+    },
+    {
+      "timestamp": 1772450636751,
+      "hour": 19,
+      "zone_name": "南看台F区",
+      "active_users": 47088,
+      "new_users": 1396,
+      "roaming_users": 4971,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 840.8639999999999
+    },
+    {
+      "timestamp": 1772450636751,
+      "hour": 19,
+      "zone_name": "北看台B区",
+      "active_users": 40572,
+      "new_users": 1178,
+      "roaming_users": 3654,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1117.396
+    },
+    {
+      "timestamp": 1772450636751,
+      "hour": 19,
+      "zone_name": "东看台A区",
+      "active_users": 41850,
+      "new_users": 657,
+      "roaming_users": 9651,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1423.4
+    },
+    {
+      "timestamp": 1772450636751,
+      "hour": 19,
+      "zone_name": "西看台VIP",
+      "active_users": 26730,
+      "new_users": 1037,
+      "roaming_users": 4674,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1391.2469999999998
+    },
+    {
+      "timestamp": 1772454236751,
+      "hour": 20,
+      "zone_name": "南看台F区",
+      "active_users": 48069,
+      "new_users": 1247,
+      "roaming_users": 7781,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 1019.1020000000001
+    },
+    {
+      "timestamp": 1772454236751,
+      "hour": 20,
+      "zone_name": "北看台B区",
+      "active_users": 46777,
+      "new_users": 565,
+      "roaming_users": 5445,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 915.255
+    },
+    {
+      "timestamp": 1772454236751,
+      "hour": 20,
+      "zone_name": "东看台A区",
+      "active_users": 44064,
+      "new_users": 1025,
+      "roaming_users": 7168,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 841.2479999999999
+    },
+    {
+      "timestamp": 1772454236751,
+      "hour": 20,
+      "zone_name": "西看台VIP",
+      "active_users": 27063,
+      "new_users": 1453,
+      "roaming_users": 3951,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1025.387
+    },
+    {
+      "timestamp": 1772457836751,
+      "hour": 21,
+      "zone_name": "南看台F区",
+      "active_users": 38556,
+      "new_users": 993,
+      "roaming_users": 5304,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 779.856
+    },
+    {
+      "timestamp": 1772457836751,
+      "hour": 21,
+      "zone_name": "北看台B区",
+      "active_users": 40446,
+      "new_users": 731,
+      "roaming_users": 4294,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 727.104
+    },
+    {
+      "timestamp": 1772457836751,
+      "hour": 21,
+      "zone_name": "东看台A区",
+      "active_users": 34776,
+      "new_users": 1134,
+      "roaming_users": 3826,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 846.972
+    },
+    {
+      "timestamp": 1772457836751,
+      "hour": 21,
+      "zone_name": "西看台VIP",
+      "active_users": 27216,
+      "new_users": 670,
+      "roaming_users": 2693,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 953.8199999999999
+    },
+    {
+      "timestamp": 1772461436751,
+      "hour": 22,
+      "zone_name": "南看台F区",
+      "active_users": 39312,
+      "new_users": 686,
+      "roaming_users": 8102,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1011.101
+    },
+    {
+      "timestamp": 1772461436751,
+      "hour": 22,
+      "zone_name": "北看台B区",
+      "active_users": 41467,
+      "new_users": 1238,
+      "roaming_users": 6731,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 1333.04
+    },
+    {
+      "timestamp": 1772461436751,
+      "hour": 22,
+      "zone_name": "东看台A区",
+      "active_users": 42930,
+      "new_users": 534,
+      "roaming_users": 8633,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 725.76
+    },
+    {
+      "timestamp": 1772461436751,
+      "hour": 22,
+      "zone_name": "西看台VIP",
+      "active_users": 24651,
+      "new_users": 1048,
+      "roaming_users": 5438,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1243.672
+    },
+    {
+      "timestamp": 1772465036751,
+      "hour": 23,
+      "zone_name": "南看台F区",
+      "active_users": 19872,
+      "new_users": 311,
+      "roaming_users": 2883,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 454.57200000000006
+    },
+    {
+      "timestamp": 1772465036751,
+      "hour": 23,
+      "zone_name": "北看台B区",
+      "active_users": 16497,
+      "new_users": 375,
+      "roaming_users": 3469,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 409.227
+    },
+    {
+      "timestamp": 1772465036751,
+      "hour": 23,
+      "zone_name": "东看台A区",
+      "active_users": 15277,
+      "new_users": 479,
+      "roaming_users": 2191,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 340.375
+    },
+    {
+      "timestamp": 1772465036751,
+      "hour": 23,
+      "zone_name": "西看台VIP",
+      "active_users": 9024,
+      "new_users": 285,
+      "roaming_users": 1872,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 356.832
+    },
+    {
+      "timestamp": 1772468636751,
+      "hour": 0,
+      "zone_name": "南看台F区",
+      "active_users": 21091,
+      "new_users": 294,
+      "roaming_users": 2315,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 392.977
+    },
+    {
+      "timestamp": 1772468636751,
+      "hour": 0,
+      "zone_name": "北看台B区",
+      "active_users": 14229,
+      "new_users": 177,
+      "roaming_users": 3033,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 494.0880000000001
+    },
+    {
+      "timestamp": 1772468636751,
+      "hour": 0,
+      "zone_name": "东看台A区",
+      "active_users": 17649,
+      "new_users": 505,
+      "roaming_users": 3233,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 445.62800000000004
+    },
+    {
+      "timestamp": 1772468636751,
+      "hour": 0,
+      "zone_name": "西看台VIP",
+      "active_users": 12312,
+      "new_users": 425,
+      "roaming_users": 1861,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 322.354
+    },
+    {
+      "timestamp": 1772472236751,
+      "hour": 1,
+      "zone_name": "南看台F区",
+      "active_users": 18189,
+      "new_users": 371,
+      "roaming_users": 1901,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 632.014
+    },
+    {
+      "timestamp": 1772472236751,
+      "hour": 1,
+      "zone_name": "北看台B区",
+      "active_users": 17334,
+      "new_users": 352,
+      "roaming_users": 3117,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 536.0759999999999
+    },
+    {
+      "timestamp": 1772472236751,
+      "hour": 1,
+      "zone_name": "东看台A区",
+      "active_users": 19642,
+      "new_users": 302,
+      "roaming_users": 4026,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 475.74
+    },
+    {
+      "timestamp": 1772472236751,
+      "hour": 1,
+      "zone_name": "西看台VIP",
+      "active_users": 10176,
+      "new_users": 305,
+      "roaming_users": 1544,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 384.352
+    },
+    {
+      "timestamp": 1772475836751,
+      "hour": 2,
+      "zone_name": "南看台F区",
+      "active_users": 15759,
+      "new_users": 196,
+      "roaming_users": 1269,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 480.55600000000004
+    },
+    {
+      "timestamp": 1772475836751,
+      "hour": 2,
+      "zone_name": "北看台B区",
+      "active_users": 16379,
+      "new_users": 279,
+      "roaming_users": 2455,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 477.29499999999996
+    },
+    {
+      "timestamp": 1772475836751,
+      "hour": 2,
+      "zone_name": "东看台A区",
+      "active_users": 21573,
+      "new_users": 280,
+      "roaming_users": 4380,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 412.09599999999995
+    },
+    {
+      "timestamp": 1772475836751,
+      "hour": 2,
+      "zone_name": "西看台VIP",
+      "active_users": 13104,
+      "new_users": 587,
+      "roaming_users": 4516,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 644.976
+    },
+    {
+      "timestamp": 1772479436751,
+      "hour": 3,
+      "zone_name": "南看台F区",
+      "active_users": 14382,
+      "new_users": 440,
+      "roaming_users": 3364,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 474.3
+    },
+    {
+      "timestamp": 1772479436751,
+      "hour": 3,
+      "zone_name": "北看台B区",
+      "active_users": 20412,
+      "new_users": 398,
+      "roaming_users": 3650,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 596.0219999999999
+    },
+    {
+      "timestamp": 1772479436751,
+      "hour": 3,
+      "zone_name": "东看台A区",
+      "active_users": 15390,
+      "new_users": 184,
+      "roaming_users": 1458,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 449.64
+    },
+    {
+      "timestamp": 1772479436751,
+      "hour": 3,
+      "zone_name": "西看台VIP",
+      "active_users": 14112,
+      "new_users": 666,
+      "roaming_users": 3399,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 581.424
+    },
+    {
+      "timestamp": 1772483036751,
+      "hour": 4,
+      "zone_name": "南看台F区",
+      "active_users": 16416,
+      "new_users": 405,
+      "roaming_users": 3101,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 379.468
+    },
+    {
+      "timestamp": 1772483036751,
+      "hour": 4,
+      "zone_name": "北看台B区",
+      "active_users": 12834,
+      "new_users": 455,
+      "roaming_users": 2133,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 375.255
+    },
+    {
+      "timestamp": 1772483036751,
+      "hour": 4,
+      "zone_name": "东看台A区",
+      "active_users": 16073,
+      "new_users": 289,
+      "roaming_users": 2787,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 489.28799999999995
+    },
+    {
+      "timestamp": 1772483036751,
+      "hour": 4,
+      "zone_name": "西看台VIP",
+      "active_users": 10710,
+      "new_users": 207,
+      "roaming_users": 1630,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 425.30600000000004
+    },
+    {
+      "timestamp": 1772486636751,
+      "hour": 5,
+      "zone_name": "南看台F区",
+      "active_users": 20952,
+      "new_users": 615,
+      "roaming_users": 1916,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 559.056
+    },
+    {
+      "timestamp": 1772486636751,
+      "hour": 5,
+      "zone_name": "北看台B区",
+      "active_users": 23053,
+      "new_users": 336,
+      "roaming_users": 4087,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 472.72599999999994
+    },
+    {
+      "timestamp": 1772486636751,
+      "hour": 5,
+      "zone_name": "东看台A区",
+      "active_users": 13662,
+      "new_users": 454,
+      "roaming_users": 1606,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 422.3670000000001
+    },
+    {
+      "timestamp": 1772486636751,
+      "hour": 5,
+      "zone_name": "西看台VIP",
+      "active_users": 11232,
+      "new_users": 480,
+      "roaming_users": 2193,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 321.40799999999996
+    },
+    {
+      "timestamp": 1772490236751,
+      "hour": 6,
+      "zone_name": "南看台F区",
+      "active_users": 17149,
+      "new_users": 416,
+      "roaming_users": 2866,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 519.665
+    },
+    {
+      "timestamp": 1772490236751,
+      "hour": 6,
+      "zone_name": "北看台B区",
+      "active_users": 15390,
+      "new_users": 263,
+      "roaming_users": 2685,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 382.47
+    },
+    {
+      "timestamp": 1772490236751,
+      "hour": 6,
+      "zone_name": "东看台A区",
+      "active_users": 13392,
+      "new_users": 270,
+      "roaming_users": 1517,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 254.13799999999998
+    },
+    {
+      "timestamp": 1772490236751,
+      "hour": 6,
+      "zone_name": "西看台VIP",
+      "active_users": 9216,
+      "new_users": 392,
+      "roaming_users": 2899,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 374.04800000000006
+    },
+    {
+      "timestamp": 1772493836751,
+      "hour": 7,
+      "zone_name": "南看台F区",
+      "active_users": 20394,
+      "new_users": 324,
+      "roaming_users": 1765,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 441.452
+    },
+    {
+      "timestamp": 1772493836751,
+      "hour": 7,
+      "zone_name": "北看台B区",
+      "active_users": 15300,
+      "new_users": 229,
+      "roaming_users": 1122,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 423.36800000000005
+    },
+    {
+      "timestamp": 1772493836751,
+      "hour": 7,
+      "zone_name": "东看台A区",
+      "active_users": 16222,
+      "new_users": 227,
+      "roaming_users": 1314,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 312.585
+    },
+    {
+      "timestamp": 1772493836751,
+      "hour": 7,
+      "zone_name": "西看台VIP",
+      "active_users": 10920,
+      "new_users": 236,
+      "roaming_users": 2047,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 575.88
+    },
+    {
+      "timestamp": 1772497436751,
+      "hour": 8,
+      "zone_name": "南看台F区",
+      "active_users": 40068,
+      "new_users": 809,
+      "roaming_users": 2568,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 774.8159999999999
+    },
+    {
+      "timestamp": 1772497436751,
+      "hour": 8,
+      "zone_name": "北看台B区",
+      "active_users": 41895,
+      "new_users": 732,
+      "roaming_users": 8227,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 904.4
+    },
+    {
+      "timestamp": 1772497436751,
+      "hour": 8,
+      "zone_name": "东看台A区",
+      "active_users": 35217,
+      "new_users": 854,
+      "roaming_users": 7948,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 1052.21
+    },
+    {
+      "timestamp": 1772497436751,
+      "hour": 8,
+      "zone_name": "西看台VIP",
+      "active_users": 25245,
+      "new_users": 494,
+      "roaming_users": 5298,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1203.345
+    },
+    {
+      "timestamp": 1772501036751,
+      "hour": 9,
+      "zone_name": "南看台F区",
+      "active_users": 34362,
+      "new_users": 870,
+      "roaming_users": 8046,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 962.8
+    },
+    {
+      "timestamp": 1772501036751,
+      "hour": 9,
+      "zone_name": "北看台B区",
+      "active_users": 42525,
+      "new_users": 1287,
+      "roaming_users": 6393,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 928.08
+    },
+    {
+      "timestamp": 1772501036751,
+      "hour": 9,
+      "zone_name": "东看台A区",
+      "active_users": 34627,
+      "new_users": 620,
+      "roaming_users": 7269,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 867.4290000000001
+    },
+    {
+      "timestamp": 1772501036751,
+      "hour": 9,
+      "zone_name": "西看台VIP",
+      "active_users": 26481,
+      "new_users": 1228,
+      "roaming_users": 3690,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1224.405
+    },
+    {
+      "timestamp": 1772504636751,
+      "hour": 10,
+      "zone_name": "南看台F区",
+      "active_users": 38916,
+      "new_users": 877,
+      "roaming_users": 3654,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1276.04
+    },
+    {
+      "timestamp": 1772504636751,
+      "hour": 10,
+      "zone_name": "北看台B区",
+      "active_users": 36603,
+      "new_users": 437,
+      "roaming_users": 4457,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1027.54
+    },
+    {
+      "timestamp": 1772504636751,
+      "hour": 10,
+      "zone_name": "东看台A区",
+      "active_users": 41796,
+      "new_users": 947,
+      "roaming_users": 5216,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 713.198
+    },
+    {
+      "timestamp": 1772504636751,
+      "hour": 10,
+      "zone_name": "西看台VIP",
+      "active_users": 28248,
+      "new_users": 1127,
+      "roaming_users": 4228,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 1003.2879999999999
+    },
+    {
+      "timestamp": 1772508236751,
+      "hour": 11,
+      "zone_name": "南看台F区",
+      "active_users": 38178,
+      "new_users": 645,
+      "roaming_users": 6149,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 1151.976
+    },
+    {
+      "timestamp": 1772508236751,
+      "hour": 11,
+      "zone_name": "北看台B区",
+      "active_users": 38367,
+      "new_users": 1103,
+      "roaming_users": 8557,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 838.68
+    },
+    {
+      "timestamp": 1772508236751,
+      "hour": 11,
+      "zone_name": "东看台A区",
+      "active_users": 40131,
+      "new_users": 1228,
+      "roaming_users": 3122,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 1341.977
+    },
+    {
+      "timestamp": 1772508236751,
+      "hour": 11,
+      "zone_name": "西看台VIP",
+      "active_users": 25452,
+      "new_users": 1144,
+      "roaming_users": 7163,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 1117.704
+    },
+    {
+      "timestamp": 1772511836751,
+      "hour": 12,
+      "zone_name": "南看台F区",
+      "active_users": 46777,
+      "new_users": 1165,
+      "roaming_users": 5992,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1465.695
+    },
+    {
+      "timestamp": 1772511836751,
+      "hour": 12,
+      "zone_name": "北看台B区",
+      "active_users": 40131,
+      "new_users": 834,
+      "roaming_users": 9513,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1285.858
+    },
+    {
+      "timestamp": 1772511836751,
+      "hour": 12,
+      "zone_name": "东看台A区",
+      "active_users": 44541,
+      "new_users": 1328,
+      "roaming_users": 5659,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1172.276
+    },
+    {
+      "timestamp": 1772511836751,
+      "hour": 12,
+      "zone_name": "西看台VIP",
+      "active_users": 29925,
+      "new_users": 1120,
+      "roaming_users": 6142,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 793.06
+    },
+    {
+      "timestamp": 1772515436751,
+      "hour": 13,
+      "zone_name": "南看台F区",
+      "active_users": 41454,
+      "new_users": 1468,
+      "roaming_users": 9745,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1021.2579999999999
+    },
+    {
+      "timestamp": 1772515436751,
+      "hour": 13,
+      "zone_name": "北看台B区",
+      "active_users": 44100,
+      "new_users": 960,
+      "roaming_users": 8621,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1290.954
+    },
+    {
+      "timestamp": 1772515436751,
+      "hour": 13,
+      "zone_name": "东看台A区",
+      "active_users": 41467,
+      "new_users": 1355,
+      "roaming_users": 4462,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 835.849
+    },
+    {
+      "timestamp": 1772515436751,
+      "hour": 13,
+      "zone_name": "西看台VIP",
+      "active_users": 26220,
+      "new_users": 1310,
+      "roaming_users": 8664,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 908.0099999999999
+    },
+    {
+      "timestamp": 1772519036751,
+      "hour": 14,
+      "zone_name": "南看台F区",
+      "active_users": 47668,
+      "new_users": 1323,
+      "roaming_users": 5607,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1353.528
+    },
+    {
+      "timestamp": 1772519036751,
+      "hour": 14,
+      "zone_name": "北看台B区",
+      "active_users": 42777,
+      "new_users": 1187,
+      "roaming_users": 5189,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1166.716
+    },
+    {
+      "timestamp": 1772519036751,
+      "hour": 14,
+      "zone_name": "东看台A区",
+      "active_users": 43650,
+      "new_users": 1017,
+      "roaming_users": 5446,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 1266.335
+    },
+    {
+      "timestamp": 1772519036751,
+      "hour": 14,
+      "zone_name": "西看台VIP",
+      "active_users": 31458,
+      "new_users": 1412,
+      "roaming_users": 3180,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1234.016
+    },
+    {
+      "timestamp": 1772522636751,
+      "hour": 15,
+      "zone_name": "南看台F区",
+      "active_users": 45315,
+      "new_users": 864,
+      "roaming_users": 6387,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 1408.375
+    },
+    {
+      "timestamp": 1772522636751,
+      "hour": 15,
+      "zone_name": "北看台B区",
+      "active_users": 43650,
+      "new_users": 988,
+      "roaming_users": 5661,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 970.2909999999999
+    },
+    {
+      "timestamp": 1772522636751,
+      "hour": 15,
+      "zone_name": "东看台A区",
+      "active_users": 44959,
+      "new_users": 747,
+      "roaming_users": 4607,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 1234.519
+    },
+    {
+      "timestamp": 1772522636751,
+      "hour": 15,
+      "zone_name": "西看台VIP",
+      "active_users": 27600,
+      "new_users": 1145,
+      "roaming_users": 6942,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1133.9
+    },
+    {
+      "timestamp": 1772526236751,
+      "hour": 16,
+      "zone_name": "南看台F区",
+      "active_users": 45423,
+      "new_users": 1439,
+      "roaming_users": 3621,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 1362.984
+    },
+    {
+      "timestamp": 1772526236751,
+      "hour": 16,
+      "zone_name": "北看台B区",
+      "active_users": 41031,
+      "new_users": 1103,
+      "roaming_users": 7178,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 999.003
+    },
+    {
+      "timestamp": 1772526236751,
+      "hour": 16,
+      "zone_name": "东看台A区",
+      "active_users": 44064,
+      "new_users": 1392,
+      "roaming_users": 5287,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1119.648
+    },
+    {
+      "timestamp": 1772526236751,
+      "hour": 16,
+      "zone_name": "西看台VIP",
+      "active_users": 28800,
+      "new_users": 507,
+      "roaming_users": 8376,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1151.328
+    },
+    {
+      "timestamp": 1772529836751,
+      "hour": 17,
+      "zone_name": "南看台F区",
+      "active_users": 47628,
+      "new_users": 1409,
+      "roaming_users": 6242,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1284.29
+    },
+    {
+      "timestamp": 1772529836751,
+      "hour": 17,
+      "zone_name": "北看台B区",
+      "active_users": 49050,
+      "new_users": 557,
+      "roaming_users": 8942,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 969.3
+    },
+    {
+      "timestamp": 1772529836751,
+      "hour": 17,
+      "zone_name": "东看台A区",
+      "active_users": 43177,
+      "new_users": 1422,
+      "roaming_users": 9253,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 1247.73
+    },
+    {
+      "timestamp": 1772529836751,
+      "hour": 17,
+      "zone_name": "西看台VIP",
+      "active_users": 27918,
+      "new_users": 778,
+      "roaming_users": 6316,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 814.572
+    },
+    {
+      "timestamp": 1772533436751,
+      "hour": 18,
+      "zone_name": "南看台F区",
+      "active_users": 41877,
+      "new_users": 972,
+      "roaming_users": 3127,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 795.465
+    },
+    {
+      "timestamp": 1772533436751,
+      "hour": 18,
+      "zone_name": "北看台B区",
+      "active_users": 46305,
+      "new_users": 855,
+      "roaming_users": 7761,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 796.446
+    },
+    {
+      "timestamp": 1772533436751,
+      "hour": 18,
+      "zone_name": "东看台A区",
+      "active_users": 44104,
+      "new_users": 998,
+      "roaming_users": 3173,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 847.638
+    },
+    {
+      "timestamp": 1772533436751,
+      "hour": 18,
+      "zone_name": "西看台VIP",
+      "active_users": 30870,
+      "new_users": 539,
+      "roaming_users": 4210,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1455.79
+    },
+    {
+      "timestamp": 1772537036751,
+      "hour": 19,
+      "zone_name": "南看台F区",
+      "active_users": 46705,
+      "new_users": 664,
+      "roaming_users": 7426,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 813.054
+    },
+    {
+      "timestamp": 1772537036751,
+      "hour": 19,
+      "zone_name": "北看台B区",
+      "active_users": 46777,
+      "new_users": 656,
+      "roaming_users": 5886,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1260.8639999999998
+    },
+    {
+      "timestamp": 1772537036751,
+      "hour": 19,
+      "zone_name": "东看台A区",
+      "active_users": 43650,
+      "new_users": 1027,
+      "roaming_users": 9603,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1040.713
+    },
+    {
+      "timestamp": 1772537036751,
+      "hour": 19,
+      "zone_name": "西看台VIP",
+      "active_users": 30495,
+      "new_users": 1039,
+      "roaming_users": 3696,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 851.77
+    },
+    {
+      "timestamp": 1772540636751,
+      "hour": 20,
+      "zone_name": "南看台F区",
+      "active_users": 40612,
+      "new_users": 548,
+      "roaming_users": 8679,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1278.51
+    },
+    {
+      "timestamp": 1772540636751,
+      "hour": 20,
+      "zone_name": "北看台B区",
+      "active_users": 44086,
+      "new_users": 889,
+      "roaming_users": 5214,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 1262.843
+    },
+    {
+      "timestamp": 1772540636751,
+      "hour": 20,
+      "zone_name": "东看台A区",
+      "active_users": 44100,
+      "new_users": 767,
+      "roaming_users": 5577,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1081.136
+    },
+    {
+      "timestamp": 1772540636751,
+      "hour": 20,
+      "zone_name": "西看台VIP",
+      "active_users": 31428,
+      "new_users": 621,
+      "roaming_users": 8352,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1266.626
+    },
+    {
+      "timestamp": 1772544236751,
+      "hour": 21,
+      "zone_name": "南看台F区",
+      "active_users": 40545,
+      "new_users": 446,
+      "roaming_users": 3865,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 733.805
+    },
+    {
+      "timestamp": 1772544236751,
+      "hour": 21,
+      "zone_name": "北看台B区",
+      "active_users": 40095,
+      "new_users": 667,
+      "roaming_users": 7823,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 898.4520000000001
+    },
+    {
+      "timestamp": 1772544236751,
+      "hour": 21,
+      "zone_name": "东看台A区",
+      "active_users": 33948,
+      "new_users": 745,
+      "roaming_users": 7134,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 933.5699999999999
+    },
+    {
+      "timestamp": 1772544236751,
+      "hour": 21,
+      "zone_name": "西看台VIP",
+      "active_users": 30360,
+      "new_users": 753,
+      "roaming_users": 8903,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 1024.604
+    },
+    {
+      "timestamp": 1772547836751,
+      "hour": 22,
+      "zone_name": "南看台F区",
+      "active_users": 38493,
+      "new_users": 1328,
+      "roaming_users": 5572,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 1173.496
+    },
+    {
+      "timestamp": 1772547836751,
+      "hour": 22,
+      "zone_name": "北看台B区",
+      "active_users": 42723,
+      "new_users": 814,
+      "roaming_users": 4660,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 875.798
+    },
+    {
+      "timestamp": 1772547836751,
+      "hour": 22,
+      "zone_name": "东看台A区",
+      "active_users": 36360,
+      "new_users": 960,
+      "roaming_users": 2784,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 1184.3200000000002
+    },
+    {
+      "timestamp": 1772547836751,
+      "hour": 22,
+      "zone_name": "西看台VIP",
+      "active_users": 28482,
+      "new_users": 569,
+      "roaming_users": 4548,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1118.224
+    },
+    {
+      "timestamp": 1772551436751,
+      "hour": 23,
+      "zone_name": "南看台F区",
+      "active_users": 19206,
+      "new_users": 551,
+      "roaming_users": 2507,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 647.812
+    },
+    {
+      "timestamp": 1772551436751,
+      "hour": 23,
+      "zone_name": "北看台B区",
+      "active_users": 19350,
+      "new_users": 262,
+      "roaming_users": 3793,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 440.105
+    },
+    {
+      "timestamp": 1772551436751,
+      "hour": 23,
+      "zone_name": "东看台A区",
+      "active_users": 20317,
+      "new_users": 468,
+      "roaming_users": 3793,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 636.142
+    },
+    {
+      "timestamp": 1772551436751,
+      "hour": 23,
+      "zone_name": "西看台VIP",
+      "active_users": 10323,
+      "new_users": 446,
+      "roaming_users": 2640,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 473.23
+    },
+    {
+      "timestamp": 1772555036751,
+      "hour": 0,
+      "zone_name": "南看台F区",
+      "active_users": 14994,
+      "new_users": 337,
+      "roaming_users": 3070,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 474.36800000000005
+    },
+    {
+      "timestamp": 1772555036751,
+      "hour": 0,
+      "zone_name": "北看台B区",
+      "active_users": 17649,
+      "new_users": 405,
+      "roaming_users": 2571,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 539.867
+    },
+    {
+      "timestamp": 1772555036751,
+      "hour": 0,
+      "zone_name": "东看台A区",
+      "active_users": 14994,
+      "new_users": 249,
+      "roaming_users": 2708,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 356.04800000000006
+    },
+    {
+      "timestamp": 1772555036751,
+      "hour": 0,
+      "zone_name": "西看台VIP",
+      "active_users": 10692,
+      "new_users": 264,
+      "roaming_users": 1761,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 289.146
+    },
+    {
+      "timestamp": 1772558636751,
+      "hour": 1,
+      "zone_name": "南看台F区",
+      "active_users": 15295,
+      "new_users": 193,
+      "roaming_users": 1181,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 290.334
+    },
+    {
+      "timestamp": 1772558636751,
+      "hour": 1,
+      "zone_name": "北看台B区",
+      "active_users": 15714,
+      "new_users": 506,
+      "roaming_users": 1903,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 501.84
+    },
+    {
+      "timestamp": 1772558636751,
+      "hour": 1,
+      "zone_name": "东看台A区",
+      "active_users": 14976,
+      "new_users": 168,
+      "roaming_users": 1192,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 273.632
+    },
+    {
+      "timestamp": 1772558636751,
+      "hour": 1,
+      "zone_name": "西看台VIP",
+      "active_users": 9765,
+      "new_users": 255,
+      "roaming_users": 967,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 313.16200000000003
+    },
+    {
+      "timestamp": 1772562236751,
+      "hour": 2,
+      "zone_name": "南看台F区",
+      "active_users": 15795,
+      "new_users": 257,
+      "roaming_users": 3845,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 516.945
+    },
+    {
+      "timestamp": 1772562236751,
+      "hour": 2,
+      "zone_name": "北看台B区",
+      "active_users": 18126,
+      "new_users": 511,
+      "roaming_users": 3635,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 549.1
+    },
+    {
+      "timestamp": 1772562236751,
+      "hour": 2,
+      "zone_name": "东看台A区",
+      "active_users": 18297,
+      "new_users": 370,
+      "roaming_users": 1188,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 312.778
+    },
+    {
+      "timestamp": 1772562236751,
+      "hour": 2,
+      "zone_name": "西看台VIP",
+      "active_users": 13674,
+      "new_users": 387,
+      "roaming_users": 3935,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 569.105
+    },
+    {
+      "timestamp": 1772565836751,
+      "hour": 3,
+      "zone_name": "南看台F区",
+      "active_users": 17460,
+      "new_users": 418,
+      "roaming_users": 1220,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 340.36
+    },
+    {
+      "timestamp": 1772565836751,
+      "hour": 3,
+      "zone_name": "北看台B区",
+      "active_users": 20493,
+      "new_users": 492,
+      "roaming_users": 2800,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 435.482
+    },
+    {
+      "timestamp": 1772565836751,
+      "hour": 3,
+      "zone_name": "东看台A区",
+      "active_users": 16064,
+      "new_users": 296,
+      "roaming_users": 1170,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 427.14
+    },
+    {
+      "timestamp": 1772565836751,
+      "hour": 3,
+      "zone_name": "西看台VIP",
+      "active_users": 15228,
+      "new_users": 235,
+      "roaming_users": 1959,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 696.164
+    },
+    {
+      "timestamp": 1772569436751,
+      "hour": 4,
+      "zone_name": "南看台F区",
+      "active_users": 23053,
+      "new_users": 242,
+      "roaming_users": 3302,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 674.779
+    },
+    {
+      "timestamp": 1772569436751,
+      "hour": 4,
+      "zone_name": "北看台B区",
+      "active_users": 17901,
+      "new_users": 481,
+      "roaming_users": 2944,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 362.23199999999997
+    },
+    {
+      "timestamp": 1772569436751,
+      "hour": 4,
+      "zone_name": "东看台A区",
+      "active_users": 18634,
+      "new_users": 307,
+      "roaming_users": 3195,
+      "avg_session_duration_min": 43,
+      "total_data_gb": 536.854
+    },
+    {
+      "timestamp": 1772569436751,
+      "hour": 4,
+      "zone_name": "西看台VIP",
+      "active_users": 9951,
+      "new_users": 322,
+      "roaming_users": 2174,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 248.83700000000002
+    },
+    {
+      "timestamp": 1772573036751,
+      "hour": 5,
+      "zone_name": "南看台F区",
+      "active_users": 19080,
+      "new_users": 570,
+      "roaming_users": 1800,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 511.08000000000004
+    },
+    {
+      "timestamp": 1772573036751,
+      "hour": 5,
+      "zone_name": "北看台B区",
+      "active_users": 14580,
+      "new_users": 316,
+      "roaming_users": 3511,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 334.872
+    },
+    {
+      "timestamp": 1772573036751,
+      "hour": 5,
+      "zone_name": "东看台A区",
+      "active_users": 18832,
+      "new_users": 443,
+      "roaming_users": 4019,
+      "avg_session_duration_min": 54,
+      "total_data_gb": 631.62
+    },
+    {
+      "timestamp": 1772573036751,
+      "hour": 5,
+      "zone_name": "西看台VIP",
+      "active_users": 12255,
+      "new_users": 473,
+      "roaming_users": 2340,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 593.787
+    },
+    {
+      "timestamp": 1772576636751,
+      "hour": 6,
+      "zone_name": "南看台F区",
+      "active_users": 16920,
+      "new_users": 290,
+      "roaming_users": 3992,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 567.32
+    },
+    {
+      "timestamp": 1772576636751,
+      "hour": 6,
+      "zone_name": "北看台B区",
+      "active_users": 14962,
+      "new_users": 338,
+      "roaming_users": 1198,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 290.21999999999997
+    },
+    {
+      "timestamp": 1772576636751,
+      "hour": 6,
+      "zone_name": "东看台A区",
+      "active_users": 18720,
+      "new_users": 294,
+      "roaming_users": 3547,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 427.8
+    },
+    {
+      "timestamp": 1772576636751,
+      "hour": 6,
+      "zone_name": "西看台VIP",
+      "active_users": 9900,
+      "new_users": 424,
+      "roaming_users": 2513,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 446.22600000000006
+    },
+    {
+      "timestamp": 1772580236751,
+      "hour": 7,
+      "zone_name": "南看台F区",
+      "active_users": 16816,
+      "new_users": 552,
+      "roaming_users": 1707,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 390.35
+    },
+    {
+      "timestamp": 1772580236751,
+      "hour": 7,
+      "zone_name": "北看台B区",
+      "active_users": 23373,
+      "new_users": 245,
+      "roaming_users": 2489,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 409.444
+    },
+    {
+      "timestamp": 1772580236751,
+      "hour": 7,
+      "zone_name": "东看台A区",
+      "active_users": 16852,
+      "new_users": 280,
+      "roaming_users": 1470,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 425.87999999999994
+    },
+    {
+      "timestamp": 1772580236751,
+      "hour": 7,
+      "zone_name": "西看台VIP",
+      "active_users": 14994,
+      "new_users": 649,
+      "roaming_users": 1539,
+      "avg_session_duration_min": 44,
+      "total_data_gb": 723.681
+    },
+    {
+      "timestamp": 1772583836751,
+      "hour": 8,
+      "zone_name": "南看台F区",
+      "active_users": 33948,
+      "new_users": 1170,
+      "roaming_users": 5550,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 1202.9399999999998
+    },
+    {
+      "timestamp": 1772583836751,
+      "hour": 8,
+      "zone_name": "北看台B区",
+      "active_users": 45616,
+      "new_users": 531,
+      "roaming_users": 6865,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1031.6490000000001
+    },
+    {
+      "timestamp": 1772583836751,
+      "hour": 8,
+      "zone_name": "东看台A区",
+      "active_users": 43992,
+      "new_users": 721,
+      "roaming_users": 3519,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 895.538
+    },
+    {
+      "timestamp": 1772583836751,
+      "hour": 8,
+      "zone_name": "西看台VIP",
+      "active_users": 27468,
+      "new_users": 634,
+      "roaming_users": 7882,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 784.14
+    },
+    {
+      "timestamp": 1772587436751,
+      "hour": 9,
+      "zone_name": "南看台F区",
+      "active_users": 41769,
+      "new_users": 1304,
+      "roaming_users": 5223,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 955.955
+    },
+    {
+      "timestamp": 1772587436751,
+      "hour": 9,
+      "zone_name": "北看台B区",
+      "active_users": 44298,
+      "new_users": 719,
+      "roaming_users": 8812,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 772.984
+    },
+    {
+      "timestamp": 1772587436751,
+      "hour": 9,
+      "zone_name": "东看台A区",
+      "active_users": 41040,
+      "new_users": 872,
+      "roaming_users": 9441,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 927.5799999999999
+    },
+    {
+      "timestamp": 1772587436751,
+      "hour": 9,
+      "zone_name": "西看台VIP",
+      "active_users": 25110,
+      "new_users": 922,
+      "roaming_users": 6995,
+      "avg_session_duration_min": 51,
+      "total_data_gb": 1118.07
+    },
+    {
+      "timestamp": 1772591036751,
+      "hour": 10,
+      "zone_name": "南看台F区",
+      "active_users": 38502,
+      "new_users": 730,
+      "roaming_users": 2944,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 839.5920000000001
+    },
+    {
+      "timestamp": 1772591036751,
+      "hour": 10,
+      "zone_name": "北看台B区",
+      "active_users": 39240,
+      "new_users": 800,
+      "roaming_users": 6667,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 676.32
+    },
+    {
+      "timestamp": 1772591036751,
+      "hour": 10,
+      "zone_name": "东看台A区",
+      "active_users": 35190,
+      "new_users": 1164,
+      "roaming_users": 3502,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 999.2599999999999
+    },
+    {
+      "timestamp": 1772591036751,
+      "hour": 10,
+      "zone_name": "西看台VIP",
+      "active_users": 27645,
+      "new_users": 1070,
+      "roaming_users": 8528,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 1343.965
+    },
+    {
+      "timestamp": 1772594636751,
+      "hour": 11,
+      "zone_name": "南看台F区",
+      "active_users": 38493,
+      "new_users": 1173,
+      "roaming_users": 6090,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1344.388
+    },
+    {
+      "timestamp": 1772594636751,
+      "hour": 11,
+      "zone_name": "北看台B区",
+      "active_users": 38448,
+      "new_users": 530,
+      "roaming_users": 4895,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 1293.971
+    },
+    {
+      "timestamp": 1772594636751,
+      "hour": 11,
+      "zone_name": "东看台A区",
+      "active_users": 36801,
+      "new_users": 794,
+      "roaming_users": 7014,
+      "avg_session_duration_min": 49,
+      "total_data_gb": 1288.905
+    },
+    {
+      "timestamp": 1772594636751,
+      "hour": 11,
+      "zone_name": "西看台VIP",
+      "active_users": 27795,
+      "new_users": 1263,
+      "roaming_users": 8024,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 886.805
+    },
+    {
+      "timestamp": 1772598236751,
+      "hour": 12,
+      "zone_name": "南看台F区",
+      "active_users": 40986,
+      "new_users": 1380,
+      "roaming_users": 9453,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 1072.17
+    },
+    {
+      "timestamp": 1772598236751,
+      "hour": 12,
+      "zone_name": "北看台B区",
+      "active_users": 41895,
+      "new_users": 1088,
+      "roaming_users": 3114,
+      "avg_session_duration_min": 40,
+      "total_data_gb": 956.088
+    },
+    {
+      "timestamp": 1772598236751,
+      "hour": 12,
+      "zone_name": "东看台A区",
+      "active_users": 40572,
+      "new_users": 602,
+      "roaming_users": 6346,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1365.826
+    },
+    {
+      "timestamp": 1772598236751,
+      "hour": 12,
+      "zone_name": "西看台VIP",
+      "active_users": 27300,
+      "new_users": 1186,
+      "roaming_users": 8395,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1380.9
+    },
+    {
+      "timestamp": 1772601836751,
+      "hour": 13,
+      "zone_name": "南看台F区",
+      "active_users": 42750,
+      "new_users": 482,
+      "roaming_users": 5630,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 1122.8999999999999
+    },
+    {
+      "timestamp": 1772601836751,
+      "hour": 13,
+      "zone_name": "北看台B区",
+      "active_users": 44100,
+      "new_users": 527,
+      "roaming_users": 9701,
+      "avg_session_duration_min": 57,
+      "total_data_gb": 1083.096
+    },
+    {
+      "timestamp": 1772601836751,
+      "hour": 13,
+      "zone_name": "东看台A区",
+      "active_users": 40986,
+      "new_users": 842,
+      "roaming_users": 6618,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 1356.498
+    },
+    {
+      "timestamp": 1772601836751,
+      "hour": 13,
+      "zone_name": "西看台VIP",
+      "active_users": 27072,
+      "new_users": 1086,
+      "roaming_users": 6261,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1306.56
+    },
+    {
+      "timestamp": 1772605436751,
+      "hour": 14,
+      "zone_name": "南看台F区",
+      "active_users": 42768,
+      "new_users": 926,
+      "roaming_users": 9195,
+      "avg_session_duration_min": 52,
+      "total_data_gb": 1374.144
+    },
+    {
+      "timestamp": 1772605436751,
+      "hour": 14,
+      "zone_name": "北看台B区",
+      "active_users": 46800,
+      "new_users": 624,
+      "roaming_users": 6342,
+      "avg_session_duration_min": 41,
+      "total_data_gb": 1451.2
+    },
+    {
+      "timestamp": 1772605436751,
+      "hour": 14,
+      "zone_name": "东看台A区",
+      "active_users": 41472,
+      "new_users": 1384,
+      "roaming_users": 6588,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 914.112
+    },
+    {
+      "timestamp": 1772605436751,
+      "hour": 14,
+      "zone_name": "西看台VIP",
+      "active_users": 29100,
+      "new_users": 1326,
+      "roaming_users": 3380,
+      "avg_session_duration_min": 56,
+      "total_data_gb": 1376.5269999999998
+    },
+    {
+      "timestamp": 1772609036751,
+      "hour": 15,
+      "zone_name": "南看台F区",
+      "active_users": 45792,
+      "new_users": 508,
+      "roaming_users": 3000,
+      "avg_session_duration_min": 58,
+      "total_data_gb": 1086.624
+    },
+    {
+      "timestamp": 1772609036751,
+      "hour": 15,
+      "zone_name": "北看台B区",
+      "active_users": 44550,
+      "new_users": 1001,
+      "roaming_users": 4331,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 882.4
+    },
+    {
+      "timestamp": 1772609036751,
+      "hour": 15,
+      "zone_name": "东看台A区",
+      "active_users": 44100,
+      "new_users": 694,
+      "roaming_users": 6200,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1318.1979999999999
+    },
+    {
+      "timestamp": 1772609036751,
+      "hour": 15,
+      "zone_name": "西看台VIP",
+      "active_users": 28785,
+      "new_users": 741,
+      "roaming_users": 5127,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 902.8799999999999
+    },
+    {
+      "timestamp": 1772612636751,
+      "hour": 16,
+      "zone_name": "南看台F区",
+      "active_users": 44086,
+      "new_users": 799,
+      "roaming_users": 4073,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 1206.4859999999999
+    },
+    {
+      "timestamp": 1772612636751,
+      "hour": 16,
+      "zone_name": "北看台B区",
+      "active_users": 46777,
+      "new_users": 955,
+      "roaming_users": 9619,
+      "avg_session_duration_min": 45,
+      "total_data_gb": 855.756
+    },
+    {
+      "timestamp": 1772612636751,
+      "hour": 16,
+      "zone_name": "东看台A区",
+      "active_users": 47520,
+      "new_users": 1128,
+      "roaming_users": 9537,
+      "avg_session_duration_min": 59,
+      "total_data_gb": 1012.992
+    },
+    {
+      "timestamp": 1772612636751,
+      "hour": 16,
+      "zone_name": "西看台VIP",
+      "active_users": 27621,
+      "new_users": 954,
+      "roaming_users": 3038,
+      "avg_session_duration_min": 47,
+      "total_data_gb": 1418.868
+    },
+    {
+      "timestamp": 1772616236751,
+      "hour": 17,
+      "zone_name": "南看台F区",
+      "active_users": 45832,
+      "new_users": 743,
+      "roaming_users": 4973,
+      "avg_session_duration_min": 60,
+      "total_data_gb": 937.117
+    },
+    {
+      "timestamp": 1772616236751,
+      "hour": 17,
+      "zone_name": "北看台B区",
+      "active_users": 41040,
+      "new_users": 1033,
+      "roaming_users": 3384,
+      "avg_session_duration_min": 46,
+      "total_data_gb": 1262.3999999999999
+    },
+    {
+      "timestamp": 1772616236751,
+      "hour": 17,
+      "zone_name": "东看台A区",
+      "active_users": 42322,
+      "new_users": 1309,
+      "roaming_users": 6694,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 1399.73
+    },
+    {
+      "timestamp": 1772616236751,
+      "hour": 17,
+      "zone_name": "西看台VIP",
+      "active_users": 31137,
+      "new_users": 963,
+      "roaming_users": 2952,
+      "avg_session_duration_min": 50,
+      "total_data_gb": 1199.211
+    },
+    {
+      "timestamp": 1772619836751,
+      "hour": 18,
+      "zone_name": "南看台F区",
+      "active_users": 45742,
+      "new_users": 1337,
+      "roaming_users": 8083,
+      "avg_session_duration_min": 48,
+      "total_data_gb": 875.805
+    },
+    {
+      "timestamp": 1772619836751,
+      "hour": 18,
+      "zone_name": "北看台B区",
+      "active_users": 41850,
+      "new_users": 1488,
+      "roaming_users": 5897,
+      "avg_session_duration_min": 42,
+      "total_data_gb": 938.1
+    },
+    {
+      "timestamp": 1772619836751,
+      "hour": 18,
+      "zone_name": "东看台A区",
+      "active_users": 44100,
+      "new_users": 793,
+      "roaming_users": 6807,
+      "avg_session_duration_min": 55,
+      "total_data_gb": 1352.204
+    },
+    {
+      "timestamp": 1772619836751,
+      "hour": 18,
+      "zone_name": "西看台VIP",
+      "active_users": 30528,
+      "new_users": 1428,
+      "roaming_users": 7769,
+      "avg_session_duration_min": 53,
+      "total_data_gb": 782.304
+    }
+  ]
+}

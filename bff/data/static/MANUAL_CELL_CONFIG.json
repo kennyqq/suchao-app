@@ -1,0 +1,47 @@
+{
+  "tableName": "MANUAL_CELL_CONFIG",
+  "description": "人工维护-小区基础配置表(静态)",
+  "lastUpdate": "2026-03-04T11:23:56.751Z",
+  "records": [
+    {
+      "cell_id": "460-00-1122-01",
+      "zone_name": "南看台F区",
+      "cell_name": "南看台F区-1",
+      "longitude": 118.796188,
+      "latitude": 32.054537,
+      "band": "n78",
+      "bandwidth_mhz": 100,
+      "cell_type": "宏站"
+    },
+    {
+      "cell_id": "460-00-1122-02",
+      "zone_name": "北看台B区",
+      "cell_name": "北看台B区-1",
+      "longitude": 118.793701,
+      "latitude": 32.051526,
+      "band": "n78",
+      "bandwidth_mhz": 100,
+      "cell_type": "宏站"
+    },
+    {
+      "cell_id": "460-00-1122-03",
+      "zone_name": "东看台A区",
+      "cell_name": "东看台A区-1",
+      "longitude": 118.797302,
+      "latitude": 32.067538,
+      "band": "n78",
+      "bandwidth_mhz": 100,
+      "cell_type": "宏站"
+    },
+    {
+      "cell_id": "460-00-1122-04",
+      "zone_name": "西看台VIP",
+      "cell_name": "西看台VIP-1",
+      "longitude": 118.791139,
+      "latitude": 32.055855,
+      "band": "n79",
+      "bandwidth_mhz": 100,
+      "cell_type": "微站"
+    }
+  ]
+}

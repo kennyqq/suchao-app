@@ -1,0 +1,54 @@
+{
+  "timestamp": 1772263436751,
+  "date": "2026-02-28",
+  "time": "15:23",
+  "realtime_outsider_count": 3,
+  "venue_surrounding_count": 1,
+  "cumulative_outsider_count": 38,
+  "drainage_index": 0,
+  "three_day_visitor_count": 134,
+  "out_province_rank": [
+    {
+      "rank": 1,
+      "out_province_city_name": "合肥市",
+      "out_province_visitor_count": 1
+    },
+    {
+      "rank": 2,
+      "out_province_city_name": "无锡市",
+      "out_province_visitor_count": 1
+    }
+  ],
+  "transport_rank": [
+    {
+      "rank": 1,
+      "transport_poi_name": "南京南站",
+      "transport_current_traffic": 1,
+      "transport_pressure_index": 0
+    }
+  ],
+  "tourism_rank": [
+    {
+      "rank": 1,
+      "tourism_poi_name": "玄武湖",
+      "tourism_current_traffic": 1,
+      "tourism_pressure_index": 0
+    },
+    {
+      "rank": 2,
+      "tourism_poi_name": "夫子庙",
+      "tourism_current_traffic": 1,
+      "tourism_pressure_index": 0
+    }
+  ],
+  "meta": {
+    "generated_at": 1772675478197,
+    "data_source": "hourly_slice",
+    "baseline_city": "南京市",
+    "record_count": {
+      "current_hour": 4,
+      "today_cumulative": 64,
+      "three_day": 276
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "tableName": "MANUAL_POST_MATCH_SUMMARY",
+  "description": "人工维护-赛后总结评估表(静态)",
+  "lastUpdate": "2026-03-04T11:23:56.751Z",
+  "records": [
+    {
+      "match_id": "MATCH_20260304_001",
+      "match_name": "江苏vs山东",
+      "match_date": "2026-03-04",
+      "total_attendance": 47322,
+      "peak_users": 53406,
+      "avg_prb_util": 68.5,
+      "satisfaction_score": 95,
+      "key_issues": [
+        " halftime时段容量紧张",
+        "东门出口弱覆盖"
+      ],
+      "optimization_suggestions": [
+        "建议扩容东门区域",
+        "优化 halftime 负载均衡策略"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "code": 200,
+  "message": "success",
+  "timestamp": 1772678505260,
+  "zoneName": "南看台F区",
+  "data": {
+    "userTiers": [
+      {
+        "label": "场馆包用户",
+        "value": 486,
+        "color": "#FFD700",
+        "width": "35%",
+        "description": "VIP专属场馆包"
+      },
+      {
+        "label": "钻/白金卡",
+        "value": 2757,
+        "color": "#C0C0C0",
+        "width": "55%",
+        "description": "全球通高端用户"
+      },
+      {
+        "label": "普通用户",
+        "value": 43089,
+        "color": "#00F0FF",
+        "width": "85%",
+        "description": "大众用户群体"
+      }
+    ],
+    "capacity": {
+      "saturation": {
+        "currentRate": 74.1,
+        "capacity": 62543,
+        "currentUsers": 46332,
+        "status": "caution",
+        "warningLevel": 1,
+        "remaining": 16211,
+        "saturationLevel": "medium"
+      },
+      "prbUtilization": 67.2,
+      "trafficToday": 5148.5
+    },
+    "terminals": {
+      "total5GARatio": 68.5,
+      "ranking": [
+        {
+          "rank": 1,
+          "brand": "小米14",
+          "model": "小米14",
+          "count": 4370,
+          "share": "16.5",
+          "capability": "5G-A"
+        },
+        {
+          "rank": 2,
+          "brand": "iPhone",
+          "model": "iPhone 15 Pro",
+          "count": 5510,
+          "share": "20.8",
+          "capability": "5G-A"
+        },
+        {
+          "rank": 3,
+          "brand": "OPPO",
+          "model": "OPPO Find X7",
+          "count": 5605,
+          "share": "21.1",
+          "capability": "5G-A"
+        },
+        {
+          "rank": 4,
+          "brand": "iPhone",
+          "model": "iPhone 14",
+          "count": 5510,
+          "share": "20.8",
+          "capability": "5G"
+        },
+        {
+          "rank": 5,
+          "brand": "三星S24",
+          "model": "三星S24 Ultra",
+          "count": 5510,
+          "share": "20.8",
+          "capability": "5G-A"
+        }
+      ],
+      "brandDistribution": [
+        {
+          "name": "小米14",
+          "value": 4370,
+          "share": "16.5"
+        },
+        {
+          "name": "iPhone",
+          "value": 11020,
+          "share": "41.6"
+        },
+        {
+          "name": "OPPO",
+          "value": 5605,
+          "share": "21.1"
+        },
+        {
+          "name": "三星S24",
+          "value": 5510,
+          "share": "20.8"
+        }
+      ]
+    },
+    "experienceRadar": {
+      "vip": [
+        463,
+        98,
+        82,
+        100,
+        76
+      ],
+      "normal": [
+        232,
+        83,
+        66,
+        30,
+        52
+      ],
+      "indicators": [
+        {
+          "name": "下行速率",
+          "max": 1000
+        },
+        {
+          "name": "语音清晰",
+          "max": 100
+        },
+        {
+          "name": "视频卡顿",
+          "max": 100
+        },
+        {
+          "name": "直播上行",
+          "max": 100
+        },
+        {
+          "name": "低时延",
+          "max": 100
+        }
+      ]
+    },
+    "basicKqi": {
+      "wechat": {
+        "delay": 45,
+        "successRate": 96.03,
+        "ulRate": 19.3
+      },
+      "douyin": {
+        "definition": "高清",
+        "bitrate": 15000,
+        "firstFrame": 204
+      },
+      "game": {
+        "latency": 31
+      },
+      "payment": {
+        "success": 98.5
+      }
+    },
+    "alarms": [
+      {
+        "level": "medium",
+        "title": "南看台-干扰过高",
+        "desc": "检测到外部干扰源，建议排查",
+        "time": "2分钟前"
+      },
+      {
+        "level": "medium",
+        "title": "西入口-弱覆盖",
+        "desc": "信号强度低于阈值-95dBm",
+        "time": "5分钟前"
+      }
+    ],
+    "meta": {
+      "zoneName": "南看台F区",
+      "timestamp": 1772678505260,
+      "dataSource": "bff"
+    },
+    "_dataSources": {
+      "mae": "MAE_PERF_15MIN",
+      "seq": "SEQ_DEVICE_HOURLY",
+      "dsp": "DSP_KQI_15MIN",
+      "manual": "MANUAL_CAPACITY_CONFIG"
+    }
+  }
+}
