@@ -2,53 +2,50 @@
   "timestamp": 1772017200000,
   "date": "2026-02-25",
   "time": "19:00",
-  "realtime_outsider_count": 2,
-  "venue_surrounding_count": 0,
-  "cumulative_outsider_count": 2,
-  "drainage_index": 0,
-  "three_day_visitor_count": 2,
+  "realtime_outsider_count": 25000,
+  "venue_surrounding_count": 15000,
+  "cumulative_outsider_count": 17000,
+  "drainage_index": 11.3,
+  "three_day_visitor_count": 12000,
   "out_province_rank": [
     {
-      "out_province_city_name": "无锡市",
-      "out_province_visitor_count": 2,
+      "out_province_city_name": "合肥市",
+      "out_province_visitor_count": 30000,
       "rank": 1
     },
     {
       "out_province_city_name": "杭州市",
-      "out_province_visitor_count": 1,
+      "out_province_visitor_count": 15000,
       "rank": 2
-    },
-    {
-      "out_province_city_name": "苏州市",
-      "out_province_visitor_count": 1,
-      "rank": 3
     }
   ],
   "transport_rank": [
     {
       "transport_poi_name": "南京南站",
-      "transport_current_traffic": 2,
-      "transport_pressure_index": 0,
+      "transport_current_traffic": 30000,
+      "transport_pressure_index": 20,
+      "transport_baseline": 150000,
       "rank": 1
     },
     {
       "transport_poi_name": "南京站",
-      "transport_current_traffic": 1,
-      "transport_pressure_index": 0,
+      "transport_current_traffic": 15000,
+      "transport_pressure_index": 16.7,
+      "transport_baseline": 90000,
       "rank": 2
     }
   ],
-  "tourism_rank": [
-    {
-      "tourism_poi_name": "夫子庙",
-      "tourism_current_traffic": 1,
-      "tourism_pressure_index": 0,
-      "rank": 1
-    }
-  ],
+  "tourism_rank": [],
   "meta": {
-    "generated_at": 1772680920264,
+    "generated_at": 1772686464470,
     "data_source": "hourly_slice",
-    "baseline_city": "南京市"
+    "baseline_city": "南京市",
+    "amplified": true,
+    "amplifiers": {
+      "realtime_outsider_count": 12500,
+      "cumulative_outsider_count": 8500,
+      "three_day_visitor_count": 6000,
+      "rank_fields": 15000
+    }
   }
 }

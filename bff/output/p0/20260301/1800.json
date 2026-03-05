@@ -2,37 +2,63 @@
   "timestamp": 1772359200000,
   "date": "2026-03-01",
   "time": "18:00",
-  "realtime_outsider_count": 3,
-  "venue_surrounding_count": 1,
-  "cumulative_outsider_count": 45,
-  "drainage_index": 0,
-  "three_day_visitor_count": 147,
+  "realtime_outsider_count": 50000,
+  "venue_surrounding_count": 15000,
+  "cumulative_outsider_count": 357000,
+  "drainage_index": 238,
+  "three_day_visitor_count": 816000,
   "out_province_rank": [
     {
-      "out_province_city_name": "合肥市",
-      "out_province_visitor_count": 2,
+      "out_province_city_name": "无锡市",
+      "out_province_visitor_count": 30000,
       "rank": 1
+    },
+    {
+      "out_province_city_name": "杭州市",
+      "out_province_visitor_count": 15000,
+      "rank": 2
+    },
+    {
+      "out_province_city_name": "上海市",
+      "out_province_visitor_count": 15000,
+      "rank": 3
     }
   ],
   "transport_rank": [
     {
-      "transport_poi_name": "禄口机场",
-      "transport_current_traffic": 1,
-      "transport_pressure_index": 0,
+      "transport_poi_name": "南京南站",
+      "transport_current_traffic": 15000,
+      "transport_pressure_index": 10,
+      "transport_baseline": 150000,
       "rank": 1
     }
   ],
   "tourism_rank": [
     {
-      "tourism_poi_name": "夫子庙",
-      "tourism_current_traffic": 2,
-      "tourism_pressure_index": 0,
+      "tourism_poi_name": "中山陵",
+      "tourism_current_traffic": 15000,
+      "tourism_pressure_index": 30,
+      "tourism_baseline": 50000,
       "rank": 1
+    },
+    {
+      "tourism_poi_name": "夫子庙",
+      "tourism_current_traffic": 15000,
+      "tourism_pressure_index": 25,
+      "tourism_baseline": 60000,
+      "rank": 2
     }
   ],
   "meta": {
-    "generated_at": 1772680920295,
+    "generated_at": 1772686464525,
     "data_source": "hourly_slice",
-    "baseline_city": "南京市"
+    "baseline_city": "南京市",
+    "amplified": true,
+    "amplifiers": {
+      "realtime_outsider_count": 12500,
+      "cumulative_outsider_count": 8500,
+      "three_day_visitor_count": 6000,
+      "rank_fields": 15000
+    }
   }
 }

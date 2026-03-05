@@ -215,7 +215,8 @@ function generateTimeSlice(currentHourTs, allHourlyRecords, baselines) {
       return {
         transport_poi_name: item.name,
         transport_current_traffic: currentTraffic,
-        transport_pressure_index: Math.round(pressureIndex * 10) / 10
+        transport_pressure_index: Math.round(pressureIndex * 10) / 10,
+        transport_baseline: item.baseline  // 保留基准用于重新计算
       };
     })
     .sort((a, b) => b.transport_pressure_index - a.transport_pressure_index)
@@ -259,33 +260,96 @@ function generateTimeSlice(currentHourTs, allHourlyRecords, baselines) {
       return {
         tourism_poi_name: item.name,
         tourism_current_traffic: currentVisitors,
-        tourism_pressure_index: Math.round(pressureIndex * 10) / 10
+        tourism_pressure_index: Math.round(pressureIndex * 10) / 10,
+        tourism_baseline: item.baseline  // 保留基准用于重新计算
       };
     })
     .sort((a, b) => b.tourism_pressure_index - a.tourism_pressure_index)
     .slice(0, 5)
     .map((item, index) => ({ ...item, rank: index + 1 }));
   
+  // ====== 🚀 数据放大器（演示用）======
+  // 放大倍数配置
+  const AMPLIFIERS = {
+    realtime_outsider_count: 12500,
+    cumulative_outsider_count: 8500,
+    three_day_visitor_count: 6000,
+    rank_fields: 15000  // 用于 out_province_rank, in_province_rank, transport_rank, tourism_rank
+  };
+  
+  // 1. 放大核心指标
+  const amplifiedRealtimeOutsiderCount = realtimeOutsiderCount * AMPLIFIERS.realtime_outsider_count;
+  const amplifiedCumulativeOutsiderCount = cumulativeOutsiderCount * AMPLIFIERS.cumulative_outsider_count;
+  const amplifiedThreeDayVisitorCount = threeDayVisitorCount * AMPLIFIERS.three_day_visitor_count;
+  
+  // 2. 放大排行榜数据
+  const amplifiedOutProvinceRank = outProvinceRank.map(item => ({
+    ...item,
+    out_province_visitor_count: item.out_province_visitor_count * AMPLIFIERS.rank_fields
+  }));
+  
+  // 3. 放大交通枢纽数据并重新计算压力指数
+  const amplifiedTransportRank = transportRank.map(item => {
+    const amplifiedTraffic = item.transport_current_traffic * AMPLIFIERS.rank_fields;
+    // 重新计算压力指数：Math.min((放大后人数 / 基准) * 100, 200)
+    const pressureIndex = Math.min(
+      (amplifiedTraffic / (item.transport_baseline || 100000)) * 100,
+      200
+    );
+    return {
+      ...item,
+      transport_current_traffic: amplifiedTraffic,
+      transport_pressure_index: Math.round(pressureIndex * 10) / 10
+    };
+  });
+  
+  // 4. 放大文旅景点数据并重新计算压力指数
+  const amplifiedTourismRank = tourismRank.map(item => {
+    const amplifiedTraffic = item.tourism_current_traffic * AMPLIFIERS.rank_fields;
+    // 重新计算压力指数：Math.min((放大后人数 / 基准) * 100, 250)
+    const pressureIndex = Math.min(
+      (amplifiedTraffic / (item.tourism_baseline || 50000)) * 100,
+      250
+    );
+    return {
+      ...item,
+      tourism_current_traffic: amplifiedTraffic,
+      tourism_pressure_index: Math.round(pressureIndex * 10) / 10
+    };
+  });
+  
+  // 5. 重新计算引流指数（基于放大后的累计人数）
+  // 使用之前定义的 cityBaselineTraffic（不再重复声明）
+  const amplifiedDrainageIndex = Math.min(
+    (amplifiedCumulativeOutsiderCount / cityBaselineTraffic) * 100,
+    300
+  );
+  
+  // 6. 添加放大器元数据
+  const amplifiedMeta = {
+    generated_at: Date.now(),
+    data_source: 'hourly_slice',
+    baseline_city: cityBaseline?.city_name || '南京市',
+    amplified: true,
+    amplifiers: AMPLIFIERS
+  };
+  
   return {
     timestamp: currentHourTs,
     date: currentDate.toISOString().split('T')[0],
     time: formatTime(currentHourTs),
     
-    realtime_outsider_count: realtimeOutsiderCount,
-    venue_surrounding_count: venueSurroundingCount,
-    cumulative_outsider_count: cumulativeOutsiderCount,
-    drainage_index: Math.round(drainageIndex * 10) / 10,
-    three_day_visitor_count: threeDayVisitorCount,
+    realtime_outsider_count: amplifiedRealtimeOutsiderCount,
+    venue_surrounding_count: venueSurroundingCount * AMPLIFIERS.rank_fields, // 场馆数据也放大
+    cumulative_outsider_count: amplifiedCumulativeOutsiderCount,
+    drainage_index: Math.round(amplifiedDrainageIndex * 10) / 10,
+    three_day_visitor_count: amplifiedThreeDayVisitorCount,
     
-    out_province_rank: outProvinceRank,
-    transport_rank: transportRank,
-    tourism_rank: tourismRank,
+    out_province_rank: amplifiedOutProvinceRank,
+    transport_rank: amplifiedTransportRank,
+    tourism_rank: amplifiedTourismRank,
     
-    meta: {
-      generated_at: Date.now(),
-      data_source: 'hourly_slice',
-      baseline_city: cityBaseline?.city_name || '南京市'
-    }
+    meta: amplifiedMeta
   };
 }
 

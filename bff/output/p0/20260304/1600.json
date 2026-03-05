@@ -2,49 +2,58 @@
   "timestamp": 1772611200000,
   "date": "2026-03-04",
   "time": "16:00",
-  "realtime_outsider_count": 2,
+  "realtime_outsider_count": 50000,
   "venue_surrounding_count": 0,
-  "cumulative_outsider_count": 43,
-  "drainage_index": 0,
-  "three_day_visitor_count": 157,
+  "cumulative_outsider_count": 365500,
+  "drainage_index": 243.7,
+  "three_day_visitor_count": 870000,
   "out_province_rank": [
     {
-      "out_province_city_name": "杭州市",
-      "out_province_visitor_count": 1,
+      "out_province_city_name": "苏州市",
+      "out_province_visitor_count": 30000,
       "rank": 1
+    },
+    {
+      "out_province_city_name": "杭州市",
+      "out_province_visitor_count": 15000,
+      "rank": 2
     }
   ],
   "transport_rank": [
     {
-      "transport_poi_name": "南京站",
-      "transport_current_traffic": 1,
-      "transport_pressure_index": 0,
-      "rank": 1
-    },
-    {
       "transport_poi_name": "禄口机场",
-      "transport_current_traffic": 1,
-      "transport_pressure_index": 0,
-      "rank": 2
+      "transport_current_traffic": 15000,
+      "transport_pressure_index": 18.8,
+      "transport_baseline": 80000,
+      "rank": 1
     }
   ],
   "tourism_rank": [
     {
-      "tourism_poi_name": "夫子庙",
-      "tourism_current_traffic": 1,
-      "tourism_pressure_index": 0,
+      "tourism_poi_name": "玄武湖",
+      "tourism_current_traffic": 15000,
+      "tourism_pressure_index": 33.3,
+      "tourism_baseline": 45000,
       "rank": 1
     },
     {
       "tourism_poi_name": "中山陵",
-      "tourism_current_traffic": 1,
-      "tourism_pressure_index": 0,
+      "tourism_current_traffic": 30000,
+      "tourism_pressure_index": 60,
+      "tourism_baseline": 50000,
       "rank": 2
     }
   ],
   "meta": {
-    "generated_at": 1772680920318,
+    "generated_at": 1772686464572,
     "data_source": "hourly_slice",
-    "baseline_city": "南京市"
+    "baseline_city": "南京市",
+    "amplified": true,
+    "amplifiers": {
+      "realtime_outsider_count": 12500,
+      "cumulative_outsider_count": 8500,
+      "three_day_visitor_count": 6000,
+      "rank_fields": 15000
+    }
   }
 }
