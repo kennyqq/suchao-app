@@ -57,6 +57,9 @@ export default function TimelineV3({
     if (!timelineIndex || !currentTimePoint) return [];
     return timelineIndex.timeSlots[currentTimePoint.date] || [];
   }, [timelineIndex, currentTimePoint]);
+  
+  // 安全兜底：确保 timeSlots 始终是数组
+  const safeTimeSlots = Array.isArray(timeSlots) ? timeSlots : [];
 
   // 使用外部传入的状态或内部状态
   const [internalIndex, setInternalIndex] = useState(0);
@@ -70,21 +73,21 @@ export default function TimelineV3({
   const isPlaying = externalIsPlaying !== undefined ? externalIsPlaying : internalPlaying;
 
   // 当前时间和值
-  const currentTime = timeSlots[currentIndex] || '--:--';
+  const currentTime = safeTimeSlots[currentIndex] || '--:--';
   const currentMetricConfig = DEFAULT_METRICS_CONFIG[selectedMetric];
   
   // 生成模拟数据用于柱状图显示（基于实际人流数据或默认）
   const metricData = useMemo(() => {
-    if (timeSlots.length === 0) return [];
+    if (safeTimeSlots.length === 0) return [];
     // 这里使用简单的模拟数据，实际可以从API获取历史趋势
-    return timeSlots.map((_, i) => {
+    return safeTimeSlots.map((_, i) => {
       const baseValue = selectedMetric === 'crowd' ? 5 : selectedMetric === 'traffic' ? 8 : 2;
-      const peakIndex = Math.floor(timeSlots.length * 0.6);
+      const peakIndex = Math.floor(safeTimeSlots.length * 0.6);
       const distanceFromPeak = Math.abs(i - peakIndex);
-      const factor = Math.max(0, 1 - distanceFromPeak / (timeSlots.length / 3));
+      const factor = Math.max(0, 1 - distanceFromPeak / (safeTimeSlots.length / 3));
       return Math.max(0.5, baseValue + baseValue * factor * 0.8 + (Math.random() - 0.5) * baseValue * 0.2);
     });
-  }, [timeSlots, selectedMetric]);
+  }, [safeTimeSlots, selectedMetric]);
 
   const currentValue = metricData[currentIndex] || 0;
   const maxValue = Math.max(...metricData, 1);
@@ -340,19 +343,21 @@ export default function TimelineV3({
               <input
                 type="range"
                 min="0"
-                max={timeSlots.length > 0 ? timeSlots.length - 1 : 0}
+                max={safeTimeSlots.length > 0 ? safeTimeSlots.length - 1 : 0}
                 value={currentIndex}
                 onChange={handleSliderChange}
                 className="w-full h-1.5 bg-transparent appearance-none cursor-pointer z-10 slider-timeline"
                 style={{
-                  background: `linear-gradient(90deg, rgba(0, 240, 255, 0.5) 0%, rgba(0, 240, 255, 0.5) ${(currentIndex / (TIME_SLOTS.length - 1)) * 100}%, transparent ${(currentIndex / (TIME_SLOTS.length - 1)) * 100}%, transparent 100%)`,
+                  background: safeTimeSlots.length > 1 
+                    ? `linear-gradient(90deg, rgba(0, 240, 255, 0.5) 0%, rgba(0, 240, 255, 0.5) ${(currentIndex / (safeTimeSlots.length - 1)) * 100}%, transparent ${(currentIndex / (safeTimeSlots.length - 1)) * 100}%, transparent 100%)`
+                    : 'transparent',
                 }}
               />
             </div>
 
             {/* 时间刻度 - 动态显示 */}
             <div className="absolute -bottom-3 left-0 right-0 flex justify-between text-[9px] text-white/30">
-              {timeSlots.filter((_, i) => i % Math.ceil(timeSlots.length / 5) === 0 || i === timeSlots.length - 1).slice(0, 5).map((time, i) => (
+              {safeTimeSlots.length > 0 && safeTimeSlots.filter((_, i) => i % Math.ceil(safeTimeSlots.length / 5) === 0 || i === safeTimeSlots.length - 1).slice(0, 5).map((time, i) => (
                 <span key={i}>{time}</span>
               ))}
             </div>
