@@ -127,11 +127,21 @@ export default function RightPanel({ p0Data, isLoading }) {
         <div className="grid grid-cols-2 gap-3 mb-4">
           <div className="p-3 rounded-lg bg-cyber-dark/50 text-center">
             <div className="text-xs text-white/40 mb-1">实时游客 (3天)</div>
-            <div className="text-xl font-din text-cyber-cyan">8.6万</div>
+            <div className="text-xl font-din text-cyber-cyan">
+              {(() => {
+                const count = p0Data?.three_day_visitor_count || 0;
+                return count >= 10000 ? `${(count / 10000).toFixed(1)}万` : count.toString();
+              })()}
+            </div>
           </div>
           <div className="p-3 rounded-lg bg-cyber-dark/50 text-center">
             <div className="text-xs text-white/40 mb-1">平均停留时长</div>
-            <div className="text-xl font-din text-cyber-gold">26.5<span className="text-sm">小时</span></div>
+            <div className="text-xl font-din text-cyber-gold">
+              {(() => {
+                const hours = p0Data?.avg_stay_hours;
+                return hours !== undefined ? `${hours.toFixed(1)}` : '--';
+              })()}<span className="text-sm">小时</span>
+            </div>
           </div>
         </div>
 
