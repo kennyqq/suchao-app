@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import Header from './components/Header';
 import TimelineV3 from './components/TimelineV3';
 
@@ -6,6 +7,9 @@ import TimelineV3 from './components/TimelineV3';
 import LeftPanelP0 from './components/LeftPanel';
 import RightPanelP0 from './components/RightPanel';
 import MacroMigrationMap from './components/MacroMigrationMap';
+
+// P0 API
+import { fetchP0TimelineIndex, fetchP0Data, getDefaultTimePoint } from './api/p0';
 
 // P1 全局防御 (V1)
 import LeftPanelP1 from './pages/P1/LeftPanelP1';
@@ -23,26 +27,192 @@ import EvaluationView from './pages/P3/EvaluationView';
 
 // P0 宏观溯源视图
 function MacroOriginView() {
+  // 状态管理
+  const [timelineIndex, setTimelineIndex] = useState(null);
+  const [currentData, setCurrentData] = useState(null);
+  const [currentTimePoint, setCurrentTimePoint] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [error, setError] = useState(null);
+
+  // 当前日期的时间刻度
+  const currentTimeSlots = useMemo(() => {
+    if (!timelineIndex || !currentTimePoint) return [];
+    return timelineIndex.timeSlots[currentTimePoint.date] || [];
+  }, [timelineIndex, currentTimePoint]);
+
+  // 1. 组件挂载：获取时间轴索引
+  useEffect(() => {
+    const init = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
+        
+        // 获取时间轴索引
+        const index = await fetchP0TimelineIndex();
+        setTimelineIndex(index);
+        
+        // 提取默认时间点（最新一天、最晚时间）
+        const defaultPoint = getDefaultTimePoint(index);
+        if (!defaultPoint) {
+          throw new Error('无法获取默认时间点');
+        }
+        
+        setCurrentTimePoint(defaultPoint);
+        
+        // 设置当前索引
+        const slots = index.timeSlots[defaultPoint.date] || [];
+        const indexInSlots = slots.indexOf(defaultPoint.time);
+        setCurrentIndex(indexInSlots >= 0 ? indexInSlots : slots.length - 1);
+        
+        // 加载默认时间点数据
+        const data = await fetchP0Data(defaultPoint.date, defaultPoint.time);
+        setCurrentData(data);
+        
+      } catch (err) {
+        console.error('[P0] 初始化失败:', err);
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    init();
+  }, []);
+
+  // 2. 处理时间轴变化
+  const handleTimeChange = useCallback(async (newIndex) => {
+    if (!timelineIndex || !currentTimePoint || isLoading) return;
+    
+    const slots = timelineIndex.timeSlots[currentTimePoint.date] || [];
+    const newTime = slots[newIndex];
+    if (!newTime) return;
+    
+    try {
+      setIsLoading(true);
+      setCurrentIndex(newIndex);
+      
+      const data = await fetchP0Data(currentTimePoint.date, newTime);
+      setCurrentData(data);
+      
+    } catch (err) {
+      console.error('[P0] 加载数据失败:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [timelineIndex, currentTimePoint, isLoading]);
+
+  // 3. 播放控制
+  useEffect(() => {
+    if (!isPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => {
+        const max = currentTimeSlots.length - 1;
+        if (prev >= max) {
+          setIsPlaying(false);
+          return prev;
+        }
+        const next = prev + 1;
+        handleTimeChange(next);
+        return next;
+      });
+    }, 2000);
+    
+    return () => clearInterval(interval);
+  }, [isPlaying, currentTimeSlots.length, handleTimeChange]);
+
+  // 处理上一帧/下一帧
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      handleTimeChange(currentIndex - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIndex < currentTimeSlots.length - 1) {
+      handleTimeChange(currentIndex + 1);
+    }
+  };
+
+  // 处理日期变化
+  const handleDateChange = useCallback(async (dateStr) => {
+    if (!timelineIndex) return;
+    
+    try {
+      setIsLoading(true);
+      const slots = timelineIndex.timeSlots[dateStr] || [];
+      if (slots.length === 0) return;
+      
+      const newTimePoint = {
+        date: dateStr,
+        time: slots[slots.length - 1],
+        formatted: `${dateStr} ${slots[slots.length - 1]}`
+      };
+      
+      setCurrentTimePoint(newTimePoint);
+      setCurrentIndex(slots.length - 1);
+      
+      const data = await fetchP0Data(dateStr, newTimePoint.time);
+      setCurrentData(data);
+    } catch (err) {
+      console.error('[P0] 切换日期失败:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [timelineIndex]);
+
+  const data = currentData?.data;
+
   return (
     <div className="w-full h-full flex flex-col overflow-hidden">
       <div className="flex-1 flex overflow-hidden pb-20">
-        <LeftPanelP0 />
+        <LeftPanelP0 
+          p0Data={data} 
+          isLoading={isLoading}
+          currentTimePoint={currentTimePoint}
+        />
         <div className="flex-1 flex flex-col relative py-2">
           <div className="text-center mb-1 flex-shrink-0">
             <div className="text-cyber-gold text-lg font-bold tracking-[0.3em]" style={{ textShadow: '0 0 20px rgba(255, 215, 0, 0.5)' }}>
               "一张网，火一座城"
             </div>
+            {currentTimePoint && (
+              <div className="text-white/50 text-xs mt-1">
+                {currentTimePoint.formatted}
+              </div>
+            )}
           </div>
           <div className="flex-1 relative mx-2 min-h-0">
             <div className="absolute inset-0 rounded-xl overflow-visible border border-cyber-cyan/20 corner-bracket">
               <span className="corner-bl" />
               <span className="corner-br" />
-              <MacroMigrationMap />
+              <MacroMigrationMap 
+                p0Data={data}
+                isLoading={isLoading}
+              />
             </div>
           </div>
         </div>
-        <RightPanelP0 />
+        <RightPanelP0 
+          p0Data={data}
+          isLoading={isLoading}
+        />
       </div>
+      
+      {/* 底部时间轴 */}
+      <TimelineV3 
+        timelineIndex={timelineIndex}
+        currentTimePoint={currentTimePoint}
+        currentIndex={currentIndex}
+        isPlaying={isPlaying}
+        onTimeChange={handleTimeChange}
+        onDateChange={handleDateChange}
+        onPlayPause={() => setIsPlaying(!isPlaying)}
+        onPrev={handlePrev}
+        onNext={handleNext}
+      />
     </div>
   );
 }

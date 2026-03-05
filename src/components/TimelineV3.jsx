@@ -2,157 +2,172 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Pause, SkipBack, SkipForward, RotateCcw, Calendar, ChevronDown } from 'lucide-react';
 
-// 生成8小时的时间刻度（17:00 - 01:00，每15分钟一个点，共33个点）
-const generateTimeSlots = () => {
-  const slots = [];
-  const startHour = 17;
-  const totalHours = 8;
-  
-  for (let h = 0; h < totalHours; h++) {
-    const hour = (startHour + h) % 24;
-    for (let m = 0; m < 60; m += 15) {
-      slots.push(`${hour.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`);
-    }
-  }
-  // 添加最后一点 01:00
-  slots.push('01:00');
-  return slots;
-};
-
-const TIME_SLOTS = generateTimeSlots();
-
-// 生成模拟数据（33个点对应8小时）
-const generateMockData = (baseValue, peakValue, peakIndex) => {
-  const data = [];
-  for (let i = 0; i < TIME_SLOTS.length; i++) {
-    // 使用正弦曲线模拟数据变化，在peakIndex处达到峰值
-    const distanceFromPeak = Math.abs(i - peakIndex);
-    const factor = Math.max(0, 1 - distanceFromPeak / 12);
-    const value = baseValue + (peakValue - baseValue) * factor + (Math.random() - 0.5) * baseValue * 0.2;
-    data.push(Math.max(0, Number(value.toFixed(1))));
-  }
-  return data;
-};
-
-// 三种指标的模拟数据
-const METRICS_DATA = {
+// 三种指标的默认配置（当没有外部数据时使用）
+const DEFAULT_METRICS_CONFIG = {
   crowd: {
     label: '人流',
     unit: '万人',
     icon: '👥',
-    data: generateMockData(2, 9.5, 20),
     threshold: 8.0,
   },
   traffic: {
     label: '流量',
     unit: 'TB',
     icon: '📶',
-    data: generateMockData(0.5, 10, 20),
     threshold: 8.0,
   },
   fiveGA: {
     label: '5G-A用户流量',
     unit: 'Gbps',
     icon: '📱',
-    data: generateMockData(1, 13, 20),
     threshold: 10.0,
   },
 };
 
-// 生成日期选项（以今天为基准，前后15天）
-const generateDateOptions = () => {
-  const dates = [];
-  const today = new Date();
-  for (let i = -15; i <= 15; i++) {
-    const date = new Date(today);
-    date.setDate(today.getDate() + i);
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    dates.push({
-      value: `${month}-${day}`,
-      label: `${month}月${day}日`,
-      fullDate: date,
-      isToday: i === 0,
+export default function TimelineV3({ 
+  onTimeChange, 
+  onMetricChange, 
+  externalTime,
+  timelineIndex,
+  currentTimePoint,
+  currentIndex: externalCurrentIndex,
+  isPlaying: externalIsPlaying,
+  onPlayPause,
+  onPrev,
+  onNext,
+  onDateChange,
+}) {
+  // 从 timelineIndex 获取可用日期列表
+  const availableDates = useMemo(() => {
+    if (!timelineIndex || !timelineIndex.availableDates) return [];
+    return timelineIndex.availableDates.map(dateStr => {
+      const month = parseInt(dateStr.slice(4, 6), 10);
+      const day = parseInt(dateStr.slice(6, 8), 10);
+      return {
+        value: dateStr,
+        label: `${month}月${day}日`,
+        fullDate: dateStr,
+        isToday: dateStr === currentTimePoint?.date,
+      };
     });
-  }
-  return dates;
-};
+  }, [timelineIndex, currentTimePoint]);
 
-const DATE_OPTIONS = generateDateOptions();
+  // 从 timelineIndex 获取当前日期的时间槽
+  const timeSlots = useMemo(() => {
+    if (!timelineIndex || !currentTimePoint) return [];
+    return timelineIndex.timeSlots[currentTimePoint.date] || [];
+  }, [timelineIndex, currentTimePoint]);
 
-export default function TimelineV3({ onTimeChange, onMetricChange, externalTime }) {
-  // 根据外部时间初始化索引
-  const getInitialIndex = () => {
-    if (externalTime) {
-      const index = TIME_SLOTS.indexOf(externalTime);
-      return index >= 0 ? index : 20;
-    }
-    return 20; // 默认 20:00
-  };
-
-  const [currentIndex, setCurrentIndex] = useState(getInitialIndex());
-  const [isPlaying, setIsPlaying] = useState(false);
+  // 使用外部传入的状态或内部状态
+  const [internalIndex, setInternalIndex] = useState(0);
+  const [internalPlaying, setInternalPlaying] = useState(false);
   const [selectedMetric, setSelectedMetric] = useState('crowd');
   const [showMetricDropdown, setShowMetricDropdown] = useState(false);
   const [showDateDropdown, setShowDateDropdown] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(DATE_OPTIONS[15]); // 默认5月2日（数组中间）
 
-  const currentMetric = METRICS_DATA[selectedMetric];
-  const currentValue = currentMetric.data[currentIndex];
-  const currentTime = TIME_SLOTS[currentIndex];
-  const maxValue = Math.max(...currentMetric.data);
+  // 优先使用外部状态
+  const currentIndex = externalCurrentIndex !== undefined ? externalCurrentIndex : internalIndex;
+  const isPlaying = externalIsPlaying !== undefined ? externalIsPlaying : internalPlaying;
 
-  // 监听外部时间变化，同步更新内部状态
-  useEffect(() => {
-    if (externalTime) {
-      const index = TIME_SLOTS.indexOf(externalTime);
-      if (index >= 0 && index !== currentIndex) {
-        setCurrentIndex(index);
-      }
+  // 当前时间和值
+  const currentTime = timeSlots[currentIndex] || '--:--';
+  const currentMetricConfig = DEFAULT_METRICS_CONFIG[selectedMetric];
+  
+  // 生成模拟数据用于柱状图显示（基于实际人流数据或默认）
+  const metricData = useMemo(() => {
+    if (timeSlots.length === 0) return [];
+    // 这里使用简单的模拟数据，实际可以从API获取历史趋势
+    return timeSlots.map((_, i) => {
+      const baseValue = selectedMetric === 'crowd' ? 5 : selectedMetric === 'traffic' ? 8 : 2;
+      const peakIndex = Math.floor(timeSlots.length * 0.6);
+      const distanceFromPeak = Math.abs(i - peakIndex);
+      const factor = Math.max(0, 1 - distanceFromPeak / (timeSlots.length / 3));
+      return Math.max(0.5, baseValue + baseValue * factor * 0.8 + (Math.random() - 0.5) * baseValue * 0.2);
+    });
+  }, [timeSlots, selectedMetric]);
+
+  const currentValue = metricData[currentIndex] || 0;
+  const maxValue = Math.max(...metricData, 1);
+
+  // 当前选中的日期
+  const selectedDate = useMemo(() => {
+    if (!currentTimePoint || availableDates.length === 0) {
+      return { value: '', label: '选择日期' };
     }
-  }, [externalTime]);
+    return availableDates.find(d => d.value === currentTimePoint.date) || availableDates[0];
+  }, [currentTimePoint, availableDates]);
 
-  // 播放控制
+  // 播放控制 - 如果没有外部控制，使用内部控制
   useEffect(() => {
+    if (externalIsPlaying !== undefined || !isPlaying) return;
+    
     let interval;
-    if (isPlaying) {
-      interval = setInterval(() => {
-        setCurrentIndex((prev) => {
-          if (prev >= TIME_SLOTS.length - 1) {
-            setIsPlaying(false);
-            return prev;
-          }
-          return prev + 1;
-        });
-      }, 1000);
-    }
+    interval = setInterval(() => {
+      setInternalIndex((prev) => {
+        if (prev >= timeSlots.length - 1) {
+          setInternalPlaying(false);
+          return prev;
+        }
+        const next = prev + 1;
+        if (onTimeChange) {
+          onTimeChange(next);
+        }
+        return next;
+      });
+    }, 1000);
     return () => clearInterval(interval);
-  }, [isPlaying]);
+  }, [isPlaying, timeSlots.length, externalIsPlaying, onTimeChange]);
 
   // 通知父组件时间变化
   useEffect(() => {
-    if (onTimeChange) {
+    if (onTimeChange && externalCurrentIndex === undefined) {
       onTimeChange({ time: currentTime, value: currentValue, metric: selectedMetric });
     }
-  }, [currentIndex, selectedMetric]);
+  }, [currentIndex, selectedMetric, externalCurrentIndex]);
 
-  const handlePlay = () => setIsPlaying(!isPlaying);
+  const handlePlay = () => {
+    if (onPlayPause) {
+      onPlayPause();
+    } else {
+      setInternalPlaying(!internalPlaying);
+    }
+  };
+  
   const handleReset = () => {
-    setIsPlaying(false);
-    setCurrentIndex(20);
+    if (onPlayPause) onPlayPause();
+    else setInternalPlaying(false);
+    
+    const resetIndex = Math.floor(timeSlots.length / 2);
+    if (onTimeChange) onTimeChange(resetIndex);
+    else setInternalIndex(resetIndex);
   };
+  
   const handlePrev = () => {
-    setCurrentIndex(Math.max(0, currentIndex - 1));
-    setIsPlaying(false);
+    if (onPrev) {
+      onPrev();
+    } else {
+      setInternalIndex(Math.max(0, currentIndex - 1));
+      setInternalPlaying(false);
+    }
   };
+  
   const handleNext = () => {
-    setCurrentIndex(Math.min(TIME_SLOTS.length - 1, currentIndex + 1));
-    setIsPlaying(false);
+    if (onNext) {
+      onNext();
+    } else {
+      setInternalIndex(Math.min(timeSlots.length - 1, currentIndex + 1));
+      setInternalPlaying(false);
+    }
   };
 
   const handleSliderChange = (e) => {
-    setCurrentIndex(parseInt(e.target.value));
-    setIsPlaying(false);
+    const newIndex = parseInt(e.target.value);
+    if (onTimeChange) {
+      onTimeChange(newIndex);
+    } else {
+      setInternalIndex(newIndex);
+      setInternalPlaying(false);
+    }
   };
 
   const handleMetricChange = (metric) => {
@@ -163,13 +178,15 @@ export default function TimelineV3({ onTimeChange, onMetricChange, externalTime 
     }
   };
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  const handleDateSelect = (date) => {
     setShowDateDropdown(false);
+    if (onDateChange) {
+      onDateChange(date.value);
+    }
   };
 
   // 判断是否为波峰
-  const isPeak = (value) => value >= currentMetric.threshold;
+  const isPeak = (value) => value >= currentMetricConfig.threshold;
 
   // 计算柱子的渐变颜色
   const getBarGradient = (value, index, isActive) => {
@@ -206,17 +223,20 @@ export default function TimelineV3({ onTimeChange, onMetricChange, externalTime 
                 animate={{ opacity: 1, y: 0 }}
                 className="absolute bottom-full left-0 mb-2 w-32 max-h-48 overflow-y-auto bg-cyber-dark border border-cyber-cyan/30 rounded-lg shadow-lg scrollbar-cyber"
               >
-                {DATE_OPTIONS.map((date) => (
+                {availableDates.length > 0 ? availableDates.map((date) => (
                   <button
                     key={date.value}
-                    onClick={() => handleDateChange(date)}
+                    onClick={() => handleDateSelect(date)}
                     className={`w-full px-3 py-2 text-xs text-left hover:bg-cyber-cyan/10 transition-colors ${
-                      selectedDate.value === date.value ? 'bg-cyber-cyan/20 text-cyber-cyan' : 'text-white/70'
+                      selectedDate?.value === date.value ? 'bg-cyber-cyan/20 text-cyber-cyan' : 'text-white/70'
                     }`}
                   >
                     {date.label}
+                    {date.isToday && <span className="ml-2 text-[10px] text-cyber-cyan">今日</span>}
                   </button>
-                ))}
+                )) : (
+                  <div className="px-3 py-2 text-xs text-white/40">加载中...</div>
+                )}
               </motion.div>
             )}
           </div>
@@ -232,7 +252,7 @@ export default function TimelineV3({ onTimeChange, onMetricChange, externalTime 
             className="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-cyber-dark/50 border border-cyber-cyan/30 hover:border-cyber-cyan/50 transition-colors"
           >
             <span className="text-sm text-white truncate">
-              {currentMetric.icon} {currentMetric.label}
+              {currentMetricConfig.icon} {currentMetricConfig.label}
             </span>
             <ChevronDown className={`w-4 h-4 text-white/50 transition-transform flex-shrink-0 ${showMetricDropdown ? 'rotate-180' : ''}`} />
           </button>
@@ -301,7 +321,7 @@ export default function TimelineV3({ onTimeChange, onMetricChange, externalTime 
           <div className="relative h-8 flex items-end">
             {/* 柱状图背景 - 变细并使用渐变 */}
             <div className="absolute inset-0 flex items-end gap-[1px]">
-              {currentMetric.data.map((value, index) => (
+              {metricData.map((value, index) => (
                 <div
                   key={index}
                   className="flex-1 rounded-t-sm transition-all duration-300"
@@ -320,7 +340,7 @@ export default function TimelineV3({ onTimeChange, onMetricChange, externalTime 
               <input
                 type="range"
                 min="0"
-                max={TIME_SLOTS.length - 1}
+                max={timeSlots.length > 0 ? timeSlots.length - 1 : 0}
                 value={currentIndex}
                 onChange={handleSliderChange}
                 className="w-full h-1.5 bg-transparent appearance-none cursor-pointer z-10 slider-timeline"
@@ -330,13 +350,11 @@ export default function TimelineV3({ onTimeChange, onMetricChange, externalTime 
               />
             </div>
 
-            {/* 时间刻度 - 每2小时显示一个 */}
+            {/* 时间刻度 - 动态显示 */}
             <div className="absolute -bottom-3 left-0 right-0 flex justify-between text-[9px] text-white/30">
-              <span>17:00</span>
-              <span>19:00</span>
-              <span>21:00</span>
-              <span>23:00</span>
-              <span>01:00</span>
+              {timeSlots.filter((_, i) => i % Math.ceil(timeSlots.length / 5) === 0 || i === timeSlots.length - 1).slice(0, 5).map((time, i) => (
+                <span key={i}>{time}</span>
+              ))}
             </div>
           </div>
         </div>
@@ -346,10 +364,10 @@ export default function TimelineV3({ onTimeChange, onMetricChange, externalTime 
 
         {/* 5. 当前动态数值区 */}
         <div className="w-[100px] shrink-0 text-right">
-          <div className="text-[10px] text-white/40">当前{currentMetric.label}</div>
+          <div className="text-[10px] text-white/40">当前{currentMetricConfig.label}</div>
           <div className="flex items-baseline justify-end gap-1">
             <span className="text-2xl font-din text-white">{currentValue.toFixed(1)}</span>
-            <span className="text-xs text-white/60">{currentMetric.unit}</span>
+            <span className="text-xs text-white/60">{currentMetricConfig.unit}</span>
           </div>
         </div>
       </div>

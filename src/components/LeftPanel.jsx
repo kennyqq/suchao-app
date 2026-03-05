@@ -49,7 +49,10 @@ function CountdownCard() {
 }
 
 // 文旅指数卡片
-function TourismIndexCard() {
+function TourismIndexCard({ p0Data }) {
+  const drainageIndex = p0Data?.drainage_index ?? 0;
+  const outsiderCount = p0Data?.realtime_outsider_count ?? 0;
+  
   return (
     <motion.div 
       initial={{ x: -50, opacity: 0 }} 
@@ -65,13 +68,15 @@ function TourismIndexCard() {
       </div>
       
       <div className="flex items-baseline gap-2">
-        <CountUp end={35241} duration={2} className="text-3xl font-din text-white" />
-        <span className="text-sm text-white/60">人</span>
+        <CountUp end={drainageIndex} duration={2} className="text-3xl font-din text-white" />
+        <span className="text-sm text-white/60">指数</span>
       </div>
       
       <div className="mt-2 flex items-center gap-2">
-        <span className="text-cyber-red text-sm font-medium">+120%</span>
-        <span className="text-xs text-white/40">较平日均值</span>
+        <span className="text-cyber-cyan text-sm font-medium">
+          {outsiderCount.toLocaleString()}
+        </span>
+        <span className="text-xs text-white/40">实时外来客流</span>
       </div>
 
       {/* 公式说明 */}
@@ -85,34 +90,34 @@ function TourismIndexCard() {
 }
 
 // TOP8 城市列表
-function TopCitiesList() {
+function TopCitiesList({ p0Data }) {
   const [activeTab, setActiveTab] = useState('national');
   
+  // 从 p0Data 获取动态数据
+  const outProvinceRank = p0Data?.out_province_rank || [];
+  const inProvinceRank = p0Data?.in_province_rank || [];
+  
+  // 转换为组件需要的格式
   const cities = {
-    national: [
-      { name: '上海', value: 15200 },
-      { name: '杭州', value: 9100 },
-      { name: '合肥', value: 7800 },
-      { name: '北京', value: 6500 },
-      { name: '深圳', value: 4800 },
-      { name: '武汉', value: 4200 },
-      { name: '成都', value: 3600 },
-      { name: '西安', value: 3100 },
-    ],
-    jiangsu: [
-      { name: '苏州', value: 12400 },
-      { name: '无锡', value: 8900 },
-      { name: '常州', value: 7200 },
-      { name: '南通', value: 5800 },
-      { name: '徐州', value: 4200 },
-      { name: '扬州', value: 3800 },
-      { name: '盐城', value: 2900 },
-      { name: '泰州', value: 2500 },
-    ],
+    national: outProvinceRank.slice(0, 8).map(item => ({
+      name: item.out_province_city_name,
+      value: item.out_province_visitor_count
+    })),
+    jiangsu: inProvinceRank.slice(0, 8).map(item => ({
+      name: item.in_province_city_name,
+      value: item.in_province_visitor_count
+    })),
   };
 
-  const currentCities = cities[activeTab];
-  const maxValue = Math.max(...currentCities.map(c => c.value));
+  // 如果没有数据，使用空数组
+  const currentCities = cities[activeTab].length > 0 ? cities[activeTab] : 
+    (activeTab === 'national' ? [
+      { name: '暂无数据', value: 0 },
+    ] : [
+      { name: '暂无数据', value: 0 },
+    ]);
+  
+  const maxValue = Math.max(...currentCities.map(c => c.value), 1); // 避免除以0
 
   return (
     <motion.div 
@@ -186,12 +191,12 @@ function TopCitiesList() {
   );
 }
 
-export default function LeftPanel() {
+export default function LeftPanel({ p0Data, isLoading, currentTimePoint }) {
   return (
     <div className="w-[300px] h-full flex flex-col gap-4 p-4 z-10">
       <CountdownCard />
-      <TourismIndexCard />
-      <TopCitiesList />
+      <TourismIndexCard p0Data={p0Data} />
+      <TopCitiesList p0Data={p0Data} />
     </div>
   );
 }

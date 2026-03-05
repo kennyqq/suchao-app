@@ -1,24 +1,45 @@
 import { motion } from 'framer-motion';
 import { Train, Car, Plane, TrendingUp, MapPin } from 'lucide-react';
 
-// 交通枢纽压力
-const TRANSPORT_DATA = [
-  { name: '奥体地铁站', icon: Train, pressure: 2.65, today: '8.5万', normal: '3.2万', status: 'high' },
-  { name: '南京南站', icon: Train, pressure: 1.56, today: '12.5万', normal: '8万', status: 'medium' },
-  { name: '南京站', icon: Train, pressure: 1.51, today: '6.8万', normal: '4.5万', status: 'medium' },
-  { name: '禄口机场', icon: Plane, pressure: 1.50, today: '5.2万', normal: '3.5万', status: 'medium' },
-];
+// 图标映射
+const ICON_MAP = {
+  '地铁站': Train,
+  '高铁站': Train,
+  '火车站': Train,
+  '机场': Plane,
+  '汽车站': Car,
+  'default': Train,
+};
 
-// 文旅分析
-const TOURISM_DATA = [
-  { name: '夫子庙秦淮河', visitors: '2.9万', growth: '+156%', rank: 1 },
-  { name: '中山陵景区', visitors: '2.1万', growth: '+89%', rank: 2 },
-  { name: '新街口商圈', visitors: '1.9万', growth: '+67%', rank: 3 },
-  { name: '老门东', visitors: '1.6万', growth: '+134%', rank: 4 },
-  { name: '总统府', visitors: '1.3万', growth: '+78%', rank: 5 },
-];
+export default function RightPanel({ p0Data, isLoading }) {
+  // 从 p0Data 获取交通枢纽和文旅数据
+  const transportRank = p0Data?.transport_rank || [];
+  const tourismRank = p0Data?.tourism_rank || [];
 
-export default function RightPanel() {
+  // 转换交通枢纽数据
+  const transportData = transportRank.slice(0, 5).map((item, index) => {
+    const pressure = item.transport_pressure_index || 0;
+    const today = item.transport_current_traffic || 0;
+    const normal = item.transport_baseline || 1;
+    
+    return {
+      name: item.transport_poi_name || `交通枢纽${index + 1}`,
+      icon: ICON_MAP['default'],
+      pressure: pressure,
+      today: today >= 10000 ? `${(today / 10000).toFixed(1)}万` : today.toString(),
+      normal: normal >= 10000 ? `${(normal / 10000).toFixed(1)}万` : normal.toString(),
+      status: pressure > 150 ? 'high' : pressure > 100 ? 'medium' : 'low',
+    };
+  });
+
+  // 转换文旅数据
+  const tourismData = tourismRank.slice(0, 5).map((item, index) => ({
+    name: item.tourism_poi_name || `景点${index + 1}`,
+    visitors: item.tourism_current_traffic || 0,
+    pressure: item.tourism_pressure_index || 0,
+    rank: index + 1,
+  }));
+
   return (
     <div className="w-[300px] h-full flex flex-col gap-4 p-4 z-10">
       {/* 交通枢纽压力监测 */}
@@ -36,7 +57,7 @@ export default function RightPanel() {
         </div>
 
         <div className="space-y-3">
-          {TRANSPORT_DATA.map((item, index) => {
+          {transportData.length > 0 ? transportData.map((item, index) => {
             const Icon = item.icon;
             return (
               <motion.div
@@ -83,7 +104,9 @@ export default function RightPanel() {
                 </div>
               </motion.div>
             );
-          })}
+          }) : (
+            <div className="text-center text-white/40 py-4">暂无交通数据</div>
+          )}
         </div>
       </motion.div>
 
@@ -114,7 +137,7 @@ export default function RightPanel() {
 
         <div className="text-xs text-white/40 mb-2">热门打卡点 TOP5</div>
         <div className="space-y-2">
-          {TOURISM_DATA.map((item, index) => (
+          {tourismData.length > 0 ? tourismData.map((item, index) => (
             <motion.div
               key={item.name}
               initial={{ x: 20, opacity: 0 }}
@@ -131,10 +154,18 @@ export default function RightPanel() {
                 {item.rank}
               </span>
               <span className="flex-1 text-sm text-white truncate">{item.name}</span>
-              <span className="text-xs font-din text-white">{item.visitors}</span>
-              <span className="text-[10px] text-cyber-gold">{item.growth}</span>
+              <span className="text-xs font-din text-white">
+                {item.visitors >= 10000 ? `${(item.visitors / 10000).toFixed(1)}万` : item.visitors}
+              </span>
+              <span className={`text-[10px] ${
+                item.pressure > 150 ? 'text-cyber-red' : 'text-cyber-gold'
+              }`}>
+                {item.pressure.toFixed(0)}
+              </span>
             </motion.div>
-          ))}
+          )) : (
+            <div className="text-center text-white/40 py-4">暂无文旅数据</div>
+          )}
         </div>
       </motion.div>
     </div>
