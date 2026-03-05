@@ -47,6 +47,10 @@ function MetricCard({ title, value, unit, icon: Icon, color = 'cyan', subtitle, 
     purple: 'from-purple-500/20 to-purple-600/10 border-purple-500/30 text-purple-400'
   };
 
+  // 🛡️ 安全兜底：确保 value 是数字
+  const safeValue = typeof value === 'number' ? value : 0;
+  const safeTrend = typeof trend === 'number' ? trend : null;
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -58,14 +62,14 @@ function MetricCard({ title, value, unit, icon: Icon, color = 'cyan', subtitle, 
         <Icon className={`w-5 h-5 ${colorClasses[color].split(' ').pop()}`} />
       </div>
       <div className="flex items-baseline gap-2">
-        <span className="text-3xl font-din font-bold text-white">{value.toLocaleString()}</span>
+        <span className="text-3xl font-din font-bold text-white">{safeValue.toLocaleString()}</span>
         {unit && <span className="text-white/50 text-sm">{unit}</span>}
       </div>
       {subtitle && <div className="text-white/40 text-xs mt-2">{subtitle}</div>}
-      {trend && (
-        <div className={`text-xs mt-1 flex items-center gap-1 ${trend > 0 ? 'text-green-400' : 'text-red-400'}`}>
+      {safeTrend !== null && (
+        <div className={`text-xs mt-1 flex items-center gap-1 ${safeTrend > 0 ? 'text-green-400' : 'text-red-400'}`}>
           <TrendingUp className="w-3 h-3" />
-          {trend > 0 ? '+' : ''}{trend}%
+          {safeTrend > 0 ? '+' : ''}{safeTrend}%
         </div>
       )}
     </motion.div>
@@ -75,8 +79,11 @@ function MetricCard({ title, value, unit, icon: Icon, color = 'cyan', subtitle, 
 /**
  * 排行榜组件
  */
-function RankingList({ title, icon: Icon, data, valueKey, labelKey, showPressure = false }) {
-  if (!data || data.length === 0) {
+function RankingList({ title, icon: Icon, data, valueKey, labelKey, showPressure = false, pressureKey }) {
+  // 🛡️ 安全兜底：确保 data 是数组
+  const safeData = Array.isArray(data) ? data : [];
+  
+  if (safeData.length === 0) {
     return (
       <div className="glass-panel rounded-xl p-4 border border-white/10">
         <div className="flex items-center gap-2 mb-4">
@@ -95,7 +102,7 @@ function RankingList({ title, icon: Icon, data, valueKey, labelKey, showPressure
         <h3 className="text-white font-medium">{title}</h3>
       </div>
       <div className="space-y-2">
-        {data.slice(0, 5).map((item, index) => (
+        {safeData.slice(0, 5).map((item, index) => (
           <motion.div
             key={item[labelKey] || index}
             initial={{ x: -20, opacity: 0 }}
@@ -111,24 +118,15 @@ function RankingList({ title, icon: Icon, data, valueKey, labelKey, showPressure
             }`}>
               {item.rank || index + 1}
             </span>
-            <span className="text-white/80 flex-1 truncate text-sm">{item[labelKey]}</span>
-            <span className="text-cyber-cyan font-din">{item[valueKey]?.toLocaleString()}</span>
-            {showPressure && item.transport_pressure_index !== undefined && (
+            <span className="text-white/80 flex-1 truncate text-sm">{item[labelKey] || '未知'}</span>
+            <span className="text-cyber-cyan font-din">{(item[valueKey] ?? 0).toLocaleString()}</span>
+            {showPressure && pressureKey && item[pressureKey] !== undefined && (
               <span className={`text-xs px-2 py-0.5 rounded ${
-                item.transport_pressure_index > 150 ? 'bg-red-500/20 text-red-400' :
-                item.transport_pressure_index > 100 ? 'bg-yellow-500/20 text-yellow-400' :
+                item[pressureKey] > 150 ? 'bg-red-500/20 text-red-400' :
+                item[pressureKey] > 100 ? 'bg-yellow-500/20 text-yellow-400' :
                 'bg-green-500/20 text-green-400'
               }`}>
-                {item.transport_pressure_index}
-              </span>
-            )}
-            {showPressure && item.tourism_pressure_index !== undefined && (
-              <span className={`text-xs px-2 py-0.5 rounded ${
-                item.tourism_pressure_index > 150 ? 'bg-red-500/20 text-red-400' :
-                item.tourism_pressure_index > 100 ? 'bg-yellow-500/20 text-yellow-400' :
-                'bg-green-500/20 text-green-400'
-              }`}>
-                {item.tourism_pressure_index}
+                {item[pressureKey]}
               </span>
             )}
           </motion.div>
@@ -151,7 +149,11 @@ function TimelineController({
   onPrev,
   onNext
 }) {
-  if (!timeSlots || timeSlots.length === 0) return null;
+  // 🛡️ 安全兜底：确保 timeSlots 是有效数组
+  const safeTimeSlots = Array.isArray(timeSlots) ? timeSlots : [];
+  const safeIndex = typeof currentIndex === 'number' ? currentIndex : 0;
+  
+  if (safeTimeSlots.length === 0) return null;
 
   return (
     <div className="glass-panel rounded-xl p-4 border border-white/10">
@@ -189,14 +191,19 @@ function TimelineController({
           <input
             type="range"
             min={0}
-            max={timeSlots.length - 1}
-            value={currentIndex}
-            onChange={(e) => onChange(parseInt(e.target.value))}
+            max={Math.max(0, safeTimeSlots.length - 1)}
+            value={Math.min(safeIndex, safeTimeSlots.length - 1)}
+            onChange={(e) => {
+              const val = parseInt(e.target.value);
+              if (!isNaN(val) && val >= 0 && val < safeTimeSlots.length) {
+                onChange(val);
+              }
+            }}
             className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-cyber-cyan"
           />
           <div className="flex justify-between text-white/40 text-xs mt-1">
-            <span>{timeSlots[0]}</span>
-            <span>{timeSlots[timeSlots.length - 1]}</span>
+            <span>{safeTimeSlots[0] || '--:--'}</span>
+            <span>{safeTimeSlots[safeTimeSlots.length - 1] || '--:--'}</span>
           </div>
         </div>
       </div>
@@ -216,10 +223,11 @@ export default function P0() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [error, setError] = useState(null);
 
-  // 当前日期的时间刻度
+  // 当前日期的时间刻度 - 🛡️ 安全兜底
   const currentTimeSlots = useMemo(() => {
-    if (!timelineIndex || !currentTimePoint) return [];
-    return timelineIndex.timeSlots[currentTimePoint.date] || [];
+    if (!timelineIndex || !currentTimePoint?.date) return [];
+    const slots = timelineIndex.timeSlots?.[currentTimePoint.date];
+    return Array.isArray(slots) ? slots : [];
   }, [timelineIndex, currentTimePoint]);
 
   // 1. 组件挂载：获取时间轴索引
@@ -265,9 +273,15 @@ export default function P0() {
   const handleTimeChange = useCallback(async (newIndex) => {
     if (!timelineIndex || !currentTimePoint || isLoading) return;
     
-    const slots = timelineIndex.timeSlots[currentTimePoint.date] || [];
+    // 🛡️ 安全兜底：确保 slots 是数组且 newIndex 有效
+    const slots = timelineIndex.timeSlots?.[currentTimePoint.date] || [];
+    if (!Array.isArray(slots) || slots.length === 0) return;
+    
     const newTime = slots[newIndex];
-    if (!newTime) return;
+    if (!newTime || typeof newTime !== 'string') {
+      console.warn('[P0] 无效的时间点:', newIndex, slots);
+      return;
+    }
     
     try {
       setIsLoading(true);
@@ -305,13 +319,16 @@ export default function P0() {
 
   // 处理上一帧/下一帧
   const handlePrev = () => {
-    if (currentIndex > 0) {
+    // 🛡️ 安全兜底：确保 currentIndex 有效
+    if (typeof currentIndex === 'number' && currentIndex > 0) {
       handleTimeChange(currentIndex - 1);
     }
   };
 
   const handleNext = () => {
-    if (currentIndex < currentTimeSlots.length - 1) {
+    // 🛡️ 安全兜底：确保时间槽有效且索引在范围内
+    const slots = timelineIndex?.timeSlots?.[currentTimePoint?.date] || [];
+    if (typeof currentIndex === 'number' && currentIndex < slots.length - 1) {
       handleTimeChange(currentIndex + 1);
     }
   };
@@ -340,7 +357,51 @@ export default function P0() {
     );
   }
 
-  const data = currentData?.data;
+  // 🚑 致命调试：确认数据是否到达
+  console.log('====== 🚑 P0 真实接收到的状态数据 ======', currentData);
+  console.log('====== 🚑 timelineIndex 状态 ======', timelineIndex);
+  
+  // 数据解包：fetchP0Data 已经返回 result.data，所以 currentData 本身就是业务数据
+  const data = currentData;
+  
+  // ====== 数据映射与兜底 ======
+  // 1. 省外 TOP8 - 映射为 {name, value}
+  const outProvinceList = (data?.out_province_rank || []).map(item => ({
+    name: item.out_province_city_name || '未知',
+    value: item.out_province_visitor_count || 0,
+    rank: item.rank || 1
+  }));
+  
+  // 2. 省内 TOP8 - 映射为 {name, value}
+  const inProvinceList = (data?.in_province_rank || []).map(item => ({
+    name: item.in_province_city_name || '未知',
+    value: item.in_province_visitor_count || 0,
+    rank: item.rank || 1
+  }));
+  
+  // 3. 交通枢纽 - 映射为 {name, value, pressure}
+  const transportList = (data?.transport_rank || []).map(item => ({
+    name: item.transport_poi_name || '未知',
+    value: item.transport_current_traffic || 0,
+    pressure: item.transport_pressure_index || 0,
+    rank: item.rank || 1
+  }));
+  
+  // 4. 文旅景点 - 映射为 {name, value, pressure}
+  const tourismList = (data?.tourism_rank || []).map(item => ({
+    name: item.tourism_poi_name || '未知',
+    value: item.tourism_current_traffic || 0,
+    pressure: item.tourism_pressure_index || 0,
+    rank: item.rank || 1
+  }));
+  
+  // 5. 日期列表兜底
+  const availableDates = timelineIndex?.availableDates || [];
+  
+  // 6. 当前日期的时间槽兜底
+  const timeSlotsForCurrentDate = (timelineIndex?.timeSlots && currentTimePoint?.date) 
+    ? (timelineIndex.timeSlots[currentTimePoint.date] || []) 
+    : [];
 
   return (
     <div className="w-full h-full flex flex-col p-4 overflow-hidden">
@@ -406,9 +467,16 @@ export default function P0() {
           <RankingList
             title="省外来源城市 TOP10"
             icon={MapPin}
-            data={data?.out_province_rank}
-            labelKey="out_province_city_name"
-            valueKey="out_province_visitor_count"
+            data={outProvinceList}
+            labelKey="name"
+            valueKey="value"
+          />
+          <RankingList
+            title="省内来源城市 TOP8"
+            icon={MapPin}
+            data={inProvinceList}
+            labelKey="name"
+            valueKey="value"
           />
         </div>
 
@@ -426,34 +494,74 @@ export default function P0() {
           <RankingList
             title="交通枢纽压力 TOP5"
             icon={Train}
-            data={data?.transport_rank}
-            labelKey="transport_poi_name"
-            valueKey="transport_current_traffic"
+            data={transportList}
+            labelKey="name"
+            valueKey="value"
             showPressure={true}
+            pressureKey="pressure"
           />
           <RankingList
             title="文旅景点压力 TOP5"
             icon={Camera}
-            data={data?.tourism_rank}
-            labelKey="tourism_poi_name"
-            valueKey="tourism_current_traffic"
+            data={tourismList}
+            labelKey="name"
+            valueKey="value"
             showPressure={true}
+            pressureKey="pressure"
           />
         </div>
       </div>
 
-      {/* 底部时间轴控制器 */}
-      <div className="mt-4">
-        <TimelineController
-          timeSlots={currentTimeSlots}
-          currentIndex={currentIndex}
-          onChange={handleTimeChange}
-          currentTime={currentTimePoint?.time}
-          isPlaying={isPlaying}
-          onPlayPause={() => setIsPlaying(!isPlaying)}
-          onPrev={handlePrev}
-          onNext={handleNext}
-        />
+      {/* 日期选择器 */}
+      <div className="mt-4 flex items-center gap-4">
+        <div className="glass-panel px-4 py-2 rounded-lg border border-white/10">
+          <select 
+            className="bg-transparent text-white outline-none cursor-pointer"
+            value={currentTimePoint?.date || ''}
+            onChange={(e) => {
+              const newDate = e.target.value;
+              if (newDate && timelineIndex?.timeSlots?.[newDate]) {
+                const slots = timelineIndex.timeSlots[newDate];
+                const newTimePoint = {
+                  date: newDate,
+                  time: slots[slots.length - 1],
+                  formatted: `${newDate.slice(0,4)}-${newDate.slice(4,6)}-${newDate.slice(6,8)} ${slots[slots.length - 1]}`
+                };
+                setCurrentTimePoint(newTimePoint);
+                setCurrentIndex(slots.length - 1);
+                // 加载新日期的数据
+                handleTimeChange(slots.length - 1);
+              }
+            }}
+          >
+            {availableDates.length === 0 && (
+              <option value="">加载中...</option>
+            )}
+            {availableDates.map(dateStr => {
+              const month = parseInt(dateStr.slice(4, 6), 10);
+              const day = parseInt(dateStr.slice(6, 8), 10);
+              return (
+                <option key={dateStr} value={dateStr} className="bg-cyber-dark">
+                  {month}月{day}日
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        
+        {/* 底部时间轴控制器 */}
+        <div className="flex-1">
+          <TimelineController
+            timeSlots={timeSlotsForCurrentDate}
+            currentIndex={currentIndex}
+            onChange={handleTimeChange}
+            currentTime={currentTimePoint?.time}
+            isPlaying={isPlaying}
+            onPlayPause={() => setIsPlaying(!isPlaying)}
+            onPrev={handlePrev}
+            onNext={handleNext}
+          />
+        </div>
       </div>
 
       {/* 加载遮罩 */}
